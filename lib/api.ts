@@ -3,7 +3,8 @@
 
 // Backend API Base URL
 // For local development, use: http://localhost:5000
-// For production, replace with your Render URL: https://your-app.onrender.com
+// For production (Render), use: https://cacsfinac-backend.onrender.com
+// Set NEXT_PUBLIC_API_URL or NEXT_PUBLIC_BACKEND_URL environment variable in production
 const API_BASE_URL = 
   process.env.NEXT_PUBLIC_API_URL || 
   process.env.NEXT_PUBLIC_BACKEND_URL || 
