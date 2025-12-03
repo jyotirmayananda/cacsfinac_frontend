@@ -6,12 +6,12 @@
     "dev": "next dev --turbopack -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-    "build": "next build",
+    "build": "next build && node ./scripts/clean-out.js",
     "build:clean": "next build && node ./scripts/clean-out.js",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "build:deploy": "next build && powershell -Command \"Get-ChildItem out -Filter '*.txt' | Remove-Item -Force\""
+    "build:deploy": "next build && node ./scripts/clean-out.js"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.14.1",
