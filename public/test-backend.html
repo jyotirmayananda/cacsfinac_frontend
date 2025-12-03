@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Backend Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Backend Connection Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Health Endpoint</h3>
+        <button onclick="testHealth()">Test Health</button>
+        <div id="health-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>2. Test Signup</h3>
+        <button onclick="testSignup()">Test Signup</button>
+        <div id="signup-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>3. Test Login</h3>
+        <button onclick="testLogin()">Test Login</button>
+        <div id="login-result" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>4. Test Frontend Pages</h3>
+        <button onclick="window.open('/signup', '_blank')">Open Signup Page</button>
+        <button onclick="window.open('/login', '_blank')">Open Login Page</button>
+    </div>
+
+    <script>
+        const BASE_URL = ''; // Use relative path for same-origin requests
+        let testUser = null;
+
+        async function testHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.innerHTML = 'Testing...';
+            resultDiv.className = 'result';
+
+            try {
+                // Assuming health check is not under /api
+                const response = await fetch(`${BASE_URL}/health`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `✅ Health Check Successful!\n\nStatus: ${data.status}\nMessage: ${data.message}\nTimestamp: ${data.timestamp}`;
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = `❌ Health Check Failed!\n\nStatus: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`;
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Connection Error!\n\nError: ${error.message}\n\nMake sure the backend is running and the /health endpoint is available.`;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        async function testSignup() {
+            const resultDiv = document.getElementById('signup-result');
+            resultDiv.innerHTML = 'Testing signup...';
+            resultDiv.className = 'result';
+
+            try {
+                const testUserData = {
+                    fullName: 'Test User',
+                    email: `test${Date.now()}@example.com`,
+                    password: 'testpassword123'
+                };
+
+                const response = await fetch(`${BASE_URL}/api/auth/signup`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testUserData)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    testUser = testUserData; // Store for login test
+                    resultDiv.innerHTML = `✅ Signup Successful!\n\nResponse: ${JSON.stringify(data, null, 2)}\n\nUser data should be in your database!`;
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = `❌ Signup Failed!\n\nStatus: ${response.status}\nError: ${data.message || JSON.stringify(data)}`;
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Signup Error!\n\nError: ${error.message}`;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        async function testLogin() {
+            const resultDiv = document.getElementById('login-result');
+            resultDiv.innerHTML = 'Testing login...';
+            resultDiv.className = 'result';
+
+            if (!testUser) {
+                resultDiv.innerHTML = '❌ No test user available!\n\nPlease run the signup test first.';
+                resultDiv.className = 'result error';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${BASE_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: testUser.email,
+                        password: testUser.password
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `✅ Login Successful!\n\nResponse: ${JSON.stringify(data, null, 2)}\n\nAuthentication is working!`;
+                    resultDiv.className = 'result success';
+                } else {
+                    resultDiv.innerHTML = `❌ Login Failed!\n\nStatus: ${response.status}\nError: ${data.message || JSON.stringify(data)}`;
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Login Error!\n\nError: ${error.message}`;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        // Auto-test health on page load
+        window.onload = function() {
+            // testHealth(); // You can uncomment this to run on load
+        };
+    </script>
+</body>
+</html>

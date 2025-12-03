@@ -1,0 +1,121 @@
+{
+  "blogPosts": [
+    {
+      "src": "https://picsum.photos/seed/blog1/400/300",
+      "hint": "GST documents"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog2/400/300",
+      "hint": "payroll charts"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog3/400/300",
+      "hint": "tax notice"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog4/400/300",
+      "hint": "tax mismatch"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog5/400/300",
+      "hint": "tax credit"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog6/400/300",
+      "hint": "tax credit recovery"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog7/400/300",
+      "hint": "provident fund"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog8/400/300",
+      "hint": "fund audit"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog9/400/300",
+      "hint": "employee grievance"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog10/400/300",
+      "hint": "capital gains"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog11/400/300",
+      "hint": "property sale"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog12/400/300",
+      "hint": "penny stock"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog13/400/300",
+      "hint": "agricultural land"
+    },
+    {
+      "src": "https://picsum.photos/seed/blog14/400/300",
+      "hint": "crypto currency"
+    }
+  ],
+  "faqs": [],
+  "homepage": {
+    "hero": {
+      "desktop": {
+        "src": "https://picsum.photos/seed/hero-desktop/800/600",
+        "hint": "finance professional"
+      },
+      "mobile": {
+        "src": "https://picsum.photos/seed/hero-mobile/600/400",
+        "hint": "financial growth"
+      }
+    },
+    "slider": [
+      {
+        "src": "https://picsum.photos/seed/slider1/800/500",
+        "hint": "tax filing documents"
+      },
+      {
+        "src": "https://picsum.photos/seed/slider2/800/500",
+        "hint": "financial leadership meeting"
+      },
+      {
+        "src": "https://picsum.photos/seed/slider3/800/500",
+        "hint": "business compliance documents"
+      },
+      {
+        "src": "https://picsum.photos/seed/slider4/800/500",
+        "hint": "bookkeeping accounting gst"
+      },
+      {
+        "src": "https://picsum.photos/seed/slider5/800/500",
+        "hint": "tax planning wealth"
+      }
+    ],
+    "whoWeAre": {
+      "primary": {
+        "src": "https://picsum.photos/seed/whoweare1/600/400",
+        "hint": "business meeting paperwork"
+      },
+      "secondary": {
+        "src": "https://picsum.photos/seed/whoweare2/200/200",
+        "hint": "financial documents"
+      }
+    }
+  },
+  "companyPage": {
+    "hero": {
+      "src": "https://picsum.photos/seed/companyHero/600/400",
+      "hint": "business meeting"
+    },
+    "about": {
+      "src": "https://picsum.photos/seed/companyAbout/500/500",
+      "hint": "financial documents"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "src": "https://picsum.photos/seed/contactHero/600/400",
+      "hint": "business collaboration"
+    }
+  }
+}
