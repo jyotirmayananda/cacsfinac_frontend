@@ -2,12 +2,26 @@
 // This file centralizes all API endpoint URLs
 
 // Backend API Base URL
-// For local development, use: http://localhost:5000
-// For production, replace with your Render URL: https://your-app.onrender.com
-const API_BASE_URL = 
-  process.env.NEXT_PUBLIC_API_URL || 
-  process.env.NEXT_PUBLIC_BACKEND_URL || 
-  'http://localhost:5000';
+// Production: https://cacsfinac-backend.onrender.com
+// Local development: http://localhost:5000
+const getApiBaseUrl = () => {
+  // Check if we're in production (browser environment)
+  const isProduction = typeof window !== 'undefined' && 
+    (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1');
+  
+  // Use environment variable if set, otherwise use production URL in production
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  if (process.env.NEXT_PUBLIC_BACKEND_URL) {
+    return process.env.NEXT_PUBLIC_BACKEND_URL;
+  }
+  
+  // Default to production URL
+  return 'https://cacsfinac-backend.onrender.com';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 // API Endpoints
 export const API_ENDPOINTS = {

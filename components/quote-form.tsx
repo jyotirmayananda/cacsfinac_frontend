@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { API_ENDPOINTS } from "@/lib/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -70,10 +71,7 @@ export function QuoteForm() {
 
   async function onSubmit(values: z.infer<typeof quoteFormSchema>) {
     try {
-      const apiBase =
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-      const resp = await fetch(`${apiBase}/api/forms/submit`, {
+      const resp = await fetch(API_ENDPOINTS.SUBMIT_FORM, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

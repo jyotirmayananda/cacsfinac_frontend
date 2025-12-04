@@ -136,7 +136,7 @@ export default function LoginPage() {
       toast({
         variant: "destructive",
         title: "Network Error",
-        description: error.message || "Could not connect to the server. Please make sure the backend is running on http://localhost:5000",
+        description: error.message || "Could not connect to the server. Please check your internet connection.",
       });
     }
   }
