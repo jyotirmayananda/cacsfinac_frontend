@@ -186,7 +186,7 @@ export default function TrustRegistrationPage() {
                         <div className="bg-primary text-primary-foreground rounded-full p-3">
                            <Phone className="h-8 w-8" />
                         </div>
-                        <CardTitle className="font-headline text-2xl mt-2">Have a Question?</CardTitle>
+                        <CardTitle className="font-headline text-2xl mt-2">Talk to an Accounting Expert Today</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">
                          <p className="flex items-center justify-center gap-2 mt-2 mb-1">

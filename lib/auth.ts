@@ -5,6 +5,7 @@ export interface User {
   id?: string;
   fullName: string;
   email: string;
+  isAdmin?: boolean;
 }
 
 export const getStoredUser = (): User | null => {

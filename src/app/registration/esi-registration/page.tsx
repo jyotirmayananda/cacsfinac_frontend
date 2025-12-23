@@ -221,7 +221,7 @@ export default function EsiRegistrationPage() {
                     <Phone className="h-8 w-8" />
                   </div>
                   <CardTitle className="font-headline text-2xl mt-2">
-                    Have a Question?
+                    Talk to an Accounting Expert Today
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">

@@ -5,7 +5,13 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { API_ENDPOINTS } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -33,26 +39,12 @@ const quoteFormSchema = z.object({
 });
 
 const quoteFormServices = [
-  "ITR-1 Return Filing",
-  "ITR-2 Return Filing",
-  "ITR-3 Return Filing",
-  "ITR-4 Return Filing",
-  "ITR-5 Return Filing",
-  "ITR-6 Return Filing",
-  "ITR-7 Return Filing",
-  "Income Tax Notice",
-  "Bookkeeping & Accounting",
-  "12A & 80G Registration",
-  "Tax Savings & Filings",
-  "Pvt. Ltd. Registration",
-  "LLP Registration",
-  "Trademark Registration",
-  "GST Registration",
-  "MSME Registration",
-  "Section 8 Company Registration and Compliances",
-  "Society and Trust and AOP Registration",
-  "Trade mark",
-  "Other Services",
+  "1.Accounting & Bookkeeping (Monthly)",
+  "2.GST Returns / Compliance",
+  "3.Income Tax Filing",
+  "4.Startup / Company Compliance",
+  "5.Virtual CFO / Advisory",
+  "6.Not Sure – Need Guidance",
 ];
 
 export function QuoteForm() {
@@ -119,8 +111,12 @@ export function QuoteForm() {
     <Card className="w-full shadow-lg">
       <CardHeader>
         <CardTitle className="font-headline text-2xl text-center uppercase">
-          Get Started in Just a Minute
+          Get a Free CA-Led Consultation (15 Minutes)
         </CardTitle>
+        <CardDescription className="text-center text-muted-foreground">
+          Speak with our accounting team to understand compliance, costs, and
+          next steps — no obligation.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -214,7 +210,7 @@ export function QuoteForm() {
               )}
             />
             <Button type="submit" size="lg" className="w-full">
-              Get Started Now
+              Book Free Consultation
             </Button>
           </form>
         </Form>

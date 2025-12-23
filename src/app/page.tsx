@@ -103,50 +103,62 @@ const homeServices = [
   {
     icon: Book,
     title: "Online Accounting & Bookkeeping",
+    href: "/compliance/bookkeeping",
   },
   {
     icon: Landmark,
     title: "Business Tax Filing Services (Income Tax & GST)",
+    href: "/tax-filing/business-tax-filings",
   },
   {
     icon: Receipt,
     title: "TDS Return Filing, Interest Calculation & Form 26Q/24Q Support",
+    href: "/tax-filing/tds-return-filings",
   },
   {
     icon: User,
     title: "ITR-1 (Sahaj) Filing Services",
+    href: "/tax-filing/itr-1-filing",
   },
   {
     icon: FileText,
     title: "ITR-2 Filing Services",
+    href: "/tax-filing/itr-2-filing",
   },
   {
     icon: Calculator,
     title: "ITR-3 Filing for Professionals & Business Owners",
+    href: "/tax-filing/itr-3-filing",
   },
   {
     icon: FileText,
     title: "ITR-4 (Sugam) Presumptive Scheme Filing",
+    href: "/tax-filing/itr-4-filing",
   },
   {
     icon: Users,
     title: "ITR-5 Filing for Firms, LLPs & AOPs",
+    href: "/tax-filing/itr-5-filing",
   },
   {
     icon: Building2,
     title: "ITR-6 Filing for Private Limited & Companies",
+    href: "/tax-filing/itr-6-filing",
   },
   {
     icon: Lightbulb,
     title: "GST Registration, Monthly Filing & ITC Reconciliation",
+    href: "/registration/gst-pf-pt-registration",
   },
   {
     icon: FileWarning,
     title: "Income Tax Notice Response & Rectification Services",
+    href: "/tax-filing/income-tax-notice",
   },
   {
     icon: Fingerprint,
     title: "PAN/TAN Allotment & Digital Signature (DSC) Services",
+    href: "/tax-filing/tan-registration",
   },
 ];
 
@@ -260,9 +272,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
             {homeServices.map((service, index) => (
+              <Link key={index} href={service.href}>
               <Card
-                key={index}
-                className="group relative flex flex-col items-start justify-between p-4 text-left rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 ease-in-out hover:text-white hover:shadow-2xl overflow-hidden h-48 w-full"
+                  className="group relative flex flex-col items-start justify-between p-4 text-left rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 ease-in-out hover:text-white hover:shadow-2xl overflow-hidden h-48 w-full cursor-pointer"
               >
                 <div className="absolute inset-0 bg-primary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></div>
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -280,11 +292,13 @@ export default function Home() {
                     variant="secondary"
                     size="sm"
                     className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 self-start"
+                      asChild
                   >
-                    Know More
+                      <span>Know More</span>
                   </Button>
                 </div>
               </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -477,12 +491,10 @@ export default function Home() {
           <div className="glossy-blue-background text-primary-foreground rounded-3xl p-8 md:p-12 text-center">
             <div className="space-y-6 max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase">
-                GET EXPERT FINANCIAL ADVICE TAILORED TO YOUR BUSINESS
+                Get Expert Financial Advice — Free 15-Minute Consultation
               </h2>
               <p className="text-lg">
-                Our team of qualified professionals is here to help you with
-                accounting, taxation, and financial compliance — so you can
-                focus on growing your business.
+                Our team of qualified professionals supports businesses with accounting, taxation, and compliance — so you can focus on growth, not deadlines.
               </p>
               <div className="pt-4">
                 <Dialog
@@ -495,13 +507,16 @@ export default function Home() {
                       size="lg"
                       className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary rounded-full px-8 py-6 text-lg font-semibold"
                     >
-                      Book a Free Consultation
+                      Book Free Consultation
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-md">
                     <AnimatedQuoteForm />
                   </DialogContent>
                 </Dialog>
+                <p className="text-sm mt-4 text-white/80">
+                  No obligation • Confidential discussion • Response within 24 hours
+                </p>
               </div>
             </div>
           </div>

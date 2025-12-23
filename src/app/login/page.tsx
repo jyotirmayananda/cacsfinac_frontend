@@ -8,7 +8,7 @@ import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 import { API_ENDPOINTS } from "@/lib/api";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { setStoredUser } from "@/lib/auth";
 
 import { Button } from "@/components/ui/button";
@@ -64,6 +64,7 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export default function LoginPage() {
   const { toast } = useToast();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -109,20 +110,27 @@ export default function LoginPage() {
 
       if (response.ok && data.success) {
         // Store user data using utility function (this also dispatches events)
+        // Admin users can login through regular login - isAdmin flag is included in response
         setStoredUser(data.user, data.token);
         
         console.log("User stored:", data.user);
         console.log("Token stored:", data.token ? "Yes" : "No");
+        if (data.user?.isAdmin) {
+          console.log("Admin user logged in");
+        }
         
         toast({
           title: "Login Successful!",
-          description: "Welcome back!",
+          description: data.user?.isAdmin ? "Welcome back, Admin!" : "Welcome back!",
         });
+        
+        // Redirect to the page user was trying to access, or home
+        const redirectUrl = searchParams.get("redirect") || "/";
         
         // Use Next.js router for better integration
         // Small delay to ensure localStorage and events are processed
         setTimeout(() => {
-          router.push("/");
+          router.push(redirectUrl);
         }, 300);
       } else {
         toast({
