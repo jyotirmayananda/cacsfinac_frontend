@@ -5,28 +5,27 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { Menu, X, ChevronDown, User, LogOut } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown, LogOut, User as UserIcon } from "lucide-react";
+import { Button } from "../../components/ui/button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+} from "../../components/ui/accordion";
+import { Sheet, SheetContent, SheetTrigger } from "../../components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+  DropdownMenuSeparator,
+} from "../../components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "../../components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { serviceCategories } from "@/lib/services";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { getStoredUser, clearStoredUser } from "@/lib/auth";
+import { ThemeToggle } from "../../components/theme-toggle";
+import { getStoredUser, clearStoredUser, type User } from "../../../lib/auth";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -47,8 +46,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
   const [logoSrc, setLogoSrc] = useState("/Image/cacslogonew.png");
-  const [user, setUser] = useState<{ fullName: string; email: string } | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setLogoSrc(
@@ -56,78 +55,39 @@ export function Header() {
     );
   }, [theme]);
 
-  // Function to check and update user state
-  const checkUser = React.useCallback(() => {
+  useEffect(() => {
+    // Get user from localStorage
     const storedUser = getStoredUser();
-    if (storedUser) {
-      console.log("Header: User found", storedUser);
-      setUser(storedUser);
-      return true;
-    } else {
-      console.log("Header: No user found");
-      setUser(null);
-      return false;
-    }
-  }, []);
-
-  // Check user immediately on mount
-  useEffect(() => {
-    setMounted(true);
-    checkUser();
-  }, []);
-
-  // Check user on route changes
-  useEffect(() => {
-    checkUser();
-  }, [pathname, checkUser]);
-
-  // Listen for login events and storage changes
-  useEffect(() => {
-    // Listen for custom login event (fired when user logs in)
-    const handleUserLogin = (event: any) => {
-      console.log("Header: User login event received:", event.detail);
-      if (event.detail && event.detail.fullName) {
-        console.log("Header: Setting user from event:", event.detail);
-        setUser(event.detail);
-      } else {
-        console.log("Header: Event has no detail, checking localStorage");
-        checkUser();
-      }
-    };
+    setUser(storedUser);
+    setIsLoading(false);
 
     // Listen for auth state changes
-    const handleAuthStateChange = () => {
-      console.log("Header: Auth state change event received");
-      checkUser();
+    const handleAuthChange = () => {
+      setUser(getStoredUser());
     };
 
-    // Listen for storage changes (when localStorage is updated from other tabs)
-    const handleStorageChange = () => {
-      console.log("Header: Storage change event received");
-      checkUser();
-    };
+    window.addEventListener("authStateChange", handleAuthChange);
+    window.addEventListener("storage", handleAuthChange);
 
-    if (typeof window !== "undefined") {
-      // Check immediately when event listeners are set up
-      checkUser();
-      
-      window.addEventListener("userLogin", handleUserLogin as EventListener);
-      window.addEventListener("authStateChange", handleAuthStateChange);
-      window.addEventListener("storage", handleStorageChange);
-      
-      return () => {
-        window.removeEventListener("userLogin", handleUserLogin as EventListener);
-        window.removeEventListener("authStateChange", handleAuthStateChange);
-        window.removeEventListener("storage", handleStorageChange);
-      };
-    }
-  }, [checkUser]);
+    return () => {
+      window.removeEventListener("authStateChange", handleAuthChange);
+      window.removeEventListener("storage", handleAuthChange);
+    };
+  }, []);
+
+  const isServicesActive = () => {
+    const path = pathname || "";
+    // Robust match: match /slug or /slug/... (avoid partial matches)
+    return serviceCategories.some((category) => {
+      const re = new RegExp(`/${category.slug}(?:/|$)`);
+      return re.test(path);
+    });
+  };
 
   const handleLogout = () => {
     clearStoredUser();
     setUser(null);
     router.push("/");
-    router.refresh();
   };
 
   const getInitials = (name: string) => {
@@ -137,15 +97,6 @@ export function Header() {
       .join("")
       .toUpperCase()
       .slice(0, 2);
-  };
-
-  const isServicesActive = () => {
-    const path = pathname || "";
-    // Robust match: match /slug or /slug/... (avoid partial matches)
-    return serviceCategories.some((category) => {
-      const re = new RegExp(`/${category.slug}(?:/|$)`);
-      return re.test(path);
-    });
   };
 
   const NavLink = ({ href, label }: { href: string; label: string }) => {
@@ -166,7 +117,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <div className="mx-auto flex h-20 max-w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -217,41 +168,57 @@ export function Header() {
               )
             )}
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <ThemeToggle />
-            {mounted && user && user.fullName ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>{getInitials(user.fullName)}</AvatarFallback>
-                    </Avatar>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56" align="end" forceMount>
-                  <DropdownMenuLabel className="font-normal">
-                    <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium leading-none">{user.fullName}</p>
-                      <p className="text-xs leading-none text-muted-foreground">
-                        {user.email}
-                      </p>
-                    </div>
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
+            {!isLoading && (
               <>
-                <Button asChild variant="outline" size="sm">
-                  <Link href="/login">Login</Link>
-                </Button>
-                <Button asChild size="sm">
-                  <Link href="/signup">Sign Up</Link>
-                </Button>
+                {user ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="relative h-10 w-10 rounded-full"
+                      >
+                        <Avatar className="h-10 w-10">
+                          <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                            {getInitials(user.fullName)}
+                          </AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-56">
+                      <div className="flex flex-col space-y-1 p-2">
+                        <p className="text-sm font-medium text-foreground">
+                          {user.fullName}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {user.email}
+                        </p>
+                      </div>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href="/profile" className="cursor-pointer">
+                          <UserIcon className="mr-2 h-4 w-4" />
+                          <span>Profile</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={handleLogout}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Logout</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <>
+                    <Button asChild variant="outline">
+                      <Link href="/login">Login</Link>
+                    </Button>
+                    <Button asChild>
+                      <Link href="/signup">Sign Up</Link>
+                    </Button>
+                  </>
+                )}
               </>
             )}
           </div>
@@ -350,24 +317,29 @@ export function Header() {
                   )}
                 </nav>
                 <div className="flex flex-col gap-2 mt-8">
-                  {mounted && user && user.fullName ? (
+                  {user ? (
                     <>
-                      {/* User Info with Icon and Name */}
-                      <div className="flex items-center gap-3 p-3 rounded-lg bg-muted">
-                        <User className="h-5 w-5 text-primary" />
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold">{user.fullName}</span>
-                          <span className="text-xs text-muted-foreground">{user.email}</span>
-                        </div>
+                      <div className="px-2 py-2 border rounded-md">
+                        <p className="text-sm font-medium">{user.fullName}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {user.email}
+                        </p>
                       </div>
-                      {/* Logout Button */}
+                      <Button asChild variant="outline">
+                        <Link
+                          href="/profile"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <UserIcon className="mr-2 h-4 w-4" />
+                          Profile
+                        </Link>
+                      </Button>
                       <Button
                         variant="outline"
                         onClick={() => {
                           handleLogout();
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full"
                       >
                         <LogOut className="mr-2 h-4 w-4" />
                         Logout

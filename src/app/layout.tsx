@@ -1,17 +1,16 @@
+"use client";
 
-'use client';
-
-import './globals.css';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
-import { Toaster } from '@/components/ui/toaster';
-import React from 'react';
-import NextTopLoader from 'nextjs-toploader';
-import { raleway, roboto, ubuntu } from './fonts';
-import { ThemeProvider } from '@/components/theme-provider';
-import { WhatsAppButton } from '@/components/whatsapp-button';
-import { usePathname } from 'next/navigation';
-import { CursorSpotlight } from '@/components/cursor-spotlight';
+import "./globals.css";
+import { Header } from "../components/layout/header";
+import { Footer } from "../components/layout/footer";
+import { Toaster } from "../components/ui/toaster";
+import React from "react";
+import NextTopLoader from "nextjs-toploader";
+import { raleway, roboto, ubuntu } from "./fonts";
+import { ThemeProvider } from "../components/theme-provider";
+import { WhatsAppButton } from "../components/whatsapp-button";
+import { usePathname } from "next/navigation";
+import { CursorSpotlight } from "../components/cursor-spotlight";
 
 export default function RootLayout({
   children,
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isAuthPage = pathname === '/login' || pathname === '/signup';
+  const isAuthPage = pathname === "/login" || pathname === "/signup";
 
   return (
     <html

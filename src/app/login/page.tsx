@@ -9,18 +9,19 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 import { API_ENDPOINTS } from "@/lib/api";
 import { useRouter, useSearchParams } from "next/navigation";
-import { setStoredUser } from "@/lib/auth";
+import { setStoredUser } from "../../../lib/auth";
+import { Suspense } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+} from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
+import { Checkbox } from "../../components/ui/checkbox";
 import logo from "../../../public/Image/cacslogonew.png";
 import loginimg from "../../../public/Image/loginbackground.jpg";
 
@@ -61,7 +62,7 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default function LoginPage() {
+function LoginForm() {
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -103,7 +104,8 @@ export default function LoginPage() {
         toast({
           variant: "destructive",
           title: "Server Error",
-          description: "Invalid response from server. Please check if backend is running.",
+          description:
+            "Invalid response from server. Please check if backend is running.",
         });
         return;
       }
@@ -112,21 +114,23 @@ export default function LoginPage() {
         // Store user data using utility function (this also dispatches events)
         // Admin users can login through regular login - isAdmin flag is included in response
         setStoredUser(data.user, data.token);
-        
+
         console.log("User stored:", data.user);
         console.log("Token stored:", data.token ? "Yes" : "No");
         if (data.user?.isAdmin) {
           console.log("Admin user logged in");
         }
-        
+
         toast({
           title: "Login Successful!",
-          description: data.user?.isAdmin ? "Welcome back, Admin!" : "Welcome back!",
+          description: data.user?.isAdmin
+            ? "Welcome back, Admin!"
+            : "Welcome back!",
         });
-        
+
         // Redirect to the page user was trying to access, or home
         const redirectUrl = searchParams.get("redirect") || "/";
-        
+
         // Use Next.js router for better integration
         // Small delay to ensure localStorage and events are processed
         setTimeout(() => {
@@ -136,7 +140,8 @@ export default function LoginPage() {
         toast({
           variant: "destructive",
           title: "Login Failed",
-          description: data.message || data.error || "An error occurred during login.",
+          description:
+            data.message || data.error || "An error occurred during login.",
         });
       }
     } catch (error: any) {
@@ -144,7 +149,9 @@ export default function LoginPage() {
       toast({
         variant: "destructive",
         title: "Network Error",
-        description: error.message || "Could not connect to the server. Please check your internet connection.",
+        description:
+          error.message ||
+          "Could not connect to the server. Please check your internet connection.",
       });
     }
   }
@@ -283,5 +290,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }

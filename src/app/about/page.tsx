@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import { motion } from "framer-motion";
 import placeholderImages from "@/lib/placeholder-images.json";
 import companyhero from "../../../public/Image/company-hero-img.jpg";

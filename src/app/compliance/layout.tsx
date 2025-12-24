@@ -1,4 +1,4 @@
-import { ProtectedRoute } from "@/components/protected-route";
+import { ProtectedRoute } from "../../components/protected-route";
 
 export default function ComplianceLayout({
   children,
@@ -7,4 +7,3 @@ export default function ComplianceLayout({
 }) {
   return <ProtectedRoute>{children}</ProtectedRoute>;
 }
-

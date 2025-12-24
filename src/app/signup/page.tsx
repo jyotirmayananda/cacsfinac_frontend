@@ -9,15 +9,15 @@ import { useToast } from "@/hooks/use-toast";
 import { User, Mail, Lock, ArrowRight } from "lucide-react";
 import { API_ENDPOINTS } from "@/lib/api";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "../../components/ui/form";
+import { Input } from "../../components/ui/input";
 import logo from "../../../public/Image/cacslogonew.png";
 import signupimg from "../../../public/Image/loginbackground.jpg";
 

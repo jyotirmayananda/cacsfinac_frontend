@@ -1,10 +1,14 @@
+"use client";
 
-'use client';
-
-import { Breadcrumbs } from '@/components/ui/breadcrumbs';
-import { QuoteForm } from '@/components/quote-form';
-import { Phone, Mail, CheckCircle2 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { QuoteForm } from "../../../components/quote-form";
+import { Phone, Mail, CheckCircle2 } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 
 const gstWhoNeedsIt = [
   "Businesses with an annual turnover exceeding ₹20 lakh (₹10 lakh for special category states).",
@@ -74,9 +78,9 @@ export default function GstPfPtRegistrationPage() {
         <div className="container mx-auto px-4">
           <Breadcrumbs
             items={[
-              { label: 'Home', href: '/' },
-              { label: 'Registration', href: '/registration' },
-              { label: 'GST, PF & PT Registration' },
+              { label: "Home", href: "/" },
+              { label: "Registration", href: "/registration" },
+              { label: "GST, PF & PT Registration" },
             ]}
           />
         </div>
@@ -92,17 +96,19 @@ export default function GstPfPtRegistrationPage() {
 
               <div>
                 <p className="text-muted-foreground text-justify">
-                  Navigating the regulatory landscape is crucial for businesses in
-                  India. Ensuring compliance with Goods and Services Tax (GST),
-                  Professional Tax (PT), and Provident Fund (PF) regulations not
-                  only legitimizes your operations but also unlocks various
-                  benefits. Here's an updated guide to help you understand the
-                  registration processes and recent amendments.
+                  Navigating the regulatory landscape is crucial for businesses
+                  in India. Ensuring compliance with Goods and Services Tax
+                  (GST), Professional Tax (PT), and Provident Fund (PF)
+                  regulations not only legitimizes your operations but also
+                  unlocks various benefits. Here's an updated guide to help you
+                  understand the registration processes and recent amendments.
                 </p>
               </div>
-              
+
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold font-headline text-primary">Goods and Services Tax (GST) Registration</h2>
+                <h2 className="text-2xl font-bold font-headline text-primary">
+                  Goods and Services Tax (GST) Registration
+                </h2>
                 <p className="text-muted-foreground text-justify">
                   GST is a comprehensive indirect tax levied on the manufacture,
                   sale, and consumption of goods and services across India.
@@ -123,7 +129,7 @@ export default function GstPfPtRegistrationPage() {
                     ))}
                   </ul>
                 </div>
-                 <div>
+                <div>
                   <h3 className="font-semibold mb-2">Documents Required</h3>
                   <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                     {gstRequiredDocs.map((doc, index) => (
@@ -134,12 +140,14 @@ export default function GstPfPtRegistrationPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold font-headline text-primary">Professional Tax (PT) Registration</h2>
+                <h2 className="text-2xl font-bold font-headline text-primary">
+                  Professional Tax (PT) Registration
+                </h2>
                 <p className="text-muted-foreground text-justify">
                   Professional Tax is a state-level tax levied on professions,
                   trades, and employment.
                 </p>
-                 <div>
+                <div>
                   <h3 className="font-semibold mb-2">Applicability</h3>
                   <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                     {ptApplicability.map((item, index) => (
@@ -147,15 +155,17 @@ export default function GstPfPtRegistrationPage() {
                     ))}
                   </ul>
                 </div>
-                 <div>
-                  <h3 className="font-semibold mb-2">Karnataka PT Amendments (Effective April 1, 2025)</h3>
+                <div>
+                  <h3 className="font-semibold mb-2">
+                    Karnataka PT Amendments (Effective April 1, 2025)
+                  </h3>
                   <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                     {ptAmendments.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
                 </div>
-                 <div>
+                <div>
                   <h3 className="font-semibold mb-2">Documents Required</h3>
                   <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                     {ptRequiredDocs.map((doc, index) => (
@@ -166,8 +176,10 @@ export default function GstPfPtRegistrationPage() {
               </div>
 
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold font-headline text-primary">Provident Fund (PF) Registration</h2>
-                 <p className="text-muted-foreground text-justify">
+                <h2 className="text-2xl font-bold font-headline text-primary">
+                  Provident Fund (PF) Registration
+                </h2>
+                <p className="text-muted-foreground text-justify">
                   The Employees' Provident Fund (EPF) is a retirement benefits
                   scheme for salaried employees, managed by the Employees'
                   Provident Fund Organization (EPFO).
@@ -199,7 +211,9 @@ export default function GstPfPtRegistrationPage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Why Choose CACSFinacc for Your Registrations?</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Why Choose CACSFinacc for Your Registrations?
+                </h2>
                 <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                   {whyChooseUs.map((reason, index) => (
                     <li key={index} className="flex items-start gap-3">
@@ -210,7 +224,7 @@ export default function GstPfPtRegistrationPage() {
                 </ul>
               </div>
             </div>
-            
+
             <aside className="space-y-8">
               <QuoteForm />
               <Card className="bg-secondary">
@@ -218,7 +232,9 @@ export default function GstPfPtRegistrationPage() {
                   <div className="bg-primary text-primary-foreground rounded-full p-3">
                     <Phone className="h-8 w-8" />
                   </div>
-                  <CardTitle className="font-headline text-2xl mt-2">Talk to an Accounting Expert Today</CardTitle>
+                  <CardTitle className="font-headline text-2xl mt-2">
+                    Talk to an Accounting Expert Today
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="flex items-center justify-center gap-2 mt-2 mb-1">
@@ -227,7 +243,10 @@ export default function GstPfPtRegistrationPage() {
                   </p>
                   <p className="flex items-center justify-center gap-2">
                     <Mail className="h-4 w-4" />
-                    <a href="mailto:info@cacsfinaccservices.com" className="hover:text-primary">
+                    <a
+                      href="mailto:info@cacsfinaccservices.com"
+                      className="hover:text-primary"
+                    >
                       info@cacsfinaccservices.com
                     </a>
                   </p>

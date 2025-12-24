@@ -1,10 +1,14 @@
+"use client";
 
-'use client';
-
-import { Breadcrumbs } from '@/components/ui/breadcrumbs';
-import { QuoteForm } from '@/components/quote-form';
-import { Phone, Mail } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { QuoteForm } from "../../../components/quote-form";
+import { Phone, Mail } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 
 const importancePoints = [
   "International market unlocks: As the DGFT IEC Code is a requirement for the import and export business, it allows the products to reach the global market. IE code makes the entry of the international Indian company smoother and opens doors for growth and expansion.",
@@ -34,22 +38,35 @@ const prerequisites = [
 ];
 
 const requiredDocs = [
-    { 
-        title: "Proof of establishment/incorporation/registration:",
-        items: ["Partnership", "Registered Society", "Trust", "HUF", "Other"]
-    },
-    {
-        title: "Proof of Address (any one):",
-        items: ["Sale Deed", "Rent agreement", "Lease deed", "Electricity bill", "Telephone landline bill", "Mobile, post-paid bill", "MoU", "Partnership deed", "Other acceptable documents (for proprietorship only): Aadhar card, Passport, Voter id"]
-    },
-    {
-        title: "Proof of Firm's Bank Account:",
-        items: ["Canceled Cheque", "Bank Certificate"]
-    },
-    {
-        title: "Other requirements:",
-        items: ["User should have an active DSC or Aadhaar of the Firm's member for submission.", "Active Firm's Bank accounts for entering its details in the Application and making online payment of the application fee."]
-    }
+  {
+    title: "Proof of establishment/incorporation/registration:",
+    items: ["Partnership", "Registered Society", "Trust", "HUF", "Other"],
+  },
+  {
+    title: "Proof of Address (any one):",
+    items: [
+      "Sale Deed",
+      "Rent agreement",
+      "Lease deed",
+      "Electricity bill",
+      "Telephone landline bill",
+      "Mobile, post-paid bill",
+      "MoU",
+      "Partnership deed",
+      "Other acceptable documents (for proprietorship only): Aadhar card, Passport, Voter id",
+    ],
+  },
+  {
+    title: "Proof of Firm's Bank Account:",
+    items: ["Canceled Cheque", "Bank Certificate"],
+  },
+  {
+    title: "Other requirements:",
+    items: [
+      "User should have an active DSC or Aadhaar of the Firm's member for submission.",
+      "Active Firm's Bank accounts for entering its details in the Application and making online payment of the application fee.",
+    ],
+  },
 ];
 
 const registrationSteps = [
@@ -70,9 +87,9 @@ export default function IecRegistrationPage() {
         <div className="container mx-auto px-4">
           <Breadcrumbs
             items={[
-              { label: 'Home', href: '/' },
-              { label: 'Registration', href: '/registration' },
-              { label: 'Importer Exporter Code' },
+              { label: "Home", href: "/" },
+              { label: "Registration", href: "/registration" },
+              { label: "Importer Exporter Code" },
             ]}
           />
         </div>
@@ -88,24 +105,66 @@ export default function IecRegistrationPage() {
 
               <div>
                 <p className="text-muted-foreground text-justify">
-                  International trade is a gateway to a world of opportunities for businesses in India. Whether you're looking to import goods, export products, or expand your business globally, having an Importer Exporter Code (IEC) is your key to entering the international market. This import and export code is issued by the Directorate General of Foreign Trade (DGFT), under the Ministry of Commerce. All the importers and exporters in India must know what is IEC Code. For importers, the DGFT IEC and import and export license are indispensable for the clearance of customs and facilitating payments to foreign banks, ensuring smooth international trade transactions. Similarly, exporters rely on the IEC to streamline the process of sending shipments and receiving payments from overseas clients. The Importer Exporter Code (IEC) is a mandatory 10-digit identification number issued by the Directorate General of Foreign Trade (DGFT), Ministry of Commerce and Industry, Government of India. It is essential for businesses and individuals engaged in international trade, including import and export activities.
+                  International trade is a gateway to a world of opportunities
+                  for businesses in India. Whether you're looking to import
+                  goods, export products, or expand your business globally,
+                  having an Importer Exporter Code (IEC) is your key to entering
+                  the international market. This import and export code is
+                  issued by the Directorate General of Foreign Trade (DGFT),
+                  under the Ministry of Commerce. All the importers and
+                  exporters in India must know what is IEC Code. For importers,
+                  the DGFT IEC and import and export license are indispensable
+                  for the clearance of customs and facilitating payments to
+                  foreign banks, ensuring smooth international trade
+                  transactions. Similarly, exporters rely on the IEC to
+                  streamline the process of sending shipments and receiving
+                  payments from overseas clients. The Importer Exporter Code
+                  (IEC) is a mandatory 10-digit identification number issued by
+                  the Directorate General of Foreign Trade (DGFT), Ministry of
+                  Commerce and Industry, Government of India. It is essential
+                  for businesses and individuals engaged in international trade,
+                  including import and export activities.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">What is IEC Code (Import Export Code)?</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  What is IEC Code (Import Export Code)?
+                </h2>
                 <p className="text-muted-foreground text-justify">
-                  IEC Code Full Form is "Importer Exporter Code". Import and Export Code is to be obtained by the business entity for import into or export from India. Import & Export Code is popularly known as the IEC number. Import & Export Code is a ten-digit unique number issued by the Directorate General of Foreign Trade (DGFT).
+                  IEC Code Full Form is "Importer Exporter Code". Import and
+                  Export Code is to be obtained by the business entity for
+                  import into or export from India. Import & Export Code is
+                  popularly known as the IEC number. Import & Export Code is a
+                  ten-digit unique number issued by the Directorate General of
+                  Foreign Trade (DGFT).
                 </p>
                 <p className="text-muted-foreground text-justify mt-4">
-                  DGFT IEC registration certificate is mandatory for a business involved in import and export. Hence, before initiating an import of goods into India, an importer must ensure that the importing entity has GST registration and IE code, both of which are required to clear customs. If an importer does not have both GST and import and export license, the goods will be stuck at the port and start incurring demurrage charges or could be destroyed. Ensure to follow the key rules and regulations while engaging in the process of IEC Code Apply through IEC Code Login.
+                  DGFT IEC registration certificate is mandatory for a business
+                  involved in import and export. Hence, before initiating an
+                  import of goods into India, an importer must ensure that the
+                  importing entity has GST registration and IE code, both of
+                  which are required to clear customs. If an importer does not
+                  have both GST and import and export license, the goods will be
+                  stuck at the port and start incurring demurrage charges or
+                  could be destroyed. Ensure to follow the key rules and
+                  regulations while engaging in the process of IEC Code Apply
+                  through IEC Code Login.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Importance of Import Export Code</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Importance of Import Export Code
+                </h2>
                 <p className="text-muted-foreground text-justify mb-4">
-                  Businesses have a great option to enter the international market with the export and import of the products and the services they are involved in. The IE code is an essential requirement while entering the global market as it supports the growth and development of the business to a certain extent. There are various advantages of getting an import and export code. Here we have listed a few of them:
+                  Businesses have a great option to enter the international
+                  market with the export and import of the products and the
+                  services they are involved in. The IE code is an essential
+                  requirement while entering the global market as it supports
+                  the growth and development of the business to a certain
+                  extent. There are various advantages of getting an import and
+                  export code. Here we have listed a few of them:
                 </p>
                 <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                   {importancePoints.map((point, index) => (
@@ -115,72 +174,100 @@ export default function IecRegistrationPage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Validity of DGFT IEC Code</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Validity of DGFT IEC Code
+                </h2>
                 <p className="text-muted-foreground text-justify">
-                  As mentioned above, IEC Code registration is permanent and valid for a lifetime. Hence, there will be no hassles with updating, filing, and renewing the import export license. It is valid till the business exists or the registration is not revoked or surrendered. Further, unlike tax registrations like GST registration or PF registration, the importer or exporter does not require to file any filings or follow any other compliance requirements like annual filing.
+                  As mentioned above, IEC Code registration is permanent and
+                  valid for a lifetime. Hence, there will be no hassles with
+                  updating, filing, and renewing the import export license. It
+                  is valid till the business exists or the registration is not
+                  revoked or surrendered. Further, unlike tax registrations like
+                  GST registration or PF registration, the importer or exporter
+                  does not require to file any filings or follow any other
+                  compliance requirements like annual filing.
                 </p>
                 <p className="text-muted-foreground text-justify mt-4">
-                  As IE code registration is one-time and requires no additional compliance, it is recommended for all exporters & importers to obtain IE code after incorporation.
+                  As IE code registration is one-time and requires no additional
+                  compliance, it is recommended for all exporters & importers to
+                  obtain IE code after incorporation.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Nature of the Firm obtaining an IEC</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Nature of the Firm obtaining an IEC
+                </h2>
                 <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                   {firmTypes.map((type, index) => (
                     <li key={index}>{type}</li>
                   ))}
                 </ul>
               </div>
-              
+
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Pre-Requisites for Applying for Import Export License/ Registration</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Pre-Requisites for Applying for Import Export License/
+                  Registration
+                </h2>
                 <ul className="space-y-3 pl-5 list-disc text-muted-foreground">
                   {prerequisites.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
                 </ul>
-                 <p className="text-muted-foreground text-sm mt-2">
-                    <strong>Note:</strong> These details will be validated with the Income Tax Department site.
-                </p>
-              </div>
-              
-              <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Documents required for IEC Code registration</h2>
-                 <p className="text-muted-foreground text-justify mb-4">
-                  The list of scanned documents required for IEC apply and obtaining an IEC certificate is listed as follows:
-                </p>
-                <ul className="space-y-4 pl-5 list-disc text-muted-foreground">
-                  {requiredDocs.map((doc, index) => (
-                    <li key={index}>
-                        <strong>{doc.title}</strong>
-                        <ul className="list-disc pl-5 mt-1">
-                           {doc.items.map((item, subIndex)=>(
-                                <li key={subIndex}>{item}</li>
-                           ))}
-                        </ul>
-                    </li>
-                  ))}
-                </ul>
-                 <p className="text-muted-foreground text-sm mt-4">
-                    <strong>Note:</strong> In case the address proof is not in the Name of the applicant firm, a no objection certificate (NOC) by the firm premises owner in favor of the Firm, along with the address proof, is to be submitted as a single PDF document to obtain import export license.
-                </p>
-                 <p className="text-muted-foreground text-justify mt-4">
-                  Once you have all the required documents, you can initiate the IEC code registration process through a valid IEC Code login credentials. Ensure to engage in the IEC Code check to track your application status.
+                <p className="text-muted-foreground text-sm mt-2">
+                  <strong>Note:</strong> These details will be validated with
+                  the Income Tax Department site.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">Process for IEC Registration</h2>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Documents required for IEC Code registration
+                </h2>
+                <p className="text-muted-foreground text-justify mb-4">
+                  The list of scanned documents required for IEC apply and
+                  obtaining an IEC certificate is listed as follows:
+                </p>
+                <ul className="space-y-4 pl-5 list-disc text-muted-foreground">
+                  {requiredDocs.map((doc, index) => (
+                    <li key={index}>
+                      <strong>{doc.title}</strong>
+                      <ul className="list-disc pl-5 mt-1">
+                        {doc.items.map((item, subIndex) => (
+                          <li key={subIndex}>{item}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-muted-foreground text-sm mt-4">
+                  <strong>Note:</strong> In case the address proof is not in the
+                  Name of the applicant firm, a no objection certificate (NOC)
+                  by the firm premises owner in favor of the Firm, along with
+                  the address proof, is to be submitted as a single PDF document
+                  to obtain import export license.
+                </p>
+                <p className="text-muted-foreground text-justify mt-4">
+                  Once you have all the required documents, you can initiate the
+                  IEC code registration process through a valid IEC Code login
+                  credentials. Ensure to engage in the IEC Code check to track
+                  your application status.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold font-headline mb-4 text-primary">
+                  Process for IEC Registration
+                </h2>
                 <ol className="space-y-3 list-decimal pl-5 text-muted-foreground">
                   {registrationSteps.map((step, index) => (
                     <li key={index}>{step}</li>
                   ))}
                 </ol>
               </div>
-
             </div>
-            
+
             <aside className="space-y-8">
               <QuoteForm />
               <Card className="bg-secondary">
@@ -188,7 +275,9 @@ export default function IecRegistrationPage() {
                   <div className="bg-primary text-primary-foreground rounded-full p-3">
                     <Phone className="h-8 w-8" />
                   </div>
-                  <CardTitle className="font-headline text-2xl mt-2">Talk to an Accounting Expert Today</CardTitle>
+                  <CardTitle className="font-headline text-2xl mt-2">
+                    Talk to an Accounting Expert Today
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="flex items-center justify-center gap-2 mt-2 mb-1">
@@ -197,7 +286,10 @@ export default function IecRegistrationPage() {
                   </p>
                   <p className="flex items-center justify-center gap-2">
                     <Mail className="h-4 w-4" />
-                    <a href="mailto:info@cacsfinaccservices.com" className="hover:text-primary">
+                    <a
+                      href="mailto:info@cacsfinaccservices.com"
+                      className="hover:text-primary"
+                    >
                       info@cacsfinaccservices.com
                     </a>
                   </p>

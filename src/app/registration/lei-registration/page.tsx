@@ -1,9 +1,14 @@
 "use client";
 
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { QuoteForm } from "@/components/quote-form";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { QuoteForm } from "../../../components/quote-form";
 import { Phone, Mail, CheckCircle2 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 import {
   Table,
   TableBody,

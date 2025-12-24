@@ -8,22 +8,22 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "../../components/ui/carousel";
+import { Card, CardContent } from "../../components/ui/card";
+import { Button } from "../../components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog";
+} from "../../components/ui/dialog";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "../../components/ui/accordion";
 import { ArrowRight } from "lucide-react";
 import placeholderImages from "@/lib/placeholder-images.json";
 import {
@@ -33,7 +33,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "../../components/ui/table";
 import blogimg1 from "../../../public/Image/blog/gst.jpg";
 import blogimg2 from "../../../public/Image/blog/Payroll & HR Compliance for a Mid-Sized IT Firm.jpg";
 import blogimg3 from "../../../public/Image/blog3.jpg";
@@ -1794,7 +1794,6 @@ export default function BlogPage() {
                       alt={item.title}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={item.image.hint}
                     />
                     <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center p-4">
                       <h2 className="text-2xl md:text-3xl font-bold font-headline text-white uppercase">
@@ -1834,7 +1833,6 @@ export default function BlogPage() {
                       alt={post.title}
                       fill
                       className="object-cover"
-                      data-ai-hint={post.image.hint}
                     />
                   </div>
                   <CardContent className="p-6 flex flex-col flex-grow">

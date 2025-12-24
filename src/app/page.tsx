@@ -19,20 +19,20 @@ import {
   Fingerprint,
   CheckCircle2,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "../components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "../components/ui/dialog";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { WelcomePopup } from "@/components/welcome-popup";
-import placeholderImages from "@/lib/placeholder-images.json";
-import { AnimatedQuoteForm } from "@/components/animated-quote-form";
+} from "../components/ui/carousel";
+import { Avatar, AvatarFallback } from "../components/ui/avatar";
+import { WelcomePopup } from "../components/welcome-popup";
+import placeholderImages from "../lib/placeholder-images.json";
+import { AnimatedQuoteForm } from "../components/animated-quote-form";
 import Autoplay from "embla-carousel-autoplay";
 import sliderimg1 from "../../public/Image/income tax filing services.jpg";
 import sliderimg2 from "../../public/Image/Virtual CFO.jpg";
@@ -273,31 +273,29 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
             {homeServices.map((service, index) => (
               <Link key={index} href={service.href}>
-              <Card
-                  className="group relative flex flex-col items-start justify-between p-4 text-left rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 ease-in-out hover:text-white hover:shadow-2xl overflow-hidden h-48 w-full cursor-pointer"
-              >
-                <div className="absolute inset-0 bg-primary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></div>
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Card className="group relative flex flex-col items-start justify-between p-4 text-left rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 ease-in-out hover:text-white hover:shadow-2xl overflow-hidden h-48 w-full cursor-pointer">
+                  <div className="absolute inset-0 bg-primary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></div>
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                <div className="relative z-10 flex flex-col h-full w-full">
-                  <div className="rounded-full bg-primary/10 p-2 transition-all duration-300 group-hover:bg-white group-hover:text-primary w-fit">
-                    <service.icon className="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-primary" />
-                  </div>
-                  <div className="flex-grow flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold font-headline">
-                      {service.title}
-                    </h3>
-                  </div>
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 self-start"
+                  <div className="relative z-10 flex flex-col h-full w-full">
+                    <div className="rounded-full bg-primary/10 p-2 transition-all duration-300 group-hover:bg-white group-hover:text-primary w-fit">
+                      <service.icon className="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-primary" />
+                    </div>
+                    <div className="flex-grow flex flex-col justify-center">
+                      <h3 className="text-xl font-semibold font-headline">
+                        {service.title}
+                      </h3>
+                    </div>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 self-start"
                       asChild
-                  >
+                    >
                       <span>Know More</span>
-                  </Button>
-                </div>
-              </Card>
+                    </Button>
+                  </div>
+                </Card>
               </Link>
             ))}
           </div>
@@ -494,7 +492,9 @@ export default function Home() {
                 Get Expert Financial Advice — Free 15-Minute Consultation
               </h2>
               <p className="text-lg">
-                Our team of qualified professionals supports businesses with accounting, taxation, and compliance — so you can focus on growth, not deadlines.
+                Our team of qualified professionals supports businesses with
+                accounting, taxation, and compliance — so you can focus on
+                growth, not deadlines.
               </p>
               <div className="pt-4">
                 <Dialog
@@ -515,7 +515,8 @@ export default function Home() {
                   </DialogContent>
                 </Dialog>
                 <p className="text-sm mt-4 text-white/80">
-                  No obligation • Confidential discussion • Response within 24 hours
+                  No obligation • Confidential discussion • Response within 24
+                  hours
                 </p>
               </div>
             </div>

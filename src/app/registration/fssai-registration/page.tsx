@@ -1,9 +1,14 @@
 "use client";
 
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { QuoteForm } from "@/components/quote-form";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { QuoteForm } from "../../../components/quote-form";
 import { Phone, Mail } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 
 const keyFeatures = [
   "14-Digit Registration Number: Every FSSAI Registration or License comes with a 14-digit number that must be displayed on all food packages. This number provides vital information about the food product’s origin, including the state where it was assembled and the producer’s permit details.",

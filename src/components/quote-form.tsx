@@ -1,50 +1,50 @@
+"use client";
 
-'use client';
-
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { useToast } from '@/hooks/use-toast';
-import { API_ENDPOINTS } from '@/lib/api';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { useToast } from "@/hooks/use-toast";
+import { API_ENDPOINTS } from "@/lib/api";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from "../components/ui/card";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+} from "../components/ui/form";
+import { Input } from "../components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
+} from "../components/ui/select";
+import { Button } from "../components/ui/button";
 
 const quoteFormSchema = z.object({
-  firstName: z.string().min(1, 'First name is required.'),
-  lastName: z.string().min(1, 'Last name is required.'),
-  email: z.string().email('Invalid email address.'),
-  mobile: z.string().min(10, 'Mobile number must be at least 10 digits.'),
+  firstName: z.string().min(1, "First name is required."),
+  lastName: z.string().min(1, "Last name is required."),
+  email: z.string().email("Invalid email address."),
+  mobile: z.string().min(10, "Mobile number must be at least 10 digits."),
   city: z.string().optional(),
-  service: z.string().min(1, 'Please select a service.'),
+  service: z.string().min(1, "Please select a service."),
 });
 
 const quoteFormServices = [
-  'Accounting & Bookkeeping (Monthly)',
-  'GST Returns / Compliance',
-  'Income Tax Filing',
-  'Startup / Company Compliance',
-  'Virtual CFO / Advisory',
-  'Not Sure – Need Guidance',
+  "1.Accounting & Bookkeeping (Monthly)",
+  "2.GST Returns / Compliance",
+  "3.Income Tax Filing",
+  "4.Startup / Company Compliance",
+  "5.Virtual CFO / Advisory",
+  "6.Not Sure – Need Guidance",
 ];
 
 export function QuoteForm() {
@@ -52,21 +52,21 @@ export function QuoteForm() {
   const form = useForm<z.infer<typeof quoteFormSchema>>({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      mobile: '',
-      city: '',
-      service: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile: "",
+      city: "",
+      service: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof quoteFormSchema>) {
     try {
-      const response = await fetch(API_ENDPOINTS.SUBMIT_FORM, {
-        method: 'POST',
+      const resp = await fetch(API_ENDPOINTS.SUBMIT_FORM, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           firstName: values.firstName,
@@ -75,32 +75,35 @@ export function QuoteForm() {
           mobile: values.mobile,
           city: values.city,
           service: values.service,
-          formType: 'quote',
+          formType: "quote",
         }),
       });
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-    toast({
-      title: 'Quote Request Sent!',
-          description: 'Thank you! We will get back to you with a quote shortly. Check your email for confirmation.',
-    });
-    form.reset();
-      } else {
+      const data = await resp.json();
+      if (!resp.ok) {
+        console.error("Form submission failed", data);
         toast({
-          variant: 'destructive',
-          title: 'Submission Failed',
-          description: data.message || 'An error occurred. Please try again.',
+          title: "Error",
+          description: data?.message || "Failed to submit your request.",
+          variant: "destructive",
         });
+        return;
       }
-    } catch (error) {
+
       toast({
-        variant: 'destructive',
-        title: 'Network Error',
-        description: 'Could not connect to the server. Please try again later.',
+        title: "Quote Request Sent!",
+        description:
+          data?.message ||
+          "Thank you! We will get back to you with a quote shortly.",
       });
-      console.error('Form submission error:', error);
+      form.reset();
+    } catch (error) {
+      console.error("Failed to submit form", error);
+      toast({
+        title: "Error",
+        description: "Failed to submit your request. Please try again later.",
+        variant: "destructive",
+      });
     }
   }
 
@@ -110,19 +113,20 @@ export function QuoteForm() {
         <CardTitle className="font-headline text-2xl text-center uppercase">
           Get a Free CA-Led Consultation (15 Minutes)
         </CardTitle>
-        <p className="text-center text-muted-foreground mt-2">
-          Speak with our accounting team to understand compliance, costs, and next steps — no obligation.
-        </p>
+        <CardDescription className="text-center text-muted-foreground">
+          Speak with our accounting team to understand compliance, costs, and
+          next steps — no obligation.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <div className="flex gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
-                  <FormItem className="flex-1">
+                  <FormItem>
                     <FormControl>
                       <Input placeholder="First Name*" {...field} />
                     </FormControl>
@@ -134,7 +138,7 @@ export function QuoteForm() {
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
-                  <FormItem className="flex-1">
+                  <FormItem>
                     <FormControl>
                       <Input placeholder="Last Name*" {...field} />
                     </FormControl>

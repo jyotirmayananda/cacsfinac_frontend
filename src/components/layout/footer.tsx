@@ -1,6 +1,10 @@
 
+"use client";
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import { ChevronRight, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
 
 const socialLinks = [
@@ -11,6 +15,15 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { theme } = useTheme();
+  const [logoSrc, setLogoSrc] = useState("/Image/cacslogonew.png");
+
+  useEffect(() => {
+    setLogoSrc(
+      theme === "dark" ? "/Image/darklogo.png" : "/Image/cacslogonew.png"
+    );
+  }, [theme]);
+
   const legalLinks = [
     { href: '/privacy', label: 'Privacy Policy' },
     { href: '/disclaimer', label: 'Disclaimer' },
@@ -40,7 +53,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex  mb-4">
               <Image 
-                src="/Image/cacslogonew.png"
+                src={logoSrc}
                 alt="CACS FinAcc Logo" 
                 width={200} 
                 height={50}
