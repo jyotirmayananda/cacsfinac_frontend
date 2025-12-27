@@ -16,6 +16,7 @@ export default {
         nav: ['var(--font-ubuntu)', 'sans-serif'],
       },
       colors: {
+        'whatsapp-green': '#25D366',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
