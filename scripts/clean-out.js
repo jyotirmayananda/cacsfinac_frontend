@@ -7,13 +7,13 @@ function removeTxtFiles(dir) {
   if (!fs.existsSync(dir)) {
     return;
   }
-  
+
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       removeTxtFiles(fullPath);
-    } else if (entry.isFile() && entry.name.endsWith(".txt")) {
+    } else if (entry.isFile() && entry.name.endsWith(".txt") && entry.name !== "robots.txt") {
       try {
         fs.unlinkSync(fullPath);
         removedCount++;

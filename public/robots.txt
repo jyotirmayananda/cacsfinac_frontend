@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /profile
+Disallow: /api/
+
+Sitemap: https://cacsfinacc.com/sitemap.xml
