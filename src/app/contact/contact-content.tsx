@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import Image from "next/image";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, CheckCircle2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
     Form,
@@ -21,7 +22,14 @@ import {
     Card,
     CardContent,
 } from "../../components/ui/card";
-import { API_ENDPOINTS } from "@/lib/api";
+import { createClient } from "@/lib/supabase";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "../../components/ui/dialog";
 import placeholderImages from "@/lib/placeholder-images.json";
 import contactimage from "../../../public/Image/who-we-are-img.jpg";
 
@@ -34,6 +42,9 @@ const contactFormSchema = z.object({
 
 function ContactForm() {
     const { toast } = useToast();
+    const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const form = useForm<z.infer<typeof contactFormSchema>>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
@@ -45,61 +56,82 @@ function ContactForm() {
     });
 
     async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+        setIsSubmitting(true);
         try {
-            const response = await fetch(API_ENDPOINTS.SUBMIT_FORM, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: values.name,
-                    email: values.email,
-                    subject: values.subject,
-                    message: values.message,
-                    formType: "contact",
-                }),
+            const supabase = createClient();
+
+            const { error } = await supabase.from('contact_submissions').insert({
+                name: values.name,
+                email: values.email,
+                subject: values.subject,
+                message: values.message,
+                form_type: 'contact',
             });
 
-            const data = await response.json();
-
-            if (response.ok && data.success) {
-                toast({
-                    title: "Message Sent!",
-                    description:
-                        "Thank you for contacting us. We will get back to you shortly. Check your email for confirmation.",
-                });
-                form.reset();
-            } else {
-                toast({
-                    variant: "destructive",
-                    title: "Submission Failed",
-                    description: data.message || "An error occurred. Please try again.",
-                });
+            if (error) {
+                throw error;
             }
+
+            setIsSuccessOpen(true);
+            form.reset();
         } catch (error) {
+            console.error("Form submission error:", error);
             toast({
                 variant: "destructive",
-                title: "Network Error",
-                description: "Could not connect to the server. Please try again later.",
+                title: "Submission Failed",
+                description: "An error occurred. Please try again.",
             });
-            console.error("Form submission error:", error);
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
     return (
-        <Card className="w-full shadow-lg">
-            <CardContent className="p-6">
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <>
+            <Card className="w-full shadow-lg">
+                <CardContent className="p-6">
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Your Name</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="John Doe" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="email"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Your Email</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="email"
+                                                    placeholder="john@example.com"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
                             <FormField
                                 control={form.control}
-                                name="name"
+                                name="subject"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Your Name</FormLabel>
+                                        <FormLabel>Subject</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="John Doe" {...field} />
+                                            <Input placeholder="Regarding your services" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -107,14 +139,14 @@ function ContactForm() {
                             />
                             <FormField
                                 control={form.control}
-                                name="email"
+                                name="message"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Your Email</FormLabel>
+                                        <FormLabel>Message</FormLabel>
                                         <FormControl>
-                                            <Input
-                                                type="email"
-                                                placeholder="john@example.com"
+                                            <Textarea
+                                                placeholder="Tell us a little bit about your needs"
+                                                className="min-h-[150px]"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -122,46 +154,39 @@ function ContactForm() {
                                     </FormItem>
                                 )}
                             />
+                            <div className="text-center">
+                                <Button type="submit" size="lg" disabled={isSubmitting}>
+                                    {isSubmitting ? "Sending..." : "Send Message"}
+                                </Button>
+                            </div>
+                        </form>
+                    </Form>
+                </CardContent>
+            </Card>
+
+            <Dialog open={isSuccessOpen} onOpenChange={setIsSuccessOpen}>
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader className="flex flex-col items-center justify-center text-center space-y-4 pt-4">
+                        <div className="rounded-full bg-green-100 p-3">
+                            <CheckCircle2 className="h-8 w-8 text-green-600" />
                         </div>
-                        <FormField
-                            control={form.control}
-                            name="subject"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Subject</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Regarding your services" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="message"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Message</FormLabel>
-                                    <FormControl>
-                                        <Textarea
-                                            placeholder="Tell us a little bit about your needs"
-                                            className="min-h-[150px]"
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <div className="text-center">
-                            <Button type="submit" size="lg">
-                                Send Message
-                            </Button>
-                        </div>
-                    </form>
-                </Form>
-            </CardContent>
-        </Card>
+                        <DialogTitle className="text-2xl">Message Sent!</DialogTitle>
+                        <DialogDescription className="text-center text-base">
+                            Thank you for contacting us. We have received your message successfully.
+                            <br />
+                            <span className="block mt-2">
+                                Our team will get back to you shortly.
+                            </span>
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex justify-center pb-4">
+                        <Button onClick={() => setIsSuccessOpen(false)} className="px-8">
+                            Close
+                        </Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
+        </>
     );
 }
 

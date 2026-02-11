@@ -7,11 +7,11 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
-import { API_ENDPOINTS } from "@/lib/api";
+import { createClient } from "@/lib/supabase";
+
 import { useRouter, useSearchParams } from "next/navigation";
 import { setStoredUser } from "../../../lib/auth";
 import { Suspense } from "react";
-
 import { Button } from "../../components/ui/button";
 import {
   Form,
@@ -22,8 +22,10 @@ import {
 } from "../../components/ui/form";
 import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
-import logo from "../../../public/Image/cacslogonew.png";
-import loginimg from "../../../public/Image/loginbackground.jpg";
+// import logo from "../../../public/Image/cacslogonew.png";
+// import loginimg from "../../../public/Image/loginbackground.jpg";
+const logo = "/Image/cacslogonew.png";
+const loginimg = "/Image/loginbackground.jpg";
 
 const loginFormSchema = z.object({
   email: z.string().email({
@@ -35,37 +37,11 @@ const loginFormSchema = z.object({
   remember: z.boolean().optional(),
 });
 
-const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 48 48"
-    width="24px"
-    height="24px"
-    {...props}
-  >
-    <path
-      fill="#FFC107"
-      d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-    />
-    <path
-      fill="#FF3D00"
-      d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-    />
-    <path
-      fill="#4CAF50"
-      d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.222,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-    />
-    <path
-      fill="#1976D2"
-      d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.574l6.19,5.238C39.99,34.551,44,29.825,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-    />
-  </svg>
-);
-
 function LoginForm() {
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const supabase = createClient();
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -78,80 +54,44 @@ function LoginForm() {
 
   async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     try {
-      console.log("Attempting login to:", API_ENDPOINTS.SIGNIN);
-      console.log("Login data:", { email: values.email, password: "***" });
-
-      const response = await fetch(API_ENDPOINTS.SIGNIN, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
       });
 
-      console.log("Response status:", response.status);
-      console.log("Response ok:", response.ok);
-
-      let data;
-      try {
-        data = await response.json();
-        console.log("Response data:", data);
-      } catch (parseError) {
-        console.error("Error parsing response:", parseError);
-        const text = await response.text();
-        console.error("Response text:", text);
+      if (error) {
         toast({
           variant: "destructive",
-          title: "Server Error",
-          description:
-            "Invalid response from server. Please check if backend is running.",
+          title: "Login Failed",
+          description: error.message,
         });
         return;
       }
 
-      if (response.ok && data.success) {
-        // Store user data using utility function (this also dispatches events)
-        // Admin users can login through regular login - isAdmin flag is included in response
-        setStoredUser(data.user, data.token);
+      if (data.user) {
+        const user = {
+          id: data.user.id,
+          email: data.user.email!,
+          fullName: data.user.user_metadata?.full_name || data.user.email?.split('@')[0] || "User",
+          isAdmin: false, // Default to false, logic for admin check can be added later
+        };
 
-        console.log("User stored:", data.user);
-        console.log("Token stored:", data.token ? "Yes" : "No");
-        if (data.user?.isAdmin) {
-          console.log("Admin user logged in");
-        }
+        setStoredUser(user, data.session?.access_token || "");
 
         toast({
           title: "Login Successful!",
-          description: data.user?.isAdmin
-            ? "Welcome back, Admin!"
-            : "Welcome back!",
+          description: "Welcome back!",
         });
 
-        // Redirect to the page user was trying to access, or home
         const redirectUrl = searchParams.get("redirect") || "/";
-
-        // Use Next.js router for better integration
-        // Small delay to ensure localStorage and events are processed
-        setTimeout(() => {
-          router.push(redirectUrl);
-        }, 300);
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Login Failed",
-          description:
-            data.message || data.error || "An error occurred during login.",
-        });
+        router.push(redirectUrl);
       }
     } catch (error: any) {
       console.error("Login error:", error);
       toast({
         variant: "destructive",
-        title: "Network Error",
-        description:
-          error.message ||
-          "Could not connect to the server. Please check your internet connection.",
+        title: "Error",
+        description: "An unexpected error occurred.",
       });
     }
   }
@@ -163,10 +103,11 @@ function LoginForm() {
           src={loginimg}
           alt="Decorative background"
           fill
-          className="object-cover opacity-20"
-          data-ai-hint="night landscape illustration"
+          className="object-cover opacity-30 mix-blend-overlay"
+          priority
         />
-        <div className="relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-900/70 to-indigo-900/90" />
+        <div className="relative z-10 animate-in fade-in zoom-in duration-700">
           <Link href="/" className="inline-block mb-8">
             <Image
               src={logo}
@@ -187,9 +128,9 @@ function LoginForm() {
       </div>
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-4xl font-bold font-headline tracking-tight text-primary">
-              HELLO!
+          <div className="animate-in slide-in-from-bottom-4 duration-500">
+            <h2 className="mt-6 text-center text-4xl font-bold font-headline tracking-tight text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Welcome Back
             </h2>
             <p className="mt-2 text-center text-sm text-muted-foreground">
               Please enter your details to sign in.
@@ -260,7 +201,7 @@ function LoginForm() {
                 />
                 <div className="text-sm">
                   <Link
-                    href="#"
+                    href="/forgot-password"
                     className="font-medium text-primary hover:text-primary/80"
                   >
                     Forgot your password?
@@ -269,12 +210,21 @@ function LoginForm() {
               </div>
               <Button
                 type="submit"
-                className="w-full text-lg"
+                className="w-full text-lg relative overflow-hidden group h-12 transition-all hover:scale-[1.01]"
                 size="lg"
                 disabled={form.formState.isSubmitting}
               >
-                {form.formState.isSubmitting ? "Signing In..." : "NEXT"}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <div className="relative z-10 flex items-center justify-center">
+                  {form.formState.isSubmitting ? (
+                    "Signing In..."
+                  ) : (
+                    <>
+                      Sign In
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity" />
               </Button>
             </form>
           </Form>

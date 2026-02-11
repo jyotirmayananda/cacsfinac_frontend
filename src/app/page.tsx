@@ -234,12 +234,12 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-12">
             <div className="flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 uppercase">
-                <span className="text-primary">
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 uppercase leading-tight">
+                <span className="text-gradient bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400">
                   Virtual CFO, NRI Tax & Compliance
                 </span>
                 <br />
-                <span className="text-foreground">— All in One Place</span>
+                <span className="text-foreground text-3xl md:text-5xl">— All in One Place</span>
               </h1>
               <p className="mt-4 text-2xl text-muted-foreground max-w-3xl">
                 Helping Startups, NRIs & SMEs with Taxation, ROC, MIS &
@@ -273,12 +273,12 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
             {homeServices.map((service, index) => (
               <Link key={index} href={service.href}>
-                <Card className="group relative flex flex-col items-start justify-between p-4 text-left rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 ease-in-out hover:text-white hover:shadow-2xl overflow-hidden h-48 w-full cursor-pointer">
+                <Card className="group relative flex flex-col items-start justify-between p-6 text-left rounded-3xl glass-panel text-card-foreground transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)] overflow-hidden h-56 w-full cursor-pointer border-opacity-40">
                   <div className="absolute inset-0 bg-primary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></div>
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative z-10 flex flex-col h-full w-full">
-                    <div className="rounded-full bg-primary/10 p-2 transition-all duration-300 group-hover:bg-white group-hover:text-primary w-fit">
+                    <div className="rounded-full bg-primary/10 backdrop-blur-sm p-3 transition-all duration-300 group-hover:bg-white group-hover:text-primary w-fit shadow-inner">
                       <service.icon className="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-primary" />
                     </div>
                     <div className="flex-grow flex flex-col justify-center">
@@ -400,9 +400,9 @@ export default function Home() {
                   }
                 />
               </div>
-              <div className="absolute -bottom-8 right-8 bg-blue-600 text-white p-4 rounded-lg shadow-xl text-center">
-                <p className="text-4xl font-bold">10+</p>
-                <p className="text-sm">
+              <div className="absolute -bottom-8 right-8 glass-panel bg-blue-600/90 text-white p-6 rounded-2xl shadow-2xl text-center backdrop-blur-xl border border-white/20">
+                <p className="text-5xl font-bold mb-1">10+</p>
+                <p className="text-sm font-medium tracking-wide opacity-90">
                   Years of experience in business service
                 </p>
               </div>
@@ -445,10 +445,10 @@ export default function Home() {
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem
                     key={index}
-                    className="md:basis-1/2 lg:basis-1/2"
+                    className="md:basis-1/2 lg:basis-1/2 p-4"
                   >
-                    <div className="p-1">
-                      <Card className="h-full flex flex-col bg-background/80 backdrop-blur-sm">
+                    <div className="h-full">
+                      <Card className="h-full flex flex-col glass-panel border-white/20 p-6 hover:scale-[1.02] transition-transform duration-300">
                         <CardContent className="pt-6 flex-grow flex flex-col justify-between">
                           <div>
                             <Quote className="h-8 w-8 text-primary mb-4" />

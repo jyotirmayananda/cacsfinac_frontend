@@ -1,13 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { User, Mail, Lock, ArrowRight } from "lucide-react";
-import { API_ENDPOINTS } from "@/lib/api";
+import { User, Mail, Lock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { createClient } from "@/lib/supabase";
 
 import { Button } from "../../components/ui/button";
 import {
@@ -18,8 +19,10 @@ import {
   FormMessage,
 } from "../../components/ui/form";
 import { Input } from "../../components/ui/input";
-import logo from "../../../public/Image/cacslogonew.png";
-import signupimg from "../../../public/Image/loginbackground.jpg";
+// import logo from "../../../public/Image/cacslogonew.png";
+// import signupimg from "../../../public/Image/loginbackground.jpg";
+const logo = "/Image/cacslogonew.png";
+const signupimg = "/Image/loginbackground.jpg";
 
 const signupFormSchema = z
   .object({
@@ -37,35 +40,11 @@ const signupFormSchema = z
     path: ["confirmPassword"],
   });
 
-const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 48 48"
-    width="24px"
-    height="24px"
-    {...props}
-  >
-    <path
-      fill="#FFC107"
-      d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-    />
-    <path
-      fill="#FF3D00"
-      d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-    />
-    <path
-      fill="#4CAF50"
-      d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.222,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-    />
-    <path
-      fill="#1976D2"
-      d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.574l6.19,5.238C39.99,34.551,44,29.825,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-    />
-  </svg>
-);
-
 export default function SignupPage() {
   const { toast } = useToast();
+  const supabase = createClient();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
@@ -79,39 +58,91 @@ export default function SignupPage() {
 
   async function onSubmit(values: z.infer<typeof signupFormSchema>) {
     try {
-      const response = await fetch(API_ENDPOINTS.SIGNUP, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: values.fullName,
-          email: values.email,
-          password: values.password,
-        }),
+      const { data, error } = await supabase.auth.signUp({
+        email: values.email,
+        password: values.password,
+        options: {
+          data: {
+            full_name: values.fullName,
+          },
+        },
       });
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        toast({
-          title: "Signup Successful!",
-          description: "Please check your email for a welcome message.",
-        });
-        window.location.href = "/login";
-      } else {
+      if (error) {
         toast({
           variant: "destructive",
           title: "Signup Failed",
-          description: data.message || "An error occurred during signup.",
+          description: error.message,
+        });
+        return;
+      }
+
+      if (data.user) {
+        setUserEmail(values.email);
+        setIsSuccess(true);
+        toast({
+          title: "Signup Successful!",
+          description: "Please check your email for a verification link.",
         });
       }
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Network Error",
-        description: "Could not connect to the server. Please try again later.",
+        title: "Error",
+        description: "An unexpected error occurred.",
       });
       console.error("Signup error:", error);
     }
+  }
+
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen w-full bg-background lg:grid lg:grid-cols-2">
+        <div className="relative hidden lg:flex flex-col items-center justify-center bg-blue-900 text-white p-12 text-center">
+          <Image
+            src={signupimg}
+            alt="Decorative background"
+            fill
+            className="object-cover opacity-30 mix-blend-overlay"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-900/70 to-indigo-900/90" />
+          <div className="relative z-10 animate-in fade-in zoom-in duration-700">
+            <Link href="/" className="inline-block mb-8">
+              <Image
+                src={logo}
+                alt="CACSFINACC Logo"
+                width={280}
+                height={70}
+                priority
+              />
+            </Link>
+          </div>
+        </div>
+        <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-md space-y-8 text-center animate-in fade-in slide-in-from-bottom-6 duration-700">
+            <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-6">
+              <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
+            </div>
+            <h2 className="text-3xl font-bold font-headline tracking-tight text-foreground">
+              Verify your email
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              We've sent a verification link to <br />
+              <span className="font-semibold text-foreground">{userEmail}</span>
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Please check your inbox (and spam folder) and click the link to activate your account.
+            </p>
+            <div className="pt-6">
+              <Button asChild variant="outline" className="w-full">
+                <Link href="/login">Return to Login</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -121,10 +152,11 @@ export default function SignupPage() {
           src={signupimg}
           alt="Decorative background"
           fill
-          className="object-cover opacity-20"
-          data-ai-hint="modern office finance"
+          className="object-cover opacity-30 mix-blend-overlay"
+          priority
         />
-        <div className="relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-900/70 to-indigo-900/90" />
+        <div className="relative z-10 animate-in fade-in zoom-in duration-700">
           <Link href="/" className="inline-block mb-8">
             <Image
               src={logo}
@@ -145,9 +177,9 @@ export default function SignupPage() {
       </div>
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-4xl font-bold font-headline tracking-tight text-primary">
-              CREATE ACCOUNT
+          <div className="animate-in slide-in-from-bottom-4 duration-500">
+            <h2 className="mt-6 text-center text-4xl font-bold font-headline tracking-tight text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Create Account
             </h2>
             <p className="mt-2 text-center text-sm text-muted-foreground">
               Enter your information to get started.
@@ -236,12 +268,21 @@ export default function SignupPage() {
               />
               <Button
                 type="submit"
-                className="w-full text-lg"
+                className="w-full text-lg relative overflow-hidden group h-12 transition-all hover:scale-[1.01]"
                 size="lg"
                 disabled={form.formState.isSubmitting}
               >
-                {form.formState.isSubmitting ? "Creating..." : "SIGN UP"}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <div className="relative z-10 flex items-center justify-center">
+                  {form.formState.isSubmitting ? (
+                    "Creating..."
+                  ) : (
+                    <>
+                      Create Account
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity" />
               </Button>
             </form>
           </Form>
