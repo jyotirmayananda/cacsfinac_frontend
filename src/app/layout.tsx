@@ -85,6 +85,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${roboto.variable} ${raleway.variable} ${ubuntu.variable} scroll-smooth`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>

@@ -62,6 +62,7 @@ export default function SignupPage() {
         email: values.email,
         password: values.password,
         options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
           data: {
             full_name: values.fullName,
           },
@@ -114,6 +115,7 @@ export default function SignupPage() {
                 alt="CACSFINACC Logo"
                 width={280}
                 height={70}
+                style={{ width: "auto", height: "auto" }}
                 priority
               />
             </Link>
@@ -163,6 +165,7 @@ export default function SignupPage() {
               alt="CACSFINACC Logo"
               width={280}
               height={70}
+              style={{ width: "auto", height: "auto" }}
               priority
             />
           </Link>

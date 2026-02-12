@@ -17,14 +17,10 @@ export default function manifest(): MetadataRoute.Manifest {
                 type: 'image/x-icon',
             },
             {
-                src: '/Image/logo.png',
-                sizes: '192x192',
+                src: '/Image/cacslogonew-white.png',
+                sizes: 'any',
                 type: 'image/png',
-            },
-            {
-                src: '/Image/cacshero.png',
-                sizes: '512x512',
-                type: 'image/png',
+                purpose: 'any',
             },
         ],
     }
