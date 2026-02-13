@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase";
-import { Loader2, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Loader2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../../../components/ui/button";
 
-export default function AuthCallbackPage() {
+function AuthCallbackContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [error, setError] = useState<string | null>(null);
@@ -112,5 +112,22 @@ export default function AuthCallbackPage() {
                 <p className="text-muted-foreground">Verifying your account...</p>
             </div>
         </div>
+    );
+}
+
+export default function AuthCallbackPage() {
+    return (
+        <Suspense
+            fallback={
+                <div className="flex items-center justify-center min-h-screen bg-background">
+                    <div className="text-center space-y-4">
+                        <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+                        <p className="text-muted-foreground">Verifying your account...</p>
+                    </div>
+                </div>
+            }
+        >
+            <AuthCallbackContent />
+        </Suspense>
     );
 }
