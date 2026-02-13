@@ -25,7 +25,7 @@ import {
 } from "../../components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { createClient } from "@/lib/supabase";
-import { Lock, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Lock, CheckCircle2, ShieldCheck, Eye, EyeOff } from "lucide-react";
 
 const loginimg = "/Image/loginbackground.jpg";
 
@@ -46,6 +46,8 @@ export default function ResetPasswordPage() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const supabase = createClient();
 
     const form = useForm<z.infer<typeof resetPasswordSchema>>({
@@ -170,11 +172,19 @@ export default function ResetPasswordPage() {
                                             <div className="relative">
                                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                                 <Input
-                                                    type="password"
+                                                    type={showPassword ? "text" : "password"}
                                                     placeholder="New Password"
-                                                    className="pl-10 h-12 bg-background/50"
+                                                    className="pl-10 pr-10 h-12 bg-background/50"
                                                     {...field}
                                                 />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                                                    tabIndex={-1}
+                                                >
+                                                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                                </button>
                                             </div>
                                         </FormControl>
                                         <FormMessage />
@@ -190,11 +200,19 @@ export default function ResetPasswordPage() {
                                             <div className="relative">
                                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                                 <Input
-                                                    type="password"
+                                                    type={showConfirmPassword ? "text" : "password"}
                                                     placeholder="Confirm New Password"
-                                                    className="pl-10 h-12 bg-background/50"
+                                                    className="pl-10 pr-10 h-12 bg-background/50"
                                                     {...field}
                                                 />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                                                    tabIndex={-1}
+                                                >
+                                                    {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                                </button>
                                             </div>
                                         </FormControl>
                                         <FormMessage />
