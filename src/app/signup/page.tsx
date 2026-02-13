@@ -122,24 +122,37 @@ export default function SignupPage() {
           </div>
         </div>
         <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-md space-y-8 text-center animate-in fade-in slide-in-from-bottom-6 duration-700">
-            <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-6">
+          <div className="w-full max-w-md space-y-6 text-center animate-in fade-in slide-in-from-bottom-6 duration-700">
+            <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-4">
               <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
             </div>
             <h2 className="text-3xl font-bold font-headline tracking-tight text-foreground">
-              Verify your email
+              Account Successfully Created
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              We've sent a verification link to <br />
-              <span className="font-semibold text-foreground">{userEmail}</span>
+            <p className="text-muted-foreground text-base leading-relaxed">
+              Welcome to <span className="font-semibold text-foreground">CACS FinAcc Services</span> — Chartered Accountancy driven solutions for finance, taxation, and regulatory compliance.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Please check your inbox (and spam folder) and click the link to activate your account.
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Your registration has been completed successfully. Please verify your registered email address to activate your account.
             </p>
-            <div className="pt-6">
-              <Button asChild variant="outline" className="w-full">
+            <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+              <p className="text-sm text-blue-800 dark:text-blue-300">
+                A verification link has been sent to <br />
+                <span className="font-semibold">{userEmail}</span>
+              </p>
+              <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+                Email verification is mandatory to ensure secure access to your compliance records.
+              </p>
+            </div>
+            <div className="pt-4 space-y-3">
+              <Button asChild className="w-full">
                 <Link href="/login">Return to Login</Link>
               </Button>
+            </div>
+            <div className="text-xs text-muted-foreground pt-2 space-y-1">
+              <p className="font-medium">CACS FinAcc Services</p>
+              <p>+91-9591633648 · info@cacsfinaccservices.com</p>
+              <p>Bengaluru, Karnataka</p>
             </div>
           </div>
         </div>

@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import {
@@ -12,6 +14,7 @@ import {
     CardContent,
     CardHeader,
     CardTitle,
+    CardFooter,
 } from "../../components/ui/card";
 import {
     Form,
@@ -22,7 +25,9 @@ import {
 } from "../../components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { createClient } from "@/lib/supabase";
-import { Lock } from "lucide-react";
+import { Lock, CheckCircle2, ShieldCheck } from "lucide-react";
+
+const loginimg = "/Image/loginbackground.jpg";
 
 const resetPasswordSchema = z
     .object({
@@ -40,6 +45,7 @@ export default function ResetPasswordPage() {
     const { toast } = useToast();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
     const supabase = createClient();
 
     const form = useForm<z.infer<typeof resetPasswordSchema>>({
@@ -51,14 +57,10 @@ export default function ResetPasswordPage() {
     });
 
     useEffect(() => {
-        // Check if we have a session (user clicked the link in email)
         const checkSession = async () => {
-            const { data: { session }, error } = await supabase.auth.getSession();
+            const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
-                // If no session, they might have lost the hash fragment or it's invalid
-                // But let's check if the URL has the token hash first
-                // Supabase client handles the hash automatically and sets the session
-                // So if we don't have a session here, it might be an issue
+                // Session will be set by the Supabase client from the hash fragment
             }
         };
         checkSession();
@@ -75,13 +77,7 @@ export default function ResetPasswordPage() {
                 throw error;
             }
 
-            toast({
-                title: "Password Updated",
-                description: "Your password has been successfully reset. You can now log in.",
-            });
-
-            router.push("/login");
-
+            setIsSuccess(true);
         } catch (error: any) {
             toast({
                 title: "Error",
@@ -93,11 +89,74 @@ export default function ResetPasswordPage() {
         }
     }
 
+    if (isSuccess) {
+        return (
+            <div className="relative flex items-center justify-center min-h-screen overflow-hidden bg-background">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src={loginimg}
+                        alt="Background"
+                        fill
+                        className="object-cover opacity-20"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+                </div>
+                <Card className="relative z-10 w-full max-w-md shadow-2xl border-muted/20 bg-card/95 backdrop-blur-sm mx-4">
+                    <CardHeader className="space-y-4 text-center pt-8">
+                        <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+                            <ShieldCheck className="h-8 w-8 text-green-600 dark:text-green-500" />
+                        </div>
+                        <CardTitle className="text-2xl font-bold tracking-tight">
+                            Password Updated Successfully
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4 text-center">
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Your password has been changed successfully. You can now log in with your new credentials.
+                        </p>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            We remain committed to maintaining the highest standards of confidentiality and compliance.
+                        </p>
+                    </CardContent>
+                    <CardFooter className="flex flex-col space-y-3 pb-6">
+                        <Button asChild className="w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                            <Link href="/login">Sign In Now</Link>
+                        </Button>
+                        <div className="text-center text-xs text-muted-foreground pt-2 space-y-1">
+                            <p className="font-medium">CACS FinAcc Services</p>
+                            <p>+91-9591633648 · info@cacsfinaccservices.com</p>
+                            <p>Bengaluru, Karnataka</p>
+                        </div>
+                    </CardFooter>
+                </Card>
+            </div>
+        );
+    }
+
     return (
-        <div className="flex items-center justify-center min-h-screen bg-background">
-            <Card className="w-full max-w-md">
-                <CardHeader>
-                    <CardTitle>Reset Password</CardTitle>
+        <div className="relative flex items-center justify-center min-h-screen overflow-hidden bg-background">
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src={loginimg}
+                    alt="Background"
+                    fill
+                    className="object-cover opacity-20"
+                    priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+            </div>
+            <Card className="relative z-10 w-full max-w-md shadow-2xl border-muted/20 bg-card/95 backdrop-blur-sm mx-4">
+                <CardHeader className="space-y-2 text-center">
+                    <div className="mx-auto w-14 h-14 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-2">
+                        <Lock className="h-7 w-7 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                        Reset Your Password
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground">
+                        Enter your new password below to secure your account.
+                    </p>
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>
@@ -113,7 +172,7 @@ export default function ResetPasswordPage() {
                                                 <Input
                                                     type="password"
                                                     placeholder="New Password"
-                                                    className="pl-10"
+                                                    className="pl-10 h-12 bg-background/50"
                                                     {...field}
                                                 />
                                             </div>
@@ -133,7 +192,7 @@ export default function ResetPasswordPage() {
                                                 <Input
                                                     type="password"
                                                     placeholder="Confirm New Password"
-                                                    className="pl-10"
+                                                    className="pl-10 h-12 bg-background/50"
                                                     {...field}
                                                 />
                                             </div>
@@ -142,12 +201,21 @@ export default function ResetPasswordPage() {
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit" className="w-full" disabled={isLoading}>
+                            <Button
+                                type="submit"
+                                className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all font-semibold text-lg shadow-lg"
+                                disabled={isLoading}
+                            >
                                 {isLoading ? "Updating..." : "Update Password"}
                             </Button>
                         </form>
                     </Form>
                 </CardContent>
+                <CardFooter className="flex justify-center pb-6 pt-2">
+                    <Link href="/login" className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+                        Back to Login
+                    </Link>
+                </CardFooter>
             </Card>
         </div>
     );

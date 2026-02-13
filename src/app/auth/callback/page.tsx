@@ -3,12 +3,15 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase";
-import { Loader2 } from "lucide-react";
+import { Loader2, CheckCircle2, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../../../components/ui/button";
 
 export default function AuthCallbackPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [error, setError] = useState<string | null>(null);
+    const [verified, setVerified] = useState(false);
     const supabase = createClient();
 
     useEffect(() => {
@@ -24,7 +27,15 @@ export default function AuthCallbackPage() {
                         router.replace("/auth/auth-code-error");
                         return;
                     }
-                    router.replace(next);
+
+                    // If redirect is to reset-password, go directly
+                    if (next === "/reset-password") {
+                        router.replace(next);
+                        return;
+                    }
+
+                    // Show verified screen for email confirmations
+                    setVerified(true);
                     return;
                 } catch (err) {
                     console.error("Auth callback exception:", err);
@@ -33,9 +44,6 @@ export default function AuthCallbackPage() {
                 }
             }
 
-            // No code parameter - check if there's a hash fragment (implicit flow)
-            // The Supabase client automatically handles hash fragments on init
-            // Wait a moment for it to process
             const { data: { session } } = await supabase.auth.getSession();
             if (session) {
                 const next = searchParams.get("next") ?? "/";
@@ -47,6 +55,42 @@ export default function AuthCallbackPage() {
 
         handleCallback();
     }, [searchParams, supabase.auth, router]);
+
+    if (verified) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-background to-blue-50/30 dark:to-blue-950/10">
+                <div className="w-full max-w-md mx-4 text-center space-y-6 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                    <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+                        <ShieldCheck className="h-10 w-10 text-green-600 dark:text-green-500" />
+                    </div>
+                    <h1 className="text-3xl font-bold tracking-tight text-foreground">
+                        Login Successful
+                    </h1>
+                    <p className="text-muted-foreground text-base leading-relaxed">
+                        You are now securely logged in to your client compliance dashboard.
+                    </p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                        Stay updated on filings, statutory deadlines, documentation, and advisory support — all in one place.
+                    </p>
+                    <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+                        <p className="text-xs text-amber-800 dark:text-amber-300">
+                            If this login was not initiated by you, please secure your account immediately.
+                        </p>
+                    </div>
+                    <div className="pt-2">
+                        <Button asChild className="w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                            <Link href="/">Go to Dashboard</Link>
+                        </Button>
+                    </div>
+                    <div className="text-xs text-muted-foreground pt-2 space-y-1">
+                        <p className="font-medium">CACS FinAcc Services</p>
+                        <p>+91-9591633648 · info@cacsfinaccservices.com</p>
+                        <p>Bengaluru, Karnataka</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     if (error) {
         return (

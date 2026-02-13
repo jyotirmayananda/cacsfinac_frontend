@@ -79,8 +79,8 @@ function LoginForm() {
         setStoredUser(user, data.session?.access_token || "");
 
         toast({
-          title: "Login Successful!",
-          description: "Welcome back!",
+          title: "Secure Access Granted",
+          description: "You have successfully logged in. Your session is encrypted and protected.",
         });
 
         const redirectUrl = searchParams.get("redirect") || "/";

@@ -3,6 +3,8 @@
 import { createClient } from "@/lib/supabase";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
+import { CheckCircle2, Mail } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "../../components/ui/button";
@@ -35,6 +37,8 @@ const loginimg = "/Image/loginbackground.jpg";
 export default function ForgotPasswordPage() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [sentEmail, setSentEmail] = useState("");
   const supabase = createClient();
   const form = useForm<z.infer<typeof forgotPasswordSchema>>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -54,10 +58,8 @@ export default function ForgotPasswordPage() {
         throw error;
       }
 
-      toast({
-        title: "Check your email",
-        description: "We sent you a password reset link. Be sure to check your spam too.",
-      });
+      setSentEmail(values.email);
+      setIsSuccess(true);
       form.reset();
     } catch (error: any) {
       toast({
@@ -68,6 +70,56 @@ export default function ForgotPasswordPage() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  if (isSuccess) {
+    return (
+      <div className="relative flex items-center justify-center h-[calc(100vh-5rem)] overflow-hidden bg-background">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={loginimg}
+            alt="Background"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+        </div>
+        <Card className="relative z-10 w-full max-w-md shadow-2xl border-muted/20 bg-card/95 backdrop-blur-sm mx-4">
+          <CardHeader className="space-y-4 text-center pt-8">
+            <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+              <Mail className="h-8 w-8 text-green-600 dark:text-green-500" />
+            </div>
+            <CardTitle className="text-2xl font-bold tracking-tight">
+              Password Reset Request Received
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-center">
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              If the email <span className="font-semibold text-foreground">{sentEmail}</span> is registered with us, a secure reset link has been sent.
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Please follow the instructions in your inbox to proceed.
+            </p>
+            <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3 mt-4">
+              <p className="text-xs text-amber-800 dark:text-amber-300">
+                If this request was not made by you, please ignore this message.
+              </p>
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-3 pb-6">
+            <Button asChild className="w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+              <Link href="/login">Return to Login</Link>
+            </Button>
+            <div className="text-center text-xs text-muted-foreground pt-2 space-y-1">
+              <p className="font-medium">CACS FinAcc Services</p>
+              <p>+91-9591633648 · info@cacsfinaccservices.com</p>
+              <p>Bengaluru, Karnataka</p>
+            </div>
+          </CardFooter>
+        </Card>
+      </div>
+    );
   }
 
   return (
