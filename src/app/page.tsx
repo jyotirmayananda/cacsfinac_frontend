@@ -41,6 +41,8 @@ import sliderimg4 from "../../public/Image/accounting & book keeping2.jpg";
 import sliderimg5 from "../../public/Image/strategic tax & wealth advisory2.jpg";
 import whoweare1 from "../../public/Image/who-we-are-img.jpg";
 import whoweare2 from "../../public/Image/who-we-are-img2.jpg";
+import { PricingSection } from "../components/pricing-section";
+
 
 const testimonials = [
   {
@@ -417,6 +419,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <PricingSection />
 
       <section
         id="testimonials"

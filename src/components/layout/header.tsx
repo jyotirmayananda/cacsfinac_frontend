@@ -37,6 +37,7 @@ const navLinks = [
   },
   { href: "/about", label: "Company" },
   { href: "/blog", label: "Blog" },
+  { href: "/calculators", label: "Calculators" },
   // { href: '/contact', label: 'Contact' },
 ];
 
