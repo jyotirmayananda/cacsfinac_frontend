@@ -9,10 +9,9 @@ import {
 } from "../components/ui/dialog";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { FileText, Building2, Briefcase, X } from "lucide-react";
+import { FileText, Building2, Briefcase } from "lucide-react";
 import type { DialogProps } from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 const popupServices = [
   {
@@ -44,7 +43,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className={cn("max-w-6xl p-10 max-h-[90svh] overflow-y-auto")}
+        className={cn("max-w-6xl p-10 max-h-[90svh] overflow-y-auto bg-card")}
       >
         <DialogHeader className="text-center">
           <DialogTitle className="text-4xl text-center font-bold font-headline mb-2 text-primary">
@@ -54,6 +53,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
             Experience the confidence of expert-led tax and financial services.
           </DialogDescription>
         </DialogHeader>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {popupServices.map((service, index) => (
             <Card

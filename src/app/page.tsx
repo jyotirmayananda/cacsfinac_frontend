@@ -31,6 +31,8 @@ import {
 } from "../components/ui/carousel";
 import { Avatar, AvatarFallback } from "../components/ui/avatar";
 import { WelcomePopup } from "../components/welcome-popup";
+import { ITRPlansPopup } from "../components/itr-plans-popup";
+import { AddonServicesPopup } from "../components/addon-services-popup";
 import placeholderImages from "../lib/placeholder-images.json";
 import { AnimatedQuoteForm } from "../components/animated-quote-form";
 import Autoplay from "embla-carousel-autoplay";
@@ -212,18 +214,34 @@ const whoWeAreServices = [
 
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+  const [isItrOpen, setIsItrOpen] = React.useState(false);
+  const [isAddonOpen, setIsAddonOpen] = React.useState(false);
   const [isQuoteFormPopupOpen, setIsQuoteFormPopupOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const popupShown = sessionStorage.getItem("popupShown");
-    if (!popupShown) {
-      const timer = setTimeout(() => {
-        setIsPopupOpen(true);
-        sessionStorage.setItem("popupShown", "true");
-      }, 1000); // Show popup after 1 second
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      setIsPopupOpen(true);
+    }, 1000); // Show popup after 1 second
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleWelcomeClose = (open: boolean) => {
+    setIsPopupOpen(open);
+    if (!open) {
+      setTimeout(() => {
+        setIsItrOpen(true);
+      }, 300); // Small delay before opening the second popup
+    }
+  };
+
+  const handleItrClose = (open: boolean) => {
+    setIsItrOpen(open);
+    if (!open) {
+      setTimeout(() => {
+        setIsAddonOpen(true);
+      }, 300); // Small delay before opening the third popup
+    }
+  };
 
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -231,7 +249,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <WelcomePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} />
+      <WelcomePopup open={isPopupOpen} onOpenChange={handleWelcomeClose} />
+      <ITRPlansPopup open={isItrOpen} onOpenChange={handleItrClose} />
+      <AddonServicesPopup open={isAddonOpen} onOpenChange={setIsAddonOpen} />
       <section id="hero" className="w-full">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-12">

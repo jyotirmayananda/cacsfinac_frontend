@@ -4,8 +4,12 @@ import React from "react";
 import { CheckCircle2, IndianRupee } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "./ui/card";
 import { Button } from "./ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
+import { useState } from "react";
+import { PlanLeadForm } from "./plan-lead-form";
 
-const itrPlans = [
+export const itrPlans = [
   {
     title: "Salary Income Plan",
     price: "499",
@@ -97,7 +101,7 @@ const itrPlans = [
   },
 ];
 
-const addOnServices = [
+export const addOnServices = [
   {
     title: "Income Tax Notice Response",
     price: "999",
@@ -145,6 +149,8 @@ const addOnServices = [
 ];
 
 export function PricingSection() {
+  const [selectedPlan, setSelectedPlan] = useState<{title: string, price: string} | null>(null);
+
   return (
     <section id="pricing" className="w-full py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -153,12 +159,15 @@ export function PricingSection() {
           <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase text-foreground">
             Income Tax Return (ITR) Filing Plans
           </h2>
-          <p className="mt-4 text-muted-foreground">Choose the right plan suited for your income sources.</p>
+          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-center">
+            Get your Income Tax Return (ITR) filed quickly and securely with CA assistance.<br/>
+            Suitable for salary, business, capital gains, trading and crypto income.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {itrPlans.map((plan, index) => (
-            <Card key={index} className="relative flex flex-col bg-card border border-border/50 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden group">
+            <Card key={index} className="relative flex flex-col h-full bg-card border border-border/50 hover:border-cyan-400 hover:shadow-xl transition-all duration-300 rounded-2xl overflow-hidden group">
               <CardHeader className="pb-4">
                 <CardTitle className="text-xl font-bold text-[#0D1B2A] group-hover:text-cyan-600 transition-colors">
                   {plan.title}
@@ -182,9 +191,12 @@ export function PricingSection() {
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter className="pt-4">
-                <Button className="w-full bg-transparent border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-[#00B4D8] hover:text-white font-semibold transition-all duration-300">
-                  Get Started Now
+              <CardFooter className="pt-4 mt-auto">
+                <Button 
+                  onClick={() => setSelectedPlan({ title: plan.title, price: plan.price })}
+                  className="w-full bg-transparent border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-[#00B4D8] hover:text-white font-semibold transition-all duration-300"
+                >
+                  File My ITR Now
                 </Button>
               </CardFooter>
             </Card>
@@ -223,8 +235,11 @@ export function PricingSection() {
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter className="pt-4">
-                <Button className="w-full bg-transparent border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-[#00B4D8] hover:text-white font-semibold transition-all duration-300">
+              <CardFooter className="pt-4 mt-auto">
+                <Button 
+                  onClick={() => setSelectedPlan({ title: service.title, price: service.price })}
+                  className="w-full bg-transparent border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-[#00B4D8] hover:text-white font-semibold transition-all duration-300"
+                >
                   Add to Plan
                 </Button>
               </CardFooter>
@@ -232,6 +247,12 @@ export function PricingSection() {
           ))}
         </div>
       </div>
+      <PlanLeadForm
+        planTitle={selectedPlan?.title || ""}
+        planPrice={selectedPlan?.price || ""}
+        open={!!selectedPlan}
+        onOpenChange={(op) => !op && setSelectedPlan(null)}
+      />
     </section>
   );
 }
