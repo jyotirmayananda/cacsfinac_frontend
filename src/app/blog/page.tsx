@@ -51,6 +51,16 @@ import blogimg14 from "../../../public/Image/blog/Crypto Transactions.jpg";
 
 const sliderItems = [
   {
+    title: "Latest GST Changes for Indian SMEs 2024",
+    description: "Navigate the recent amendments in GST laws and understand their impact on your small or medium enterprise in India.",
+    image: blogimg1,
+  },
+  {
+    title: "How NRIs Can Save Tax on Indian Property Sales",
+    description: "A comprehensive guide on section 54, 54EC, and TDS exemptions for Non-Resident Indians selling real estate in India.",
+    image: blogimg3,
+  },
+  {
     title:
       "Overcoming GST Compliance Challenges for a Fast-Growing E-Commerce Business",
     description:
@@ -80,6 +90,66 @@ const sliderItems = [
 ];
 
 const blogPosts = [
+  {
+    id: "latest-gst-changes-2024",
+    image: blogimg1,
+    title: "Latest GST Changes for Indian SMEs 2024",
+    date: "March 2024",
+    author: "Admin",
+    summary: "Understand the newest GST amendments and their implications for Indian Small and Medium Enterprises.",
+    fullContent: () => (
+      <>
+        <DialogHeader>
+          <DialogTitle className="text-2xl mb-4">
+            Latest GST Changes for Indian SMEs 2024
+          </DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 text-sm text-muted-foreground">
+          <p>
+            The GST Council has introduced key changes in 2024 that directly impact Small and Medium Enterprises (SMEs) across India. Staying updated is crucial to maintaining compliance and optimizing cash flow.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Mandatory E-Invoicing:</strong> The threshold for mandatory e-invoicing has been further reduced, bringing more SMEs under its ambit. Ensure your billing software is compliant.</li>
+            <li><strong>Stricter Input Tax Credit (ITC) Rules:</strong> ITC claims are now strictly matched with GSTR-2B. Any discrepancy can lead to immediate notices and reversal of credit along with interest.</li>
+            <li><strong>Aadhaar Authentication:</strong> Enhanced verification processes have been implemented for new registrations to curb fraudulent claims, requiring mandatory Aadhaar authentication or physical verification.</li>
+          </ul>
+          <p>
+            At CACS FinAcc, we help businesses transition smoothly into these new frameworks without disrupting day-to-day operations.
+          </p>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: "nri-property-tax",
+    image: blogimg3,
+    title: "How NRIs Can Save Tax on Indian Property Sales",
+    date: "February 2024",
+    author: "Admin",
+    summary: "A comprehensive guide on exemptions and TDS rules for NRIs selling real estate in India.",
+    fullContent: () => (
+      <>
+        <DialogHeader>
+          <DialogTitle className="text-2xl mb-4">
+            How NRIs Can Save Tax on Indian Property Sales
+          </DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 text-sm text-muted-foreground">
+          <p>
+            Selling property in India involves significant tax implications for Non-Resident Indians (NRIs), primarily concerning high TDS rates and Capital Gains Tax. Here is how you can effectively save tax:
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Lower TDS Certificate:</strong> NRIs face a TDS of 20% (plus surcharge and cess) on long-term capital gains. By applying for a lower TDS certificate under Section 197 from the Income Tax Assessing Officer, you can significantly reduce the cash flow block.</li>
+            <li><strong>Section 54 Exemption:</strong> If you sell a residential property and reinvest the capital gains into another residential property in India within the specified timeframe, you can claim tax exemption under Section 54.</li>
+            <li><strong>Section 54EC Bonds:</strong> Alternatively, investing the capital gains (up to ₹50 Lakhs) in specified bonds (like NHAI or REC) within 6 months of the sale provides a complete or partial tax exemption under Section 54EC.</li>
+          </ul>
+          <p>
+            Navigating DTAA (Double Taxation Avoidance Agreement) benefits is also critical. Consult with our NRI tax experts at CACS FinAcc to ensure a smooth, compliant, and tax-efficient property transaction.
+          </p>
+        </div>
+      </>
+    ),
+  },
   {
     id: "gst-challenges",
     image: blogimg1,

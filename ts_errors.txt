@@ -1,0 +1,16 @@
+src/app/api/auth/login/route.ts(11,23): error TS2339: Property 'db' does not exist on type '{}'.
+src/app/api/auth/login/route.ts(32,50): error TS2769: No overload matches this call.
+  Overload 1 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: null, options?: (SignOptions & { algorithm: "none"; }) | undefined): string', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'null'.
+      Type 'undefined' is not assignable to type 'null'.
+  Overload 2 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput, options?: SignOptions | undefined): string', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput'.
+      Type 'undefined' is not assignable to type 'Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput'.
+  Overload 3 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput, callback: SignCallback): void', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput'.
+      Type 'undefined' is not assignable to type 'Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput'.
+src/app/api/auth/signup/route.ts(10,23): error TS2339: Property 'db' does not exist on type '{}'.
+src/app/tax-filing/itr-5-filing/page.tsx(242,34): error TS2339: Property 'description' does not exist on type '{ title: string; items: string[]; }'.
+src/app/tax-filing/itr-5-filing/page.tsx(244,38): error TS2339: Property 'description' does not exist on type '{ title: string; items: string[]; }'.
+tailwind.config.ts(123,56): error TS2339: Property 'join' does not exist on type 'string'.
+tailwind.config.ts(126,52): error TS2339: Property 'join' does not exist on type 'string'.

@@ -7,21 +7,26 @@ import ClientLayoutWrapper from "../components/layout/client-layout-wrapper";
 export const metadata: Metadata = {
   metadataBase: new URL("https://cacsfinacc.com"),
   title: {
-    default: "CACS FinAcc | Virtual CFO, Tax Filing & Compliance Services",
+    default: "CACS FinAcc | Expert Tax Filing & Virtual CFO Services in Bengaluru",
     template: "%s | CACS FinAcc",
   },
   description:
-    "Expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance for Startups, NRIs, and SMEs in India.",
+    "Expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance for Startups, NRIs, and SMEs in Bengaluru and across India.",
   keywords: [
+    "Virtual CFO services for startups in India",
+    "Income Tax Filing Services in Bengaluru",
+    "CA Consultation for Bengaluru Startups",
+    "Proprietorship to Private Limited conversion process",
+    "FSSAI license renewal online India",
     "Virtual CFO",
-    "Tax Filing",
-    "GST Registration",
+    "Tax Filing Bengaluru",
+    "GST Registration Bengaluru",
     "Income Tax Return",
     "Company Registration",
-    "Accounting Services",
+    "Accounting Services Bengaluru",
     "CACS FinAcc",
-    "Chartered Accountant",
-    "Tax Consultant",
+    "Chartered Accountant near me",
+    "Tax Consultant Bengaluru",
     "Startup India",
     "NRI Tax Services",
     "ITR filing online",
@@ -64,9 +69,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://cacsfinacc.com",
     siteName: "CACS FinAcc",
-    title: "CACS FinAcc | Virtual CFO, Tax Filing & Compliance Services",
+    title: "CACS FinAcc | Expert Tax Filing & Virtual CFO Services in Bengaluru",
     description:
-      "Expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance for Startups, NRIs, and SMEs in India.",
+      "Expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance for Startups, NRIs, and SMEs in Bengaluru and across India.",
     images: [
       {
         url: "/Image/cacshero.png",
@@ -78,9 +83,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CACS FinAcc | Virtual CFO, Tax Filing & Compliance Services",
+    title: "CACS FinAcc | Expert Tax Filing & Virtual CFO Services in Bengaluru",
     description:
-      "Expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance.",
+      "Expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance in Bengaluru.",
     images: ["/Image/cacshero.png"],
   },
   robots: {
@@ -122,16 +127,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "AccountingService",
-              name: "CACS FinAcc",
+              "@type": ["AccountingService", "LocalBusiness", "ProfessionalService"],
+              name: "CACS FinAcc Services",
               url: "https://cacsfinacc.com",
               logo: "https://cacsfinacc.com/Image/logo.png",
               image: "https://cacsfinacc.com/Image/cacshero.png",
               description:
-                "CACS FinAcc provides expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance.",
+                "CACS FinAcc provides expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance in Bengaluru.",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Bangalore",
+                addressLocality: "Bengaluru",
                 addressRegion: "Karnataka",
                 addressCountry: "IN",
               },
@@ -139,6 +144,7 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 telephone: "+91-9591633648",
                 contactType: "customer service",
+                email: "info@cacsfinaccservices.com",
                 areaServed: "IN",
                 availableLanguage: ["English", "Hindi"],
               },

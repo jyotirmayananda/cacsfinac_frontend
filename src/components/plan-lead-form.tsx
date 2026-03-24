@@ -106,27 +106,27 @@ export function PlanLeadForm({ planTitle, planPrice, open, onOpenChange }: PlanL
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md bg-card border-cyan-500/20 rounded-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-headline uppercase text-foreground">
+        <DialogContent className="max-w-[95vw] md:max-w-4xl w-full p-6 md:p-10 bg-card border-cyan-500/20 rounded-3xl shadow-[0_0_50px_-12px_rgba(0,180,216,0.2)]">
+          <DialogHeader className="mb-6 flex flex-col items-center justify-center text-center">
+            <DialogTitle className="text-3xl md:text-4xl font-extrabold font-headline uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 w-full text-center">
               Get Started with {planTitle}
             </DialogTitle>
-            <DialogDescription className="text-muted-foreground mt-2">
+            <DialogDescription className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto font-medium text-center mt-2">
               Please provide your details below. Our team will contact you to initiate the process.
-              {planPrice && <span className="block mt-2 font-semibold text-primary">Amount: ₹{planPrice}</span>}
+              {planPrice && <span className="block mt-4 font-bold text-2xl text-foreground">Amount: ₹{planPrice}</span>}
             </DialogDescription>
           </DialogHeader>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 py-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="First Name*" className="bg-background" {...field} />
+                        <Input placeholder="First Name*" className="bg-background h-12 text-md transition-all hover:border-cyan-400 focus:border-cyan-500" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -138,52 +138,54 @@ export function PlanLeadForm({ planTitle, planPrice, open, onOpenChange }: PlanL
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Last Name*" className="bg-background" {...field} />
+                        <Input placeholder="Last Name*" className="bg-background h-12 text-md transition-all hover:border-cyan-400 focus:border-cyan-500" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="md:col-span-1">
+                      <FormControl>
+                        <Input type="email" placeholder="E-mail Id*" className="bg-background h-12 text-md transition-all hover:border-cyan-400 focus:border-cyan-500" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="mobile"
+                  render={({ field }) => (
+                    <FormItem className="md:col-span-1">
+                      <FormControl>
+                        <Input placeholder="Mobile*" className="bg-background h-12 text-md transition-all hover:border-cyan-400 focus:border-cyan-500" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="panNumber"
+                  render={({ field }) => (
+                    <FormItem className="md:col-span-2">
+                      <FormControl>
+                        <Input placeholder="PAN Number (Optional)" className="bg-background h-12 text-md transition-all hover:border-cyan-400 focus:border-cyan-500" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input type="email" placeholder="E-mail Id*" className="bg-background" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="mobile"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Mobile*" className="bg-background" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="panNumber"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="PAN Number (Optional)" className="bg-background" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" size="lg" className="w-full bg-[#00B4D8] hover:bg-cyan-600 text-white" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Submit Details"}
-              </Button>
+              <div className="pt-6 flex justify-center">
+                <Button type="submit" size="lg" className="w-full md:w-2/3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold rounded-xl text-lg h-14 shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-0.5" disabled={isSubmitting}>
+                  {isSubmitting ? "Submitting..." : "Submit Details to CA"}
+                </Button>
+              </div>
             </form>
           </Form>
         </DialogContent>

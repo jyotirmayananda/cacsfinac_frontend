@@ -2,6 +2,12 @@
 
 import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { QuoteForm } from "../../../components/quote-form";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../../components/ui/accordion";
 import { Phone, Mail, CheckCircle2 } from "lucide-react";
 import {
   Card,
@@ -62,6 +68,25 @@ const pfRequiredDocs = [
   "Certificate of incorporation or partnership deed.",
   "Address proof of the establishment.",
   "Details of employees, including Aadhaar and salary information.",
+];
+
+const faqs = [
+  {
+    question: "How long does GST registration take in Karnataka?",
+    answer: "Typically, GST registration in Bengaluru and across Karnataka takes 3 to 7 working days, provided all your documents are accurate and complete."
+  },
+  {
+    question: "Is Professional Tax mandatory in Bengaluru?",
+    answer: "Yes, Professional Tax (PT) is mandatory in Karnataka for employers, employees, and self-employed professionals earning above the threshold limit."
+  },
+  {
+    question: "What happens if I delay PF registration?",
+    answer: "Delaying PF registration when you have 20 or more employees can attract heavy penalties and back-dues under the EPF Act."
+  },
+  {
+    question: "Can CACS FinAcc help with multiple state GST registrations?",
+    answer: "Yes, our experts in Bengaluru can assist you in obtaining GST registrations across multiple states in India if your business requires it."
+  }
 ];
 
 const whyChooseUs = [
@@ -222,6 +247,25 @@ export default function GstPfPtRegistrationPage() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* FAQ Section */}
+              <div className="mt-12">
+                <h2 className="text-2xl font-bold font-headline mb-6 text-primary uppercase">
+                  Frequently Asked Questions (FAQ)
+                </h2>
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-left font-semibold">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
               </div>
             </div>
 

@@ -2,6 +2,12 @@
 
 import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { QuoteForm } from "../../../components/quote-form";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../../components/ui/accordion";
 import { Phone, Mail } from "lucide-react";
 import {
   Card,
@@ -25,6 +31,29 @@ const notEligible = [
   "Has capital gains income.",
   "Is a Director in a company.",
   "Owns unlisted equity shares.",
+];
+
+const faqs = [
+  {
+    question: "Who can file ITR-1 in India?",
+    answer: "Resident individuals having total income up to ₹50 lakh from salary, pension, one house property, and other sources (like interest) can file ITR-1 (Sahaj)."
+  },
+  {
+    question: "Do I need a CA to file ITR-1?",
+    answer: "While you can self-file, taking professional help from tax experts in Bengaluru like CACS FinAcc ensures you claim all eligible deductions and avoid notices."
+  },
+  {
+    question: "What documents are required for ITR-1?",
+    answer: "You will need Form 16, Aadhaar card, PAN card, bank statements, and investment proofs for deductions under Section 80C to 80U."
+  },
+  {
+    question: "What is the deadline for filing ITR-1?",
+    answer: "The due date for filing ITR-1 for individuals whose accounts do not require audit is generally 31st July of the assessment year."
+  },
+  {
+    question: "How long does it take to get a refund after filing ITR-1?",
+    answer: "Upon successful e-verification, income tax refunds are usually credited within 20-45 days directly to your pre-validated bank account."
+  }
 ];
 
 const ourServices = [
@@ -229,6 +258,25 @@ export default function ITR1FilingPage() {
                   Ensure seamless ITR-1 compliance with CACSFinacc Services.
                   Contact us today to streamline your return filing process.
                 </p>
+              </div>
+
+              {/* FAQ Section */}
+              <div className="mt-12">
+                <h2 className="text-2xl font-bold font-headline mb-6 text-primary uppercase">
+                  Frequently Asked Questions (FAQ)
+                </h2>
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-left font-semibold">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
               </div>
             </div>
 

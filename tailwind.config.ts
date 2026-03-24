@@ -116,14 +116,18 @@ export default {
         'float': 'float 4s ease-in-out infinite',
         'gradient': 'gradient-animation 10s ease infinite',
       },
-      typography: ({ theme }: { theme: (path: string) => string }) => ({
+      typography: ({ theme }: { theme: (path: string) => string | string[] }) => ({
         DEFAULT: {
           css: {
             'h1, h2, h3, h4, h5, h6': {
-              fontFamily: theme('fontFamily.headline').join(', '),
+              fontFamily: Array.isArray(theme('fontFamily.headline')) 
+                ? (theme('fontFamily.headline') as string[]).join(', ') 
+                : theme('fontFamily.headline'),
             },
             body: {
-              fontFamily: theme('fontFamily.body').join(', '),
+              fontFamily: Array.isArray(theme('fontFamily.body')) 
+                ? (theme('fontFamily.body') as string[]).join(', ') 
+                : theme('fontFamily.body'),
             },
           },
         },

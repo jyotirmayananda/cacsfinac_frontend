@@ -67,9 +67,9 @@ const testimonials = [
   },
   {
     name: "Souparna",
-    company: "Tech Startup Founder",
+    company: "Tech Startup Founder, Bengaluru",
     avatar: "S",
-    text: "From incorporation to GST and payroll, they handled it all. As a solo founder, this was a game-changer. Saved time and prevented costly delays.",
+    text: "From incorporation to GST and payroll, they handled it all. As a Bengaluru-based tech startup, this was a game-changer. They helped us structure our investments and saved over ₹15 Lakhs in taxes.",
   },
   {
     name: "Harish T",
@@ -261,10 +261,10 @@ export default function Home() {
                   Virtual CFO, NRI Tax & Compliance
                 </span>
                 <br />
-                <span className="text-foreground text-3xl md:text-5xl">— All in One Place</span>
+                <span className="text-foreground text-3xl md:text-5xl">— Expert Services in Bengaluru</span>
               </h1>
               <p className="mt-4 text-2xl text-muted-foreground max-w-3xl">
-                Helping Startups, NRIs & SMEs with Taxation, ROC, MIS &
+                Helping Startups, NRIs & SMEs in Bengaluru & across India with Taxation, ROC, MIS &
                 Financial Strategy.
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto justify-center lg:justify-start">
@@ -375,8 +375,8 @@ export default function Home() {
             </h2>
           </div>
           <p className=" text-justify text-muted-foreground mb-12">
-            At CACS FinAcc, we provide a one-stop solution for all your
-            accounting, financial, compliance, and corporate governance needs.
+            At CACS FinAcc, a trusted firm based in Bengaluru, we provide a one-stop solution for all your
+            accounting, financial, compliance, and corporate governance needs across India.
             Our network of qualified professionals, including experienced
             Chartered Accountants, Company Secretaries, and finance experts,
             ensures a holistic and strategic approach to solving your business
@@ -404,7 +404,7 @@ export default function Home() {
             <div className="relative h-[450px]">
               <Image
                 src={whoweare1}
-                alt="Business meeting with laptops and papers"
+                alt="CA Consultation for Bengaluru Startups and SMEs"
                 width={400}
                 height={200}
                 className="rounded-2xl shadow-lg object-cover w-full h-full"
@@ -413,7 +413,7 @@ export default function Home() {
               <div className="absolute -bottom-8 -left-8 w-48 h-48">
                 <Image
                   src={whoweare2}
-                  alt="Close up of financial documents"
+                  alt="Expert Tax Filing & Corporate Compliance in Bengaluru"
                   width={200}
                   height={200}
                   className="rounded-2xl shadow-xl border-4 border-white object-cover"
