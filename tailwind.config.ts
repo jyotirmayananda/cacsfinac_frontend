@@ -107,6 +107,10 @@ export default {
           '50%': { 'background-position': '100% 50%' },
           '100%': { 'background-position': '0% 50%' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -115,6 +119,7 @@ export default {
         'spin-very-slow': 'spin-very-slow 40s linear infinite',
         'float': 'float 4s ease-in-out infinite',
         'gradient': 'gradient-animation 10s ease infinite',
+        'marquee': 'marquee 25s linear infinite',
       },
       typography: ({ theme }: { theme: (path: string) => string | string[] }) => ({
         DEFAULT: {

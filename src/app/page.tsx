@@ -18,6 +18,7 @@ import {
   FileWarning,
   Fingerprint,
   CheckCircle2,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -286,28 +287,60 @@ export default function Home() {
       </section>
 
       {/* Trust & Authority Signals Banner for SEO */}
-      <section className="w-full py-8 border-y border-cyan-500/10 bg-secondary/30 hidden md:block">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6">
-            Trusted by industry leaders & compliant with Indian regulatory bodies
+      <section className="w-full py-12 md:py-16 relative overflow-hidden bg-gradient-to-b from-transparent via-secondary/60 to-transparent">
+        {/* Subtle background decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[150px] bg-cyan-500/10 dark:bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <p className="text-center text-xs md:text-sm font-bold text-muted-foreground/80 uppercase tracking-widest md:tracking-[0.25em] mb-10">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600 dark:from-gray-400 dark:via-gray-100 dark:to-gray-400">
+              Trusted by industry leaders & compliant with Indian regulatory bodies
+            </span>
           </p>
-          <div className="flex flex-wrap justify-between items-center gap-8 md:gap-16 opacity-70 hover:opacity-100 transition-opacity duration-300">
-            {/* Semantic trust anchors for SEO Authority */}
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
-              <Building2 className="w-5 h-5 text-cyan-600" /> MCA Registered
-            </div>
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
-              <CheckCircle2 className="w-5 h-5 text-green-600" /> Startup India
-            </div>
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
-              <FileWarning className="w-5 h-5 text-blue-600" /> GST Compliant
-            </div>
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
-              <User className="w-5 h-5 text-indigo-600" /> MSME Recognized
-            </div>
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
-              <Landmark className="w-5 h-5 text-orange-600" /> Income Tax Dept.
-            </div>
+        </div>
+
+        {/* Marquee Animation Container */}
+        <div className="relative flex overflow-hidden group w-full before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[50px] md:before:w-[150px] before:bg-gradient-to-r before:from-background before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-[50px] md:after:w-[150px] after:bg-gradient-to-l after:from-background after:to-transparent after:content-['']">
+          <div className="flex animate-marquee gap-4 md:gap-6 lg:gap-8 group-hover:[animation-play-state:paused] w-max select-none">
+            {/* Semantic trust anchors for SEO Authority repeated multiple times for seamless looping */}
+            {[...Array(2)].map((_, i) => (
+              <React.Fragment key={i}>
+                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(6,182,212,0.3)] hover:-translate-y-1 hover:border-cyan-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
+                  <div className="p-2.5 rounded-full bg-cyan-100/80 dark:bg-cyan-900/40 text-cyan-600 dark:text-cyan-400">
+                    <Building2 className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">MCA Registered</span>
+                </div>
+                
+                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(34,197,94,0.3)] hover:-translate-y-1 hover:border-green-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
+                  <div className="p-2.5 rounded-full bg-green-100/80 dark:bg-green-900/40 text-green-600 dark:text-green-400">
+                    <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">Startup India</span>
+                </div>
+                
+                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.3)] hover:-translate-y-1 hover:border-blue-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
+                  <div className="p-2.5 rounded-full bg-blue-100/80 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                    <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">GST Compliant</span>
+                </div>
+                
+                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(99,102,241,0.3)] hover:-translate-y-1 hover:border-indigo-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
+                  <div className="p-2.5 rounded-full bg-indigo-100/80 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400">
+                    <User className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">MSME Recognized</span>
+                </div>
+                
+                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(249,115,22,0.3)] hover:-translate-y-1 hover:border-orange-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
+                  <div className="p-2.5 rounded-full bg-orange-100/80 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400">
+                    <Landmark className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">Income Tax Dept.</span>
+                </div>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </section>
@@ -469,50 +502,120 @@ export default function Home() {
 
       <PricingSection />
 
-      <section id="how-we-solve-problems" className="w-full py-12 md:py-20 bg-secondary/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary uppercase">
+      <section id="how-we-solve-problems" className="w-full py-16 md:py-24 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-3xl md:text-5xl font-extrabold font-headline uppercase tracking-tight mb-6 text-primary">
               How CACS FinAcc Solves Your Business Problems
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               We don't just crunch numbers; we engineer financial scalability and compliance safety for startups, SMEs, and MSMEs across Bengaluru and India.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="glass-panel border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
-              <CardContent className="pt-6">
-                <FileWarning className="w-12 h-12 text-cyan-500 mb-4" />
-                <h3 className="text-xl font-bold mb-3">1. Eliminating Compliance Blindspots</h3>
-                <p className="text-muted-foreground">
-                  <strong>The Problem:</strong> Missing statutory deadlines for GST, TDS, or ROC filings leads to frozen bank accounts, severe penalties, and director disqualifications.
-                  <br/><br/>
-                  <strong>Our Solution:</strong> Our dedicated Company Secretaries (CS) and Chartered Accountants (CA) utilize a proactive compliance calendar tailored to your business structure (Private Limited, LLP, or Proprietorship), acting as an impenetrable firewall against tax notices.
-                </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-8 max-w-7xl mx-auto">
+            {/* Card 1 */}
+            <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
+                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-blue-900/10 select-none z-0 leading-none">01</div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
+                    <FileWarning className="w-8 h-8 text-blue-600" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold mb-8 text-foreground leading-snug">Eliminating Compliance Blindspots</h3>
+                  
+                  <div className="space-y-6 flex-grow flex flex-col justify-between">
+                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-400">
+                      <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">
+                        THE PROBLEM
+                      </h4>
+                      <p className="text-muted-foreground text-[14px] leading-relaxed">
+                        Missing statutory deadlines for GST, TDS, or ROC filings leads to frozen bank accounts, severe penalties, and director disqualifications.
+                      </p>
+                    </div>
+                    
+                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-600">
+                      <h4 className="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-3">
+                        OUR SOLUTION
+                      </h4>
+                      <p className="text-muted-foreground text-[14px] leading-relaxed">
+                        Our dedicated CS and CA team utilize a proactive compliance calendar tailored to your business structure, acting as an impenetrable firewall against tax notices.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
             
-            <Card className="glass-panel border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
-              <CardContent className="pt-6">
-                <Landmark className="w-12 h-12 text-cyan-500 mb-4" />
-                <h3 className="text-xl font-bold mb-3">2. Fixing Cash Flow Hemorrhaging</h3>
-                <p className="text-muted-foreground">
-                  <strong>The Problem:</strong> Rapidly scaling startups often burn through their Series-A funding prematurely due to invisible operational inefficiencies and poor working capital cycles.
-                  <br/><br/>
-                  <strong>Our Solution:</strong> Through our <em>Virtual CFO services</em>, we establish granular Unit Economics reporting, optimize your CAC to LTV ratios, and enforce strict budgetary controls so your financial runway extends naturally.
-                </p>
+            {/* Card 2 */}
+            <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
+                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-blue-900/10 select-none z-0 leading-none">02</div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
+                    <Landmark className="w-8 h-8 text-blue-600" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold mb-8 text-foreground leading-snug">Fixing Cash Flow Hemorrhaging</h3>
+                  
+                  <div className="space-y-6 flex-grow flex flex-col justify-between">
+                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-400">
+                      <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">
+                        THE PROBLEM
+                      </h4>
+                      <p className="text-muted-foreground text-[14px] leading-relaxed">
+                        Rapidly scaling startups often burn through their Series-A funding prematurely due to invisible operational inefficiencies and poor working capital cycles.
+                      </p>
+                    </div>
+                    
+                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-600">
+                      <h4 className="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-3">
+                        OUR SOLUTION
+                      </h4>
+                      <p className="text-muted-foreground text-[14px] leading-relaxed">
+                        Through our <em className="text-foreground/80 font-medium not-italic font-semibold">Virtual CFO services</em>, we establish granular Unit Economics reporting, optimize your CAC to LTV ratios, and enforce strict controls.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="glass-panel border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
-              <CardContent className="pt-6">
-                <Calculator className="w-12 h-12 text-cyan-500 mb-4" />
-                <h3 className="text-xl font-bold mb-3">3. Optimizing High-Tax Burdens</h3>
-                <p className="text-muted-foreground">
-                  <strong>The Problem:</strong> Sole Proprietors, Freelancers, and High Net-Worth Individuals (HNIs) often pay maximum slab rates because they fail to utilize strategic deductions and presumptive taxation schemes (Section 44ADA/44AD).
-                  <br/><br/>
-                  <strong>Our Solution:</strong> We deploy advanced tax planning frameworks. Whether it's restructuring your salary, leveraging crypto-tax loss harvesting, or claiming DTAA benefits for NRIs, we legally minimize your tax outflows.
-                </p>
+            {/* Card 3 */}
+            <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
+                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-blue-900/10 select-none z-0 leading-none">03</div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
+                    <Calculator className="w-8 h-8 text-blue-600" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold mb-8 text-foreground leading-snug">Optimizing High-Tax Burdens</h3>
+                  
+                  <div className="space-y-6 flex-grow flex flex-col justify-between">
+                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-400">
+                      <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">
+                        THE PROBLEM
+                      </h4>
+                      <p className="text-muted-foreground text-[14px] leading-relaxed">
+                        Sole Proprietors, Freelancers, and HNIs often pay maximum slab rates failing to utilize strategic deductions and presumptive taxation schemes.
+                      </p>
+                    </div>
+                    
+                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-600">
+                      <h4 className="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-3">
+                        OUR SOLUTION
+                      </h4>
+                      <p className="text-muted-foreground text-[14px] leading-relaxed">
+                        We deploy advanced tax planning frameworks. Whether restructuring salary, crypto-tax loss harvesting, or DTAA benefits for NRIs, we legally minimize outflows.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
