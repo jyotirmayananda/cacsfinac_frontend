@@ -517,7 +517,7 @@ export default function Home() {
             {/* Card 1 */}
             <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
-                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-blue-900/10 select-none z-0 leading-none">01</div>
+                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-white/10 select-none z-0 leading-none">01</div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
@@ -552,7 +552,7 @@ export default function Home() {
             {/* Card 2 */}
             <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
-                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-blue-900/10 select-none z-0 leading-none">02</div>
+                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-white/10 select-none z-0 leading-none">02</div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
@@ -587,7 +587,7 @@ export default function Home() {
             {/* Card 3 */}
             <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
               <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
-                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-blue-900/10 select-none z-0 leading-none">03</div>
+                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-white/10 select-none z-0 leading-none">03</div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">

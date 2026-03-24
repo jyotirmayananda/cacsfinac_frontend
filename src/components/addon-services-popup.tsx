@@ -36,7 +36,7 @@ export function AddonServicesPopup({ open, onOpenChange }: DialogProps) {
           {addOnServices.map((service, index) => (
             <Card key={index} className="relative flex flex-col h-full bg-card border border-border/50 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden group">
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-bold text-[#0D1B2A] group-hover:text-cyan-600 transition-colors md:h-14 flex items-center">
+                <CardTitle className="text-lg font-bold text-[#0D1B2A] dark:text-white group-hover:text-cyan-600 transition-colors md:h-14 flex items-center">
                   {service.title}
                 </CardTitle>
                 <div className="mt-2 flex items-baseline">
@@ -49,7 +49,7 @@ export function AddonServicesPopup({ open, onOpenChange }: DialogProps) {
                 <p className="text-xs font-bold text-[#2EC4B6] uppercase tracking-wider mb-3">Service Includes:</p>
                 <ul className="space-y-2">
                   {service.includes.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-[#4A4A4A]">
+                    <li key={i} className="flex items-start gap-2 text-sm text-[#4A4A4A] dark:text-white">
                       <CheckCircle2 className="h-4 w-4 text-[#00B4D8] flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
