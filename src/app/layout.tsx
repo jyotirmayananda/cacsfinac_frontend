@@ -5,7 +5,7 @@ import { raleway, roboto, ubuntu } from "./fonts";
 import ClientLayoutWrapper from "../components/layout/client-layout-wrapper";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cacsfinacc.com"),
+  metadataBase: new URL("https://cacsfinaccservices.com"),
   title: {
     default: "CACS FinAcc | Expert Tax Filing & Virtual CFO Services in Bengaluru",
     template: "%s | CACS FinAcc",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://cacsfinacc.com",
+    url: "https://cacsfinaccservices.com",
     siteName: "CACS FinAcc",
     title: "CACS FinAcc | Expert Tax Filing & Virtual CFO Services in Bengaluru",
     description:
@@ -129,9 +129,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["AccountingService", "LocalBusiness", "ProfessionalService"],
               name: "CACS FinAcc Services",
-              url: "https://cacsfinacc.com",
-              logo: "https://cacsfinacc.com/Image/logo.png",
-              image: "https://cacsfinacc.com/Image/cacshero.png",
+              url: "https://cacsfinaccservices.com",
+              logo: "https://cacsfinaccservices.com/Image/logo.png",
+              image: "https://cacsfinaccservices.com/Image/cacshero.png",
               description:
                 "CACS FinAcc provides expert financial services including Virtual CFO, Income Tax Filing, GST Registration, and Corporate Compliance in Bengaluru.",
               address: {

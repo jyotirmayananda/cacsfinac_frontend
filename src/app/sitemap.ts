@@ -2,7 +2,7 @@ export const dynamic = 'force-static'
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://cacsfinacc.com'
+    const baseUrl = 'https://cacsfinaccservices.com'
 
     const routes = [
         '',

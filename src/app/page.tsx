@@ -285,6 +285,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trust & Authority Signals Banner for SEO */}
+      <section className="w-full py-8 border-y border-cyan-500/10 bg-secondary/30 hidden md:block">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6">
+            Trusted by industry leaders & compliant with Indian regulatory bodies
+          </p>
+          <div className="flex flex-wrap justify-between items-center gap-8 md:gap-16 opacity-70 hover:opacity-100 transition-opacity duration-300">
+            {/* Semantic trust anchors for SEO Authority */}
+            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
+              <Building2 className="w-5 h-5 text-cyan-600" /> MCA Registered
+            </div>
+            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
+              <CheckCircle2 className="w-5 h-5 text-green-600" /> Startup India
+            </div>
+            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
+              <FileWarning className="w-5 h-5 text-blue-600" /> GST Compliant
+            </div>
+            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
+              <User className="w-5 h-5 text-indigo-600" /> MSME Recognized
+            </div>
+            <div className="flex items-center gap-2 font-bold text-lg md:text-xl text-foreground">
+              <Landmark className="w-5 h-5 text-orange-600" /> Income Tax Dept.
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="w-full py-10 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -441,6 +468,56 @@ export default function Home() {
       </section>
 
       <PricingSection />
+
+      <section id="how-we-solve-problems" className="w-full py-12 md:py-20 bg-secondary/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary uppercase">
+              How CACS FinAcc Solves Your Business Problems
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+              We don't just crunch numbers; we engineer financial scalability and compliance safety for startups, SMEs, and MSMEs across Bengaluru and India.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="glass-panel border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
+              <CardContent className="pt-6">
+                <FileWarning className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-bold mb-3">1. Eliminating Compliance Blindspots</h3>
+                <p className="text-muted-foreground">
+                  <strong>The Problem:</strong> Missing statutory deadlines for GST, TDS, or ROC filings leads to frozen bank accounts, severe penalties, and director disqualifications.
+                  <br/><br/>
+                  <strong>Our Solution:</strong> Our dedicated Company Secretaries (CS) and Chartered Accountants (CA) utilize a proactive compliance calendar tailored to your business structure (Private Limited, LLP, or Proprietorship), acting as an impenetrable firewall against tax notices.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="glass-panel border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
+              <CardContent className="pt-6">
+                <Landmark className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-bold mb-3">2. Fixing Cash Flow Hemorrhaging</h3>
+                <p className="text-muted-foreground">
+                  <strong>The Problem:</strong> Rapidly scaling startups often burn through their Series-A funding prematurely due to invisible operational inefficiencies and poor working capital cycles.
+                  <br/><br/>
+                  <strong>Our Solution:</strong> Through our <em>Virtual CFO services</em>, we establish granular Unit Economics reporting, optimize your CAC to LTV ratios, and enforce strict budgetary controls so your financial runway extends naturally.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-panel border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300">
+              <CardContent className="pt-6">
+                <Calculator className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-bold mb-3">3. Optimizing High-Tax Burdens</h3>
+                <p className="text-muted-foreground">
+                  <strong>The Problem:</strong> Sole Proprietors, Freelancers, and High Net-Worth Individuals (HNIs) often pay maximum slab rates because they fail to utilize strategic deductions and presumptive taxation schemes (Section 44ADA/44AD).
+                  <br/><br/>
+                  <strong>Our Solution:</strong> We deploy advanced tax planning frameworks. Whether it's restructuring your salary, leveraging crypto-tax loss harvesting, or claiming DTAA benefits for NRIs, we legally minimize your tax outflows.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       <section
         id="testimonials"

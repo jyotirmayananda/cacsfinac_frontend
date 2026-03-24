@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us | CACS FinAcc",
     description: "Your strategic partner for accounting, taxation, compliance, and corporate governance.",
-    url: "https://cacsfinacc.com/about",
+    url: "https://cacsfinaccservices.com/about",
     images: [
       {
         url: "/Image/about-us-img.jpg",
