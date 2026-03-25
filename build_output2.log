@@ -1,0 +1,156 @@
+
+> nextn@0.1.0 build
+> next build && node ./scripts/clean-out.js
+
+   Γû▓ Next.js 15.5.9
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 11.3s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/68) ...
+   Generating static pages (17/68) 
+   Generating static pages (34/68) 
+   Generating static pages (51/68) 
+ Γ£ô Generating static pages (68/68)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/2) ...
+ Γ£ô Exporting (2/2)
+
+Route (app)                                  Size  First Load JS
+Γöî Γùï /                                     17.4 kB         259 kB
+Γö£ Γùï /_not-found                              1 kB         103 kB
+Γö£ Γùï /about                                39.1 kB         158 kB
+Γö£ ╞Æ /api/auth/forgot-password               160 B         102 kB
+Γö£ ╞Æ /api/auth/login                         160 B         102 kB
+Γö£ ╞Æ /api/auth/signup                        160 B         102 kB
+Γö£ ╞Æ /api/send-email                         160 B         102 kB
+Γö£ Γùï /auth/auth-code-error                  1.6 kB         116 kB
+Γö£ Γùï /auth/callback                        2.46 kB         170 kB
+Γö£ Γùï /blog                                 24.3 kB         161 kB
+Γö£ Γùï /calculators                          8.24 kB         147 kB
+Γö£ Γùï /compliance                             379 B         102 kB
+Γö£ Γùï /compliance/bookkeeping               4.64 kB         233 kB
+Γö£ Γùï /compliance/business-plan             4.91 kB         234 kB
+Γö£ Γùï /compliance/cfo-services              3.83 kB         233 kB
+Γö£ Γùï /compliance/dpt-3-filings             4.75 kB         233 kB
+Γö£ Γùï /compliance/fdi-filing-rbi            4.23 kB         233 kB
+Γö£ Γùï /compliance/hr-payroll                4.76 kB         233 kB
+Γö£ Γùï /compliance/partnership-compliance    4.97 kB         234 kB
+Γö£ Γùï /compliance/private-ltd-compliances   5.38 kB         234 kB
+Γö£ Γùï /compliance/proprietorship            4.83 kB         234 kB
+Γö£ Γùï /compliance/section-8-compliance      4.49 kB         233 kB
+Γö£ Γùï /compliance/sft-return-filing         4.75 kB         233 kB
+Γö£ Γùï /contact                              6.34 kB         210 kB
+Γö£ Γùï /disclaimer                             170 B         106 kB
+Γö£ Γùï /forgot-password                      4.18 kB         201 kB
+Γö£ Γùï /login                                8.17 kB         205 kB
+Γö£ Γùï /manifest.webmanifest                   160 B         102 kB
+Γö£ Γùï /privacy                                170 B         106 kB
+Γö£ Γùï /profile                              4.81 kB         115 kB
+Γö£ Γùï /registration                           375 B         102 kB
+Γö£ Γùï /registration/apeda                   4.81 kB         234 kB
+Γö£ Γùï /registration/barcode-registration       4 kB         233 kB
+Γö£ Γùï /registration/esi-registration        3.37 kB         232 kB
+Γö£ Γùï /registration/fssai-license           5.03 kB         234 kB
+Γö£ Γùï /registration/fssai-registration       5.5 kB         234 kB
+Γö£ Γùï /registration/gst-pf-pt-registration  4.21 kB         236 kB
+Γö£ Γùï /registration/iec                      4.7 kB         233 kB
+Γö£ Γùï /registration/lei-registration        4.92 kB         234 kB
+Γö£ Γùï /registration/msme-registration       3.83 kB         233 kB
+Γö£ Γùï /registration/opc                     4.28 kB         233 kB
+Γö£ Γùï /registration/private-ltd             4.35 kB         233 kB
+Γö£ Γùï /registration/sole-proprietorship     3.27 kB         232 kB
+Γö£ Γùï /registration/trade-license           4.41 kB         233 kB
+Γö£ Γùï /registration/trust-registration      4.17 kB         233 kB
+Γö£ Γùï /reset-password                       4.78 kB         201 kB
+Γö£ Γùï /robots.txt                             160 B         102 kB
+Γö£ Γùï /signup                               5.27 kB         202 kB
+Γö£ Γùï /sitemap.xml                            160 B         102 kB
+Γö£ Γùï /tax-filing/15ca-15cb-filing          4.06 kB         233 kB
+Γö£ Γùï /tax-filing/business-tax-filings      6.61 kB         235 kB
+Γö£ Γùï /tax-filing/esi-return-filings        3.33 kB         232 kB
+Γö£ Γùï /tax-filing/gst-returns               6.06 kB         235 kB
+Γö£ Γùï /tax-filing/income-tax-notice          4.8 kB         233 kB
+Γö£ Γùï /tax-filing/income-tax-return-filing  6.14 kB         235 kB
+Γö£ Γùï /tax-filing/itr-1-filing               4.5 kB         236 kB
+Γö£ Γùï /tax-filing/itr-2-filing              4.42 kB         233 kB
+Γö£ Γùï /tax-filing/itr-3-filing              4.36 kB         233 kB
+Γö£ Γùï /tax-filing/itr-4-filing              5.79 kB         234 kB
+Γö£ Γùï /tax-filing/itr-5-filing              4.92 kB         234 kB
+Γö£ Γùï /tax-filing/itr-6-filing              4.83 kB         234 kB
+Γö£ Γùï /tax-filing/itr-7-filing              4.59 kB         233 kB
+Γö£ Γùï /tax-filing/pf-pt-return-filings      3.43 kB         232 kB
+Γö£ Γùï /tax-filing/tan-registration          4.02 kB         233 kB
+Γöö Γùï /tax-filing/tds-return-filings        3.32 kB         232 kB
++ First Load JS shared by all              102 kB
+  Γö£ chunks/1255-e765f9b3bd9adc90.js       45.7 kB
+  Γö£ chunks/4bd1b696-100b9d70ed4e49c1.js   54.2 kB
+  Γöö other shared chunks (total)           2.02 kB
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
+≡ƒº╣ Cleaning up .txt files from build output...
+Γ£ô Removed: .\out\about.txt
+Γ£ô Removed: .\out\auth\auth-code-error.txt
+Γ£ô Removed: .\out\auth\callback.txt
+Γ£ô Removed: .\out\blog.txt
+Γ£ô Removed: .\out\calculators.txt
+Γ£ô Removed: .\out\compliance\bookkeeping.txt
+Γ£ô Removed: .\out\compliance\business-plan.txt
+Γ£ô Removed: .\out\compliance\cfo-services.txt
+Γ£ô Removed: .\out\compliance\dpt-3-filings.txt
+Γ£ô Removed: .\out\compliance\fdi-filing-rbi.txt
+Γ£ô Removed: .\out\compliance\hr-payroll.txt
+Γ£ô Removed: .\out\compliance\partnership-compliance.txt
+Γ£ô Removed: .\out\compliance\private-ltd-compliances.txt
+Γ£ô Removed: .\out\compliance\proprietorship.txt
+Γ£ô Removed: .\out\compliance\section-8-compliance.txt
+Γ£ô Removed: .\out\compliance\sft-return-filing.txt
+Γ£ô Removed: .\out\compliance.txt
+Γ£ô Removed: .\out\contact.txt
+Γ£ô Removed: .\out\disclaimer.txt
+Γ£ô Removed: .\out\forgot-password.txt
+Γ£ô Removed: .\out\index.txt
+Γ£ô Removed: .\out\login.txt
+Γ£ô Removed: .\out\privacy.txt
+Γ£ô Removed: .\out\profile.txt
+Γ£ô Removed: .\out\registration\apeda.txt
+Γ£ô Removed: .\out\registration\barcode-registration.txt
+Γ£ô Removed: .\out\registration\esi-registration.txt
+Γ£ô Removed: .\out\registration\fssai-license.txt
+Γ£ô Removed: .\out\registration\fssai-registration.txt
+Γ£ô Removed: .\out\registration\gst-pf-pt-registration.txt
+Γ£ô Removed: .\out\registration\iec.txt
+Γ£ô Removed: .\out\registration\lei-registration.txt
+Γ£ô Removed: .\out\registration\msme-registration.txt
+Γ£ô Removed: .\out\registration\opc.txt
+Γ£ô Removed: .\out\registration\private-ltd.txt
+Γ£ô Removed: .\out\registration\sole-proprietorship.txt
+Γ£ô Removed: .\out\registration\trade-license.txt
+Γ£ô Removed: .\out\registration\trust-registration.txt
+Γ£ô Removed: .\out\registration.txt
+Γ£ô Removed: .\out\reset-password.txt
+Γ£ô Removed: .\out\signup.txt
+Γ£ô Removed: .\out\tax-filing\15ca-15cb-filing.txt
+Γ£ô Removed: .\out\tax-filing\business-tax-filings.txt
+Γ£ô Removed: .\out\tax-filing\esi-return-filings.txt
+Γ£ô Removed: .\out\tax-filing\gst-returns.txt
+Γ£ô Removed: .\out\tax-filing\income-tax-notice.txt
+Γ£ô Removed: .\out\tax-filing\income-tax-return-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-1-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-2-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-3-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-4-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-5-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-6-filing.txt
+Γ£ô Removed: .\out\tax-filing\itr-7-filing.txt
+Γ£ô Removed: .\out\tax-filing\pf-pt-return-filings.txt
+Γ£ô Removed: .\out\tax-filing\tan-registration.txt
+Γ£ô Removed: .\out\tax-filing\tds-return-filings.txt
+Γ£à Cleanup complete! Removed 57 .txt file(s).

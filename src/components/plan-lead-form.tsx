@@ -106,20 +106,22 @@ export function PlanLeadForm({ planTitle, planPrice, open, onOpenChange }: PlanL
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-[95vw] md:max-w-4xl w-full p-6 md:p-10 bg-card border-cyan-500/20 rounded-3xl shadow-[0_0_50px_-12px_rgba(0,180,216,0.2)]">
-          <DialogHeader className="mb-6 flex flex-col items-center justify-center text-center">
-            <DialogTitle className="text-3xl md:text-4xl font-extrabold font-headline uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 w-full text-center">
-              Get Started with {planTitle}
+        <DialogContent className="max-w-[95vw] md:max-w-4xl w-full p-4 md:p-10 bg-card border-cyan-500/20 rounded-2xl md:rounded-3xl shadow-[0_0_50px_-12px_rgba(0,180,216,0.2)]">
+          <DialogHeader className="mb-4 md:mb-6 flex flex-col items-center justify-center text-center">
+            <DialogTitle className="text-2xl md:text-4xl font-extrabold font-headline uppercase tracking-tight w-full text-center">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 pb-1">
+                Get Started with {planTitle}
+              </span>
             </DialogTitle>
             <DialogDescription className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto font-medium text-center mt-2">
               Please provide your details below. Our team will contact you to initiate the process.
-              {planPrice && <span className="block mt-4 font-bold text-2xl text-foreground">Amount: ₹{planPrice}</span>}
+              {planPrice && <span className="block mt-2 md:mt-4 font-bold text-xl md:text-2xl text-foreground">Amount: ₹{planPrice}</span>}
             </DialogDescription>
           </DialogHeader>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6 py-2 md:py-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 min-w-0">
                 <FormField
                   control={form.control}
                   name="firstName"
@@ -181,9 +183,11 @@ export function PlanLeadForm({ planTitle, planPrice, open, onOpenChange }: PlanL
                   )}
                 />
               </div>
-              <div className="pt-6 flex justify-center">
-                <Button type="submit" size="lg" className="w-full md:w-2/3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold rounded-xl text-lg h-14 shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-0.5" disabled={isSubmitting}>
-                  {isSubmitting ? "Submitting..." : "Submit Details to CA"}
+              <div className="pt-4 md:pt-6 flex justify-center w-full min-w-0">
+                <Button type="submit" size="lg" className="w-full md:w-2/3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold rounded-lg md:rounded-xl text-base md:text-lg h-12 md:h-14 shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-0.5 whitespace-nowrap overflow-hidden" disabled={isSubmitting}>
+                  <span className="text-white relative z-10 w-full text-center block leading-none">
+                    {isSubmitting ? "Submitting..." : "Submit Details to CA"}
+                  </span>
                 </Button>
               </div>
             </form>

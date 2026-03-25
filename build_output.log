@@ -1,0 +1,20 @@
+
+> nextn@0.1.0 build
+> next build && node ./scripts/clean-out.js
+
+   Γû▓ Next.js 15.5.9
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 6.0s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/68) ...
+Error occurred prerendering page "/reset-password". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Missing Supabase credentials in .env.local
+    at e (E:\jyoti\cacsfrontend\.next\server\app\signup\page.js:1:13513)
+    at y (E:\jyoti\cacsfrontend\.next\server\app\reset-password\page.js:1:1346) {
+  digest: '954571679'
+}
+Export encountered an error on /reset-password/page: /reset-password, exiting the build.
+ Γ¿» Next.js build worker exited with code: 1 and signal: null
