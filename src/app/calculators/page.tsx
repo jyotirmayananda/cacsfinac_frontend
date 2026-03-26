@@ -20,18 +20,14 @@ const tdsRates = [
   { value: "194J", label: "Professional/Technical Services (Section 194J)", rate: 10, threshold: 30000 },
 ];
 
+import { AdvancedIncomeTaxCalculator } from "@/components/calculators/advanced-income-tax-calculator";
+
 export default function CalculatorsPage() {
   // TDS State
   const [tdsCategory, setTdsCategory] = useState("");
   const [tdsAmount, setTdsAmount] = useState("");
   const [hasPan, setHasPan] = useState("true");
   const [tdsResult, setTdsResult] = useState<{ rate: number; tax: number; net: number } | null>(null);
-
-  // Income Tax State
-  const [income, setIncome] = useState("");
-  const [deductions, setDeductions] = useState("");
-  const [ageGroup, setAgeGroup] = useState("below60");
-  const [itResult, setItResult] = useState<{ old: any; new: any; comparison: string; isNewBetter: boolean } | null>(null);
 
   const calculateTDS = () => {
     const amount = parseFloat(tdsAmount);
@@ -63,62 +59,6 @@ export default function CalculatorsPage() {
     });
   };
 
-  const calculateIncomeTax = () => {
-    const grossIncome = parseFloat(income);
-    const totalDeductions = parseFloat(deductions) || 0;
-    if (isNaN(grossIncome) || grossIncome <= 0) return;
-
-    // --- NEW REGIME FY 2024-25 ---
-    const stdDeductionNew = 75000;
-    const taxableIncomeNew = Math.max(0, grossIncome - stdDeductionNew);
-    let taxNew = 0;
-
-    if (taxableIncomeNew <= 700000) {
-      taxNew = 0; // Rebate Section 87A
-    } else {
-      // Slab-wise
-      if (taxableIncomeNew > 1500000) taxNew += (taxableIncomeNew - 1500000) * 0.3 + 30000 + 30000 + 20000 + 60000;
-      else if (taxableIncomeNew > 1200000) taxNew += (taxableIncomeNew - 1200000) * 0.2 + 30000 + 30000 + 20000;
-      else if (taxableIncomeNew > 1000000) taxNew += (taxableIncomeNew - 1000001) * 0.15 + 30000 + 20000;
-      else if (taxableIncomeNew > 700000) taxNew += (taxableIncomeNew - 700001) * 0.1 + 20000;
-      else if (taxableIncomeNew > 300000) taxNew += (taxableIncomeNew - 300001) * 0.05;
-    }
-    const cessNew = taxNew * 0.04;
-    const totalNew = taxNew + cessNew;
-
-    // --- OLD REGIME FY 2024-25 ---
-    const stdDeductionOld = 50000;
-    const taxableIncomeOld = Math.max(0, grossIncome - stdDeductionOld - Math.min(150000, totalDeductions));
-    let taxOld = 0;
-
-    if (taxableIncomeOld <= 500000) {
-      taxOld = 0; // Rebate Section 87A (capped at 12500)
-    } else {
-      if (taxableIncomeOld > 1000000) taxOld += (taxableIncomeOld - 1000000) * 0.3 + 12500 + 100000;
-      else if (taxableIncomeOld > 500000) taxOld += (taxableIncomeOld - 500000) * 0.2 + 12500;
-      else if (taxableIncomeOld > 250000) taxOld += (taxableIncomeOld - 250000) * 0.05;
-    }
-    const cessOld = taxOld * 0.04;
-    const totalOld = taxOld + cessOld;
-
-    let comparison = "Both are same.";
-    let isNewBetter = true;
-    if (totalNew < totalOld) {
-      comparison = `New Regime saves you ₹${(totalOld - totalNew).toFixed(0)}!`;
-      isNewBetter = true;
-    } else if (totalOld < totalNew) {
-      comparison = `Old Regime saves you ₹${(totalNew - totalOld).toFixed(0)}!`;
-      isNewBetter = false;
-    }
-
-    setItResult({
-      new: { tax: taxNew, cess: cessNew, total: totalNew },
-      old: { tax: taxOld, cess: cessOld, total: totalOld },
-      comparison: comparison,
-      isNewBetter: isNewBetter
-    });
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-[#F8FAFC] dark:bg-background">
       {/* Decorative Background Mesh Header */}
@@ -141,186 +81,35 @@ export default function CalculatorsPage() {
 
       <section className="w-full py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="income-tax" className="w-full">
               {/* BEAUTIFUL TABS SECTION */}
-              <TabsList className="flex items-center justify-center gap-3 bg-white/80 dark:bg-card border backdrop-blur-md rounded-2xl p-1.5 shadow-md mb-8">
+              <TabsList className="mb-12 flex items-center justify-center gap-4 bg-transparent border-none">
                 <TabsTrigger 
                   value="income-tax" 
                   className={cn(
-                    "flex-1 flex items-center justify-center gap-2 rounded-xl py-3.5 px-6 font-semibold text-base transition-all duration-300",
-                    "data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#00B4D8] data-[state=active]:to-[#0077B6] data-[state=active]:text-white data-[state=active]:shadow-lg"
+                    "rounded-2xl py-4 px-8 font-black text-lg transition-all duration-500 border-2 border-transparent",
+                    "data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900 data-[state=active]:shadow-2xl data-[state=active]:border-blue-500 data-[state=active]:text-blue-600 dark:data-[state=active]:text-blue-400 data-[state=inactive]:text-slate-400"
                   )}
                 >
-                  <Calculator className="h-5 w-5" />
-                  <span>Income Tax (Old vs New)</span>
+                  <Calculator className="h-6 w-6 mr-2" />
+                  <span>Income Tax (Advanced)</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="tds" 
                   className={cn(
-                    "flex-1 flex items-center justify-center gap-2 rounded-xl py-3.5 px-6 font-semibold text-base transition-all duration-300",
-                    "data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#00B4D8] data-[state=active]:to-[#0077B6] data-[state=active]:text-white data-[state=active]:shadow-lg"
+                    "rounded-2xl py-4 px-8 font-black text-lg transition-all duration-500 border-2 border-transparent",
+                    "data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900 data-[state=active]:shadow-2xl data-[state=active]:border-blue-500 data-[state=active]:text-blue-600 dark:data-[state=active]:text-blue-400 data-[state=inactive]:text-slate-400"
                   )}
                 >
-                  <Receipt className="h-5 w-5" />
+                  <Receipt className="h-6 w-6 mr-2" />
                   <span>TDS Calculator</span>
                 </TabsTrigger>
               </TabsList>
 
               {/* INCOME TAX CALCULATOR TAB */}
-              <TabsContent value="income-tax" className="mt-0">
-                <Card className="rounded-2xl border border-border/50 shadow-xl bg-white dark:bg-card overflow-hidden">
-                  <div className="h-1.5 bg-gradient-to-r from-[#00B4D8] to-[#0077B6]"></div>
-                  <CardHeader className="pb-6">
-                    <CardTitle className="text-2xl font-bold flex items-center gap-2 text-[#0D1B2A] dark:text-foreground">
-                      <Calculator className="h-6 w-6 text-[#00B4D8]" /> 
-                      Optimize Your Salary & Income Tax
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 bg-muted/20 rounded-2xl border border-border/40">
-                      <div className="space-y-2">
-                        <Label htmlFor="income" className="font-medium">Gross Annual Salary / Income (₹)</Label>
-                        <div className="relative">
-                          <Input
-                            id="income"
-                            type="number"
-                            placeholder="e.g. 850,000"
-                            value={income}
-                            onChange={(e) => setIncome(e.target.value)}
-                            className="pl-10 text-lg font-semibold"
-                          />
-                          <IndianRupee className="absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="deductions" className="font-medium">Claimable Deductions (80C, 80D, etc.) (₹)</Label>
-                        <Input
-                          id="deductions"
-                          type="number"
-                          placeholder="e.g. 150,000"
-                          value={deductions}
-                          onChange={(e) => setDeductions(e.target.value)}
-                          className="pl-3"
-                        />
-                        <p className="text-xs text-muted-foreground flex gap-1 items-center">
-                          <Lightbulb className="h-3.5 w-3.5 text-[#00B4D8] flex-shrink-0" />
-                          <span>Applicable only for standard deductions in Old Regime.</span>
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label className="font-medium">Age Category</Label>
-                        <Select value={ageGroup} onValueChange={setAgeGroup}>
-                          <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select Age" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="below60">Below 60 Years (General)</SelectItem>
-                            <SelectItem value="60to80">Senior Citizen (60 - 80)</SelectItem>
-                            <SelectItem value="above80">Super Senior (80+)</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <Button onClick={calculateIncomeTax} size="lg" className="w-full bg-[#00B4D8] hover:bg-[#0077B6] text-white font-bold py-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.01]">
-                      Calculate & Compare Tax
-                    </Button>
-
-                    {itResult && (
-                      <div className="mt-8 space-y-6 transition-all">
-                        {/* Winner Banner */}
-                        <div className={cn(
-                          "bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 p-5 rounded-2xl flex items-center gap-4 modern-shadow text-lg font-bold"
-                        )}>
-                          <div className="rounded-full bg-emerald-100 p-2 text-emerald-500">
-                            <CheckCircle2 className="h-6 w-6" />
-                          </div>
-                          <p>{itResult.comparison}</p>
-                        </div>
-
-                        {/* side by side comparison grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {/* New Regime */}
-                          <Card className={cn(
-                            "rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-300",
-                            itResult.isNewBetter ? "border-emerald-500 shadow-xl bg-emerald-50/20" : "border-border/60 bg-card"
-                          )}>
-                            <div className={cn("h-1", itResult.isNewBetter ? "bg-emerald-500" : "bg-muted")}></div>
-                            <CardHeader className="pb-2">
-                              {itResult.isNewBetter && <div className="text-xs font-bold text-center text-emerald-600 tracking-wider mb-2 uppercase">Recommended</div>}
-                              <CardTitle className="text-xl text-center font-bold text-foreground">New Tax Regime</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-3 pb-6">
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Standard Deduction:</span>
-                                <span className="font-semibold">₹75,000</span>
-                              </div>
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Investment Deductions:</span>
-                                <span className="text-muted-foreground italic">Not Allowed</span>
-                              </div>
-                              <div className="border-t border-dashed border-border/50 my-2" />
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Estimated calculated Tax:</span>
-                                <span className="font-medium">₹{itResult.new.tax.toFixed(0)}</span>
-                              </div>
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Health/Edu Cess (4%):</span>
-                                <span className="font-medium">₹{itResult.new.cess.toFixed(0)}</span>
-                              </div>
-                              <div className="border-t border-dashed border-border/50 my-2" />
-                              <div className="flex justify-between items-baseline pt-2">
-                                <span className="font-bold text-base">Total Tax Payable:</span>
-                                <span className="text-2xl font-black text-[#00B4D8]">₹{itResult.new.total.toFixed(0)}</span>
-                              </div>
-                            </CardContent>
-                          </Card>
-
-                          {/* Old Regime */}
-                          <Card className={cn(
-                            "rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-300",
-                            !itResult.isNewBetter ? "border-emerald-500 shadow-xl bg-emerald-50/20" : "border-border/60 bg-card"
-                          )}>
-                            <div className={cn("h-1", !itResult.isNewBetter ? "bg-emerald-500" : "bg-muted")}></div>
-                            <CardHeader className="pb-2">
-                              {!itResult.isNewBetter && <div className="text-xs font-bold text-center text-emerald-600 tracking-wider mb-2 uppercase">Recommended</div>}
-                              <CardTitle className="text-xl text-center font-bold text-foreground">Old Tax Regime</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-3 pb-6">
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Standard Deduction:</span>
-                                <span className="font-semibold">₹50,000</span>
-                              </div>
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Deductions Claimed:</span>
-                                <span className="font-semibold text-emerald-600">₹{Math.min(150000, parseFloat(deductions) || 0).toFixed(0)}</span>
-                              </div>
-                              <div className="border-t border-dashed border-border/50 my-2" />
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Estimated calculated Tax:</span>
-                                <span className="font-medium">₹{itResult.old.tax.toFixed(0)}</span>
-                              </div>
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Health/Edu Cess (4%):</span>
-                                <span className="font-medium">₹{itResult.old.cess.toFixed(0)}</span>
-                              </div>
-                              <div className="border-t border-dashed border-border/50 my-2" />
-                              <div className="flex justify-between items-baseline pt-2">
-                                <span className="font-bold text-base">Total Tax Payable:</span>
-                                <span className="text-2xl font-black text-[#0D1B2A] dark:text-foreground">₹{itResult.old.total.toFixed(0)}</span>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
+              <TabsContent value="income-tax" className="mt-0 outline-none focus:outline-none ring-0">
+                <AdvancedIncomeTaxCalculator />
               </TabsContent>
 
               {/* TDS CALCULATOR TAB */}
