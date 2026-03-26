@@ -32,7 +32,7 @@ export function ModernMarquee() {
     <section className="w-full py-24 bg-slate-50 dark:bg-slate-900/20 overflow-hidden relative">
       <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-white/[0.02]" />
       <div className="container mx-auto px-4 relative z-10 mb-12">
-        <p className="text-center text-xs font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.5em]">
+        <p className="text-center text-xs font-black text-primary uppercase tracking-[0.5em]">
           Recognized & Trusted Authority
         </p>
       </div>

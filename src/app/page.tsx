@@ -220,7 +220,7 @@ export default function Home() {
             className="mt-12 text-center"
           >
             <Button asChild size="lg" className="rounded-full px-12 py-8 text-lg font-bold shadow-2xl shadow-primary/20 hover:scale-105 transition-all bg-primary hover:bg-primary/90">
-              <Link href="/services">
+              <Link href="/compliance/bookkeeping">
                 Explore All Services
               </Link>
             </Button>
