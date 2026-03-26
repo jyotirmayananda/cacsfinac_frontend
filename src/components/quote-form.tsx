@@ -43,7 +43,6 @@ const quoteFormSchema = z.object({
   lastName: z.string().min(1, "Last name is required."),
   email: z.string().email("Invalid email address."),
   mobile: z.string().min(10, "Mobile number must be at least 10 digits."),
-  city: z.string().optional(),
   service: z.string().min(1, "Please select a service."),
 });
 
@@ -68,7 +67,6 @@ export function QuoteForm() {
       lastName: "",
       email: "",
       mobile: "",
-      city: "",
       service: "",
     },
   });
@@ -83,7 +81,6 @@ export function QuoteForm() {
         last_name: values.lastName,
         email: values.email,
         mobile: values.mobile,
-        city: values.city,
         service: values.service,
         form_type: 'quote',
       });
@@ -109,13 +106,12 @@ export function QuoteForm() {
   return (
     <>
       <Card className="w-full shadow-lg">
-        <CardHeader>
-          <CardTitle className="font-headline text-2xl text-center uppercase">
-            Get a Free CA-Led Consultation (15 Minutes)
+        <CardHeader className="space-y-4 pb-8">
+          <CardTitle className="text-3xl font-black text-center tracking-tight text-slate-900 dark:text-white">
+            Request a Consultation
           </CardTitle>
-          <CardDescription className="text-center text-muted-foreground">
-            Speak with our accounting team to understand compliance, costs, and
-            next steps — no obligation.
+          <CardDescription className="text-center text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed max-w-[280px] mx-auto">
+            Share your requirements and we will get back with a structured approach to support your financial and compliance needs.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -173,18 +169,6 @@ export function QuoteForm() {
               />
               <FormField
                 control={form.control}
-                name="city"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="City" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
                 name="service"
                 render={({ field }) => (
                   <FormItem>
@@ -193,8 +177,8 @@ export function QuoteForm() {
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Looking For*" />
+                        <SelectTrigger className="h-12 rounded-xl border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+                          <SelectValue placeholder="Service Requirement" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -209,11 +193,15 @@ export function QuoteForm() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Book Free Consultation"}
+              <Button type="submit" size="lg" className="w-full h-14 rounded-xl text-lg font-bold bg-primary hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all active:scale-[0.98]" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Schedule Consultation"}
               </Button>
             </form>
           </Form>
+
+          <p className="mt-8 text-[10px] text-center text-slate-400 dark:text-slate-500 font-medium leading-relaxed">
+            Services delivered through structured processes and in collaboration with qualified professionals.
+          </p>
         </CardContent>
       </Card>
 

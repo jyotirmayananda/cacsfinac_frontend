@@ -19,6 +19,9 @@ import {
   Fingerprint,
   CheckCircle2,
   ShieldCheck,
+  CheckSquare,
+  Scale,
+  Rocket,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -36,172 +39,86 @@ import { ITRPlansPopup } from "../components/itr-plans-popup";
 import { AddonServicesPopup } from "../components/addon-services-popup";
 import placeholderImages from "../lib/placeholder-images.json";
 import { AnimatedQuoteForm } from "../components/animated-quote-form";
-import Autoplay from "embla-carousel-autoplay";
-import sliderimg1 from "../../public/Image/income tax filing services.jpg";
-import sliderimg2 from "../../public/Image/Virtual CFO.jpg";
 import sliderimg3 from "../../public/Image/who-we-are-img2.jpg";
-import sliderimg4 from "../../public/Image/accounting & book keeping2.jpg";
-import sliderimg5 from "../../public/Image/strategic tax & wealth advisory2.jpg";
 import whoweare1 from "../../public/Image/who-we-are-img.jpg";
 import whoweare2 from "../../public/Image/who-we-are-img2.jpg";
-import { PricingSection } from "../components/pricing-section";
 
 
 const testimonials = [
   {
-    name: "Divya S",
-    company: "HR Manager",
-    avatar: "DS",
-    text: "I always found tax filing stressful. CACS FinAcc made it seamless filed in hours, explained every section. Never going elsewhere again.",
-  },
-  {
-    name: "Shankar Narayan",
-    company: "Retired Professional",
-    avatar: "SN",
-    text: "After selling my flat, I had no Idea about the exemptions. Their advice helped me reinvest smarty and save over $45 lakhs in capital gains tax.",
-  },
-  {
-    name: "Amit L",
-    company: "UX Designer: Freelancer",
-    avatar: "AL",
-    text: "I work across platforms and had income from multiple sources. CACS sorted it all with precision and helped me claim every eligible deduction.",
-  },
-  {
     name: "Souparna",
-    company: "Tech Startup Founder, Bengaluru",
+    company: "Founder — Tech Startup (Bengaluru)",
     avatar: "S",
-    text: "From incorporation to GST and payroll, they handled it all. As a Bengaluru-based tech startup, this was a game-changer. They helped us structure our investments and saved over ₹15 Lakhs in taxes.",
+    text: "From incorporation to GST and ongoing compliance, everything was handled in a structured and timely manner. Their support helped us streamline our financial processes and focus on growth.",
   },
   {
     name: "Harish T",
-    company: "UK-based Engineer",
+    company: "NRI Professional (UK)",
     avatar: "HT",
-    text: "As an NRI, I had confusion over indian taxation. They filed my returns and also advised on DTAA benefits. Transparent and efficient service.",
-  },
-  {
-    name: "Sneha S",
-    company: "Co-Founder, Hotel Startup",
-    avatar: "SS",
-    text: "Their virtual CFO service helped us fix our cash fiow issues and prepare for investor due diligence.",
+    text: "As an NRI, I had multiple concerns around Indian taxation. The team provided clear guidance and ensured my filings were accurate and compliant. The entire process was smooth and transparent.",
   },
   {
     name: "N. S",
-    company: "HR Manager, Constant Business",
+    company: "Director — SME Business",
     avatar: "NS",
-    text: "We now have full visibility over our finances. Monthly reporting is consistent and accurate.",
+    text: "We now have complete visibility over our finances. Reporting is consistent, and compliance is handled without delays. It has significantly reduced our operational stress.",
   },
   {
-    name: "M. Rajeev",
-    company: "Tech Startup",
-    avatar: "MR",
-    text: "Saved us time, penalties. and late fees. We're fully compliant thanks to CACS FinAcc.",
+    name: "Amit L",
+    company: "Independent Professional",
+    avatar: "AL",
+    text: "Managing income from multiple sources was complex. Their structured approach ensured everything was properly reported, and I was able to optimize my tax position effectively.",
+  },
+  {
+    name: "Shankar N",
+    company: "Retired Professional",
+    avatar: "SN",
+    text: "Their guidance on capital gains and reinvestment helped me make informed decisions and manage my tax liability efficiently.",
   },
   {
     name: "Ankita J",
-    company: "Logistics Company",
+    company: "Logistics Business",
     avatar: "AJ",
-    text: "All our statutory filings are timely and error-free. I don't need to chase CA firms anymore.",
+    text: "All our statutory filings are handled on time and with accuracy. We no longer have to worry about deadlines or compliance gaps.",
   },
 ];
 
 const homeServices = [
   {
-    icon: Book,
-    title: "Online Accounting & Bookkeeping",
-    href: "/compliance/bookkeeping",
+    icon: Landmark,
+    title: "Financial Advisory & Virtual CFO",
+    description: "Supporting businesses with financial planning, cash flow management, and decision-making insights to improve control and growth.",
+    href: "/compliance/virtual-cfo",
   },
   {
-    icon: Landmark,
-    title: "Business Tax Filing Services (Income Tax & GST)",
+    icon: FileText,
+    title: "Taxation & Compliance",
+    description: "Handling income tax, GST, and regulatory filings with accuracy, ensuring timely compliance and reduced risk.",
     href: "/tax-filing/business-tax-filings",
   },
   {
-    icon: Receipt,
-    title: "TDS Return Filing, Interest Calculation & Form 26Q/24Q Support",
-    href: "/tax-filing/tds-return-filings",
+    icon: Book,
+    title: "Accounting & Financial Management",
+    description: "Maintaining structured books, financial reports, and MIS to provide clear and reliable financial information.",
+    href: "/compliance/bookkeeping",
   },
   {
-    icon: User,
-    title: "ITR-1 (Sahaj) Filing Services",
-    href: "/tax-filing/itr-1-filing",
+    icon: Scale,
+    title: "Corporate & Legal Compliance",
+    description: "Managing ROC filings, company law requirements, and regulatory documentation in a systematic manner.",
+    href: "/compliance/corporate-governance",
   },
   {
-    icon: FileText,
-    title: "ITR-2 Filing Services",
-    href: "/tax-filing/itr-2-filing",
+    icon: ShieldCheck,
+    title: "Audit Support & Financial Review",
+    description: "Preparing and supporting audit processes in coordination with qualified professionals to ensure smooth compliance.",
+    href: "/compliance/internal-audit",
   },
   {
-    icon: Calculator,
-    title: "ITR-3 Filing for Professionals & Business Owners",
-    href: "/tax-filing/itr-3-filing",
-  },
-  {
-    icon: FileText,
-    title: "ITR-4 (Sugam) Presumptive Scheme Filing",
-    href: "/tax-filing/itr-4-filing",
-  },
-  {
-    icon: Users,
-    title: "ITR-5 Filing for Firms, LLPs & AOPs",
-    href: "/tax-filing/itr-5-filing",
-  },
-  {
-    icon: Building2,
-    title: "ITR-6 Filing for Private Limited & Companies",
-    href: "/tax-filing/itr-6-filing",
-  },
-  {
-    icon: Lightbulb,
-    title: "GST Registration, Monthly Filing & ITC Reconciliation",
-    href: "/registration/gst-pf-pt-registration",
-  },
-  {
-    icon: FileWarning,
-    title: "Income Tax Notice Response & Rectification Services",
-    href: "/tax-filing/income-tax-notice",
-  },
-  {
-    icon: Fingerprint,
-    title: "PAN/TAN Allotment & Digital Signature (DSC) Services",
-    href: "/tax-filing/tan-registration",
-  },
-];
-
-const sliderItems = [
-  {
-    title: "Hassle-Free ITR Filing for Individuals & Professionals",
-    description:
-      "Leave the confusion behind. Our experts ensure accurate ITR filing, TDS reconciliation, and Form 26AS matching—on time, every time.",
-    image: sliderimg1,
-    href: "https://wa.me/9591633648",
-  },
-  {
-    title: "Smart Financial Leadership Without a Full-Time CFO",
-    description:
-      "Gain CFO-level insights to manage cash flow, investor decks, MIS reports, and financial health — tailored for your startup growth.",
-    image: sliderimg2,
-    href: "https://wa.me/9591633648",
-  },
-  {
-    title: "Compliance Made Simple for Private Limited & LLPs",
-    description:
-      "From company registration to annual returns, get full secretarial support under Companies Act, 2013 — with no hidden delays.",
-    image: sliderimg3,
-    href: "https://wa.me/9591633648",
-  },
-  {
-    title: "Stay GST Compliant with Professional Bookkeeping",
-    description:
-      "Ensure timely GSTR filing, maintain accurate ledgers, and get ITC maximized — all handled by dedicated professionals.",
-    image: sliderimg4,
-    href: "https://wa.me/9591633648",
-  },
-  {
-    title: "Build Wealth with Expert Tax Planning & Advice",
-    description:
-      "Plan capital gains, reduce tax outflows, and structure your income with high-impact tax-saving strategies led by experts.",
-    image: sliderimg5,
-    href: "https://wa.me/9591633648",
+    icon: Rocket,
+    title: "Business Setup & Registrations",
+    description: "Assisting with company formation, registrations, and initial structuring for a compliant business start.",
+    href: "/registration/company-registration",
   },
 ];
 
@@ -213,10 +130,14 @@ const whoWeAreServices = [
   "Financial and Business Restructuring Guidance – assisting with mergers, acquisitions, debt restructuring, and capital optimization.",
 ];
 
+import { ModernHero } from "../components/modern-hero";
+import { ModernMarquee } from "../components/modern-marquee";
+import { ModernServiceCard } from "../components/modern-service-card";
+import { Abstract3DScene } from "../components/abstract-3d-scene";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-  const [isItrOpen, setIsItrOpen] = React.useState(false);
-  const [isAddonOpen, setIsAddonOpen] = React.useState(false);
   const [isQuoteFormPopupOpen, setIsQuoteFormPopupOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -228,500 +149,423 @@ export default function Home() {
 
   const handleWelcomeClose = (open: boolean) => {
     setIsPopupOpen(open);
-    if (!open) {
-      setTimeout(() => {
-        setIsItrOpen(true);
-      }, 300); // Small delay before opening the second popup
-    }
   };
 
-  const handleItrClose = (open: boolean) => {
-    setIsItrOpen(open);
-    if (!open) {
-      setTimeout(() => {
-        setIsAddonOpen(true);
-      }, 300); // Small delay before opening the third popup
-    }
-  };
-
-  const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
-  );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       <WelcomePopup open={isPopupOpen} onOpenChange={handleWelcomeClose} />
-      <ITRPlansPopup open={isItrOpen} onOpenChange={handleItrClose} />
-      <AddonServicesPopup open={isAddonOpen} onOpenChange={setIsAddonOpen} />
-      <section id="hero" className="w-full">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-12">
-            <div className="flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 uppercase leading-tight">
-                <span className="text-gradient bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400">
-                  Virtual CFO, NRI Tax & Compliance
-                </span>
-                <br />
-                <span className="text-foreground text-3xl md:text-5xl">— Expert Services in Bengaluru</span>
-              </h1>
-              <p className="mt-4 text-2xl text-muted-foreground max-w-3xl">
-                Helping Startups, NRIs & SMEs in Bengaluru & across India with Taxation, ROC, MIS &
-                Financial Strategy.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto justify-center lg:justify-start">
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link href="/contact">
-                    Contact Us <ArrowRight className="ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
 
-            <div className="flex items-center justify-center">
-              <div className="w-full max-w-md">
-                <AnimatedQuoteForm />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ModernHero
+        title={<>Strategic Financial <br /> Advisory & <br /> <span className="opacity-50">Compliance</span></>}
+        subtitle="Supporting startups, SMEs, and professionals with taxation, regulatory compliance, and financial management — in collaboration with qualified professionals."
+      />
+      <ModernMarquee />
 
-      {/* Trust & Authority Signals Banner for SEO */}
-      <section className="w-full py-12 md:py-16 relative overflow-hidden bg-gradient-to-b from-transparent via-secondary/60 to-transparent">
-        {/* Subtle background decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[150px] bg-cyan-500/10 dark:bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+      <section id="services" className="w-full py-32 bg-white dark:bg-slate-950 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <p className="text-center text-xs md:text-sm font-bold text-muted-foreground/80 uppercase tracking-widest md:tracking-[0.25em] mb-10">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600 dark:from-gray-400 dark:via-gray-100 dark:to-gray-400">
-              Trusted by industry leaders & compliant with Indian regulatory bodies
-            </span>
-          </p>
-        </div>
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-primary font-bold tracking-[0.3em] uppercase mb-4"
+            >
+              Services
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-slate-900 dark:text-white"
+            >
+              Our Core Services
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-slate-600 dark:text-slate-400 mt-6 max-w-2xl mx-auto"
+            >
+              We provide structured financial, taxation, and compliance support to businesses and professionals, delivered with consistency and clarity.
+            </motion.p>
+          </div>
 
-        {/* Marquee Animation Container */}
-        <div className="relative flex overflow-hidden group w-full before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[50px] md:before:w-[150px] before:bg-gradient-to-r before:from-background before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-[50px] md:after:w-[150px] after:bg-gradient-to-l after:from-background after:to-transparent after:content-['']">
-          <div className="flex animate-marquee gap-4 md:gap-6 lg:gap-8 group-hover:[animation-play-state:paused] w-max select-none">
-            {/* Semantic trust anchors for SEO Authority repeated multiple times for seamless looping */}
-            {[...Array(2)].map((_, i) => (
-              <React.Fragment key={i}>
-                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(6,182,212,0.3)] hover:-translate-y-1 hover:border-cyan-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
-                  <div className="p-2.5 rounded-full bg-cyan-100/80 dark:bg-cyan-900/40 text-cyan-600 dark:text-cyan-400">
-                    <Building2 className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">MCA Registered</span>
-                </div>
-                
-                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(34,197,94,0.3)] hover:-translate-y-1 hover:border-green-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
-                  <div className="p-2.5 rounded-full bg-green-100/80 dark:bg-green-900/40 text-green-600 dark:text-green-400">
-                    <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">Startup India</span>
-                </div>
-                
-                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.3)] hover:-translate-y-1 hover:border-blue-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
-                  <div className="p-2.5 rounded-full bg-blue-100/80 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
-                    <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">GST Compliant</span>
-                </div>
-                
-                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(99,102,241,0.3)] hover:-translate-y-1 hover:border-indigo-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
-                  <div className="p-2.5 rounded-full bg-indigo-100/80 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400">
-                    <User className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">MSME Recognized</span>
-                </div>
-                
-                <div className="flex items-center gap-3 px-5 py-3 md:px-6 md:py-4 rounded-full bg-background/40 border border-border/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(249,115,22,0.3)] hover:-translate-y-1 hover:border-orange-500/50 hover:bg-background/80 transition-all duration-300 cursor-default backdrop-blur-xl">
-                  <div className="p-2.5 rounded-full bg-orange-100/80 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400">
-                    <Landmark className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <span className="font-bold text-sm md:text-base text-foreground/90 whitespace-nowrap pr-2">Income Tax Dept.</span>
-                </div>
-              </React.Fragment>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {homeServices.map((service, index) => (
+              <ModernServiceCard key={index} {...service} index={index} />
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <p className="text-lg font-bold text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed italic">
+              Services delivered through structured processes and in collaboration with qualified professionals.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
+            <Button asChild size="lg" className="rounded-full px-12 py-8 text-lg font-bold shadow-2xl shadow-primary/20 hover:scale-105 transition-all bg-primary hover:bg-primary/90">
+              <Link href="/services">
+                Explore All Services
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      <section id="services" className="w-full py-10 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase">
-              OUR CORE SERVICES
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {homeServices.map((service, index) => (
-              <Link key={index} href={service.href}>
-                <Card className="group relative flex flex-col items-start justify-between p-6 text-left rounded-3xl glass-panel text-card-foreground transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.2)] overflow-hidden h-56 w-full cursor-pointer border-opacity-40">
-                  <div className="absolute inset-0 bg-primary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-in-out"></div>
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                  <div className="relative z-10 flex flex-col h-full w-full">
-                    <div className="rounded-full bg-primary/10 backdrop-blur-sm p-3 transition-all duration-300 group-hover:bg-white group-hover:text-primary w-fit shadow-inner">
-                      <service.icon className="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-primary" />
-                    </div>
-                    <div className="flex-grow flex flex-col justify-center">
-                      <h3 className="text-xl font-semibold font-headline">
-                        {service.title}
+      <section id="who-we-are" className="w-full py-32 bg-slate-50 dark:bg-slate-900/10">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="text-primary font-bold tracking-[0.3em] uppercase mb-8">WHO WE ARE</div>
+              <div className="space-y-6 text-xl text-slate-600 dark:text-slate-400 leading-relaxed md:text-justify font-medium">
+                <p>
+                  CACS FinAcc is a Bengaluru-based financial and compliance support platform working with startups, SMEs, and professionals across India.
+                </p>
+                <p>
+                  We collaborate with qualified Chartered Accountants and professionals to deliver structured financial management, taxation, and regulatory compliance services.
+                </p>
+                <p className="border-l-4 border-primary pl-6 font-bold py-2 text-slate-800 dark:text-slate-200">
+                  Focused on clarity, consistency, and professional execution across all engagements.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                {whoWeAreServices.slice(0, 4).map((service, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm"
+                  >
+                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-snug">{service.split('–')[0]}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-square relative rounded-[4rem] overflow-hidden shadow-2xl">
+                <Image
+                  src={whoweare1}
+                  alt="CA Consultation for Bengaluru Startups and SMEs"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="absolute -bottom-10 -left-10 glass-panel bg-primary text-white p-10 rounded-[3rem] shadow-2xl backdrop-blur-xl border border-white/20"
+              >
+                <p className="text-6xl font-black mb-1">10+</p>
+                <p className="text-xs font-black tracking-[0.2em] uppercase opacity-80">
+                  Years of Excellence
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      <section id="why-choose-us" className="w-full py-32 bg-white dark:bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div className="lg:sticky lg:top-32 h-fit">
+              <div className="text-primary font-bold tracking-[0.3em] uppercase mb-6">Why Choose CACS FinAcc</div>
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-slate-900 dark:text-white mb-8 leading-[0.95]">
+                Reliable & <br /> Professionally <br /> Aligned Support
+              </h2>
+              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-md italic">
+                We focus on delivering structured, reliable, and professionally aligned financial and compliance support for businesses and professionals.
+              </p>
+            </div>
+
+            <div className="space-y-12">
+              {[
+                {
+                  id: "01",
+                  title: "Structured & Process-Driven Approach",
+                  description: "We follow a disciplined and systematic approach to financial management and compliance, ensuring accuracy, consistency, and timely execution.",
+                  icon: ShieldCheck
+                },
+                {
+                  id: "02",
+                  title: "Collaboration with Qualified Professionals",
+                  description: "We work in collaboration with Chartered Accountants and Company Secretaries, ensuring that all services are aligned with professional standards and regulatory requirements.",
+                  icon: Users
+                },
+                {
+                  id: "03",
+                  title: "Focus on Clarity & Practical Support",
+                  description: "Our approach goes beyond execution—we aim to provide clarity, simplify processes, and support better financial decision-making.",
+                  icon: Lightbulb
+                },
+                {
+                  id: "04",
+                  title: "Reliable & Consistent Delivery",
+                  description: "We prioritize timely communication, proper documentation, and consistent delivery, helping businesses stay organized and compliant without last-minute stress.",
+                  icon: FileText
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group flex gap-8 items-start relative pl-12"
+                >
+                  <div className="absolute left-0 top-0 h-full w-[2px] bg-slate-100 dark:bg-slate-800">
+                    <motion.div
+                      initial={{ height: 0 }}
+                      whileInView={{ height: "100%" }}
+                      transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
+                      className="w-full bg-primary"
+                    />
+                  </div>
+
+                  <div className="flex-grow pt-2">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="text-4xl font-black text-slate-200 dark:text-slate-800 tabular-nums">
+                        {item.id}
+                      </span>
+                      <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary transition-colors">
+                        {item.title}
                       </h3>
                     </div>
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      className="mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 self-start"
-                      asChild
-                    >
-                      <span>Know More</span>
-                    </Button>
+                    <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+                      {item.description}
+                    </p>
                   </div>
-                </Card>
-              </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-we-solve-problems" className="w-full py-32 bg-slate-50 dark:bg-slate-900/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <div className="text-primary font-bold tracking-[0.3em] uppercase mb-4">How We Support Your Business</div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-slate-900 dark:text-white mb-8">
+              Reliable Solutions for <br /> Sustainable Growth
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400">
+              We help businesses manage financial challenges, improve compliance, and build structured systems for sustainable growth.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                id: "01",
+                icon: FileWarning,
+                title: "Improving Compliance Visibility",
+                problem: "Missed GST, TDS, or ROC deadlines can lead to penalties, notices, and operational disruptions.",
+                solution: "We implement structured compliance tracking and ensure timely filings, helping businesses stay compliant and avoid unnecessary risks."
+              },
+              {
+                id: "02",
+                icon: Landmark,
+                title: "Strengthening Cash Flow Management",
+                problem: "Growing businesses often face cash flow issues due to lack of visibility and control over financial operations.",
+                solution: "Through structured reporting and financial planning, we help businesses monitor performance, manage cash flows, and improve decision-making."
+              },
+              {
+                id: "03",
+                icon: CheckSquare,
+                title: "Managing Tax Efficiency",
+                problem: "Businesses and professionals often pay higher taxes due to lack of planning and awareness of available options.",
+                solution: "We provide practical tax planning support to ensure compliance while helping optimize tax outflows within the legal framework."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group p-8 rounded-[3rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:shadow-2xl transition-all duration-500 relative"
+              >
+                <div className="flex justify-between items-start mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <item.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                  </div>
+                  <span className="text-5xl font-black text-slate-200 dark:text-slate-800">{item.id}</span>
+                </div>
+
+                <h3 className="text-2xl font-black mb-8 text-slate-900 dark:text-white leading-tight uppercase tracking-tight">
+                  {item.title}
+                </h3>
+
+                <div className="space-y-6">
+                  <div>
+                    <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-2">The Challenge</div>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                      {item.problem}
+                    </p>
+                  </div>
+
+                  <div className="h-px w-full bg-slate-100 dark:bg-slate-800" />
+
+                  <div>
+                    <div className="text-[10px] font-black text-green-500 uppercase tracking-[0.2em] mb-2">Our Approach</div>
+                    <p className="text-slate-900 dark:text-white leading-relaxed font-semibold text-sm italic">
+                      {item.solution}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="image-slider" className="w-full py-6">
-        <div className="container mx-auto px-4">
+      <section id="testimonials" className="relative w-full py-32 bg-slate-50 dark:bg-slate-900/10 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <div className="text-primary font-bold tracking-[0.3em] uppercase mb-4">Client Success</div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-slate-900 dark:text-white mb-8">
+              What Our <br /> Clients Say
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400">
+              Trusted by startups and SMEs across India for our precision and strategic guidance.
+            </p>
+          </div>
+
           <Carousel
-            plugins={[plugin.current]}
             opts={{
               align: "start",
               loop: true,
             }}
-            className="w-full"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
+            className="w-full max-w-6xl mx-auto"
           >
             <CarouselContent>
-              {sliderItems.map((item, index) => (
-                <CarouselItem key={index}>
-                  <Link href={item.href} target="_blank">
-                    <div className="relative h-[500px] w-full rounded-2xl overflow-hidden group">
-                      <Image
-                        src={item.image.src}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        data-ai-hint={item.image}
-                      />
-                      <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center p-4">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline text-white uppercase">
-                          {item.title}
-                        </h2>
-                        <p className="mt-4 text-lg text-white/90 max-w-3xl">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 p-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="h-full"
+                  >
+                    <Card className="h-full flex flex-col bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 rounded-[2.5rem] p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                      <CardContent className="p-0 flex-grow flex flex-col justify-between">
+                        <div>
+                          <Quote className="h-10 w-10 text-primary/20 mb-6" />
+                          <p className="text-slate-700 dark:text-slate-300 italic text-lg leading-relaxed">
+                            "{testimonial.text}"
+                          </p>
+                        </div>
+                        <div className="mt-10 flex items-center gap-4">
+                          <Avatar className="h-12 w-12 border-2 border-primary/20">
+                            <AvatarFallback className="bg-primary text-white font-bold">
+                              {testimonial.avatar}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <p className="font-black text-slate-900 dark:text-white uppercase tracking-tight">
+                              {testimonial.name}
+                            </p>
+                            <p className="text-xs font-bold text-primary uppercase tracking-widest">
+                              {testimonial.company}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 hover:bg-black/70 border-none" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 hover:bg-black/70 border-none" />
+            <CarouselPrevious className="hidden md:flex -left-12 border-none bg-white/50 dark:bg-slate-800/50 backdrop-blur-md shadow-xl" />
+            <CarouselNext className="hidden md:flex -right-12 border-none bg-white/50 dark:bg-slate-800/50 backdrop-blur-md shadow-xl" />
           </Carousel>
         </div>
       </section>
 
-      <section id="who-we-are" className="w-full py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline text-gray-500 dark:text-white tracking-wider uppercase">
-              WHO WE ARE
-            </h2>
-          </div>
-          <p className=" text-justify text-muted-foreground mb-12">
-            At CACS FinAcc, a trusted firm based in Bengaluru, we provide a one-stop solution for all your
-            accounting, financial, compliance, and corporate governance needs across India.
-            Our network of qualified professionals, including experienced
-            Chartered Accountants, Company Secretaries, and finance experts,
-            ensures a holistic and strategic approach to solving your business
-            challenges. Whether you require income tax return filing, GST
-            registration and compliance, TDS management, corporate governance
-            solutions, or regulatory compliance support, we deliver expert
-            insights that help you make informed decisions, reduce risks, and
-            optimize your operations.
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-primary font-headline uppercase">
-                OUR SERVICES INCLUDE
-              </h3>
-              <ul className="space-y-4">
-                {whoWeAreServices.map((service, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                    <p className="text-muted-foreground">{service}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="relative h-[450px]">
-              <Image
-                src={whoweare1}
-                alt="CA Consultation for Bengaluru Startups and SMEs"
-                width={400}
-                height={200}
-                className="rounded-2xl shadow-lg object-cover w-full h-full"
-                data-ai-hint={placeholderImages.homepage.whoWeAre.primary.hint}
-              />
-              <div className="absolute -bottom-8 -left-8 w-48 h-48">
-                <Image
-                  src={whoweare2}
-                  alt="Expert Tax Filing & Corporate Compliance in Bengaluru"
-                  width={200}
-                  height={200}
-                  className="rounded-2xl shadow-xl border-4 border-white object-cover"
-                  data-ai-hint={
-                    placeholderImages.homepage.whoWeAre.secondary.hint
-                  }
-                />
-              </div>
-              <div className="absolute -bottom-8 right-8 glass-panel bg-blue-600/90 text-white p-6 rounded-2xl shadow-2xl text-center backdrop-blur-xl border border-white/20">
-                <p className="text-5xl font-bold mb-1">10+</p>
-                <p className="text-sm font-medium tracking-wide opacity-90">
-                  Years of experience in business service
-                </p>
-              </div>
-            </div>
-          </div>
-          <p className="text-justify text-muted-foreground mt-16">
-            Our goal is simple — to keep your business compliant, efficient, and
-            profitable, while we handle the complexities of finance and legal
-            regulations. With CACS FinAcc as your trusted partner, you can focus
-            on growth while we ensure your business meets every legal, tax, and
-            compliance requirement with precision and professionalism.
-          </p>
+      <section id="cta" className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-slate-900" />
+        <div className="absolute inset-0 opacity-30">
+          <Abstract3DScene />
         </div>
-      </section>
 
-      <PricingSection />
-
-      <section id="how-we-solve-problems" className="w-full py-16 md:py-24 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-3xl md:text-5xl font-extrabold font-headline uppercase tracking-tight mb-6 text-primary">
-              How CACS FinAcc Solves Your Business Problems
-            </h2>
-            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              We don't just crunch numbers; we engineer financial scalability and compliance safety for startups, SMEs, and MSMEs across Bengaluru and India.
-            </p>
-          </div>
+          <div className="max-w-7xl mx-auto bg-white/5 backdrop-blur-3xl rounded-[4rem] p-12 md:p-20 border border-white/10 shadow-2xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary blur-[100px] rounded-full opacity-20 -translate-y-1/2 translate-x-1/2" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-8 max-w-7xl mx-auto">
-            {/* Card 1 */}
-            <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
-                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-white/10 select-none z-0 leading-none">01</div>
-                
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
-                    <FileWarning className="w-8 h-8 text-blue-600" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-8 text-foreground leading-snug">Eliminating Compliance Blindspots</h3>
-                  
-                  <div className="space-y-6 flex-grow flex flex-col justify-between">
-                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-400">
-                      <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">
-                        THE PROBLEM
-                      </h4>
-                      <p className="text-muted-foreground text-[14px] leading-relaxed">
-                        Missing statutory deadlines for GST, TDS, or ROC filings leads to frozen bank accounts, severe penalties, and director disqualifications.
-                      </p>
-                    </div>
-                    
-                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-600">
-                      <h4 className="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-3">
-                        OUR SOLUTION
-                      </h4>
-                      <p className="text-muted-foreground text-[14px] leading-relaxed">
-                        Our dedicated CS and CA team utilize a proactive compliance calendar tailored to your business structure, acting as an impenetrable firewall against tax notices.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            {/* Card 2 */}
-            <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
-                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-white/10 select-none z-0 leading-none">02</div>
-                
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
-                    <Landmark className="w-8 h-8 text-blue-600" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-8 text-foreground leading-snug">Fixing Cash Flow Hemorrhaging</h3>
-                  
-                  <div className="space-y-6 flex-grow flex flex-col justify-between">
-                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-400">
-                      <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">
-                        THE PROBLEM
-                      </h4>
-                      <p className="text-muted-foreground text-[14px] leading-relaxed">
-                        Rapidly scaling startups often burn through their Series-A funding prematurely due to invisible operational inefficiencies and poor working capital cycles.
-                      </p>
-                    </div>
-                    
-                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-600">
-                      <h4 className="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-3">
-                        OUR SOLUTION
-                      </h4>
-                      <p className="text-muted-foreground text-[14px] leading-relaxed">
-                        Through our <em className="text-foreground/80 font-medium not-italic font-semibold">Virtual CFO services</em>, we establish granular Unit Economics reporting, optimize your CAC to LTV ratios, and enforce strict controls.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Card 3 */}
-            <Card className="relative h-full bg-card border-[1.5px] border-blue-100/80 dark:border-blue-900/40 rounded-[2rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8 md:p-10 flex flex-col h-full relative z-10">
-                <div className="absolute top-4 right-6 text-[120px] font-black text-blue-50/80 dark:text-white/10 select-none z-0 leading-none">03</div>
-                
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/40 mb-8 border border-blue-100 dark:border-blue-800">
-                    <Calculator className="w-8 h-8 text-blue-600" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-8 text-foreground leading-snug">Optimizing High-Tax Burdens</h3>
-                  
-                  <div className="space-y-6 flex-grow flex flex-col justify-between">
-                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-400">
-                      <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-widest mb-3">
-                        THE PROBLEM
-                      </h4>
-                      <p className="text-muted-foreground text-[14px] leading-relaxed">
-                        Sole Proprietors, Freelancers, and HNIs often pay maximum slab rates failing to utilize strategic deductions and presumptive taxation schemes.
-                      </p>
-                    </div>
-                    
-                    <div className="p-5 rounded-lg bg-blue-50/50 dark:bg-blue-900/10 border-l-4 border-l-blue-600">
-                      <h4 className="text-[11px] font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-3">
-                        OUR SOLUTION
-                      </h4>
-                      <p className="text-muted-foreground text-[14px] leading-relaxed">
-                        We deploy advanced tax planning frameworks. Whether restructuring salary, crypto-tax loss harvesting, or DTAA benefits for NRIs, we legally minimize outflows.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="testimonials"
-        className="relative w-full py-12 md:py-20 overflow-hidden"
-      >
-        <div className="container mx-auto px-4 relative z-5">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase">
-              WHAT OUR CLIENTS SAY
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-              Real stories from businesses we've helped succeed.
-            </p>
-          </div>
-          <div className="relative flex justify-center items-center">
-            <div className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] border rounded-full border-border/50 animate-spin-slow"></div>
-            <div className="absolute w-[500px] h-[500px] md:w-[800px] md:h-[800px] border rounded-full border-border/50 animate-spin-very-slow"></div>
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full max-w-4xl mx-auto"
-            >
-              <CarouselContent>
-                {testimonials.map((testimonial, index) => (
-                  <CarouselItem
-                    key={index}
-                    className="md:basis-1/2 lg:basis-1/2 p-4"
-                  >
-                    <div className="h-full">
-                      <Card className="h-full flex flex-col glass-panel border-white/20 p-6 hover:scale-[1.02] transition-transform duration-300">
-                        <CardContent className="pt-6 flex-grow flex flex-col justify-between">
-                          <div>
-                            <Quote className="h-8 w-8 text-primary mb-4" />
-                            <p className="text-muted-foreground italic">
-                              "{testimonial.text}"
-                            </p>
-                          </div>
-                          <div className="mt-6 flex items-center">
-                            <Avatar className="glossy-blue-background">
-                              <AvatarFallback className="bg-transparent">
-                                <User className="h-5 w-5 text-white" />
-                              </AvatarFallback>
-                            </Avatar>
-                            <div className="ml-4">
-                              <p className="font-semibold">
-                                {testimonial.name}
-                              </p>
-                              <p className="text-sm text-muted-foreground">
-                                {testimonial.company}
-                              </p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-          </div>
-        </div>
-      </section>
-
-      <section id="cta" className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="glossy-blue-background text-primary-foreground rounded-3xl p-8 md:p-12 text-center">
-            <div className="space-y-6 max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase">
-                Get Expert Financial Advice — Free 15-Minute Consultation
-              </h2>
-              <p className="text-lg">
-                Our team of qualified professionals supports businesses with
-                accounting, taxation, and compliance — so you can focus on
-                growth, not deadlines.
-              </p>
-              <div className="pt-4">
-                <Dialog
-                  open={isQuoteFormPopupOpen}
-                  onOpenChange={setIsQuoteFormPopupOpen}
-                >
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary rounded-full px-8 py-6 text-lg font-semibold"
-                    >
-                      Book Free Consultation
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <AnimatedQuoteForm />
-                  </DialogContent>
-                </Dialog>
-                <p className="text-sm mt-4 text-white/80">
-                  No obligation • Confidential discussion • Response within 24
-                  hours
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8 text-center lg:text-left">
+                <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white leading-[0.9]">
+                  Looking for a <span className="text-primary">reliable</span> <br /> financial and <br /> compliance partner?
+                </h2>
+                <p className="text-xl text-slate-300 leading-relaxed font-medium">
+                  We support startups, businesses, and professionals with structured financial management, taxation, and regulatory compliance—helping you stay organized, compliant, and focused on growth.
                 </p>
+                <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
+                  <Dialog open={isQuoteFormPopupOpen} onOpenChange={setIsQuoteFormPopupOpen}>
+                    <DialogTrigger asChild>
+                      <Button size="lg" className="rounded-full px-12 py-8 text-xl font-black uppercase tracking-tighter shadow-2xl shadow-primary/30 hover:scale-105 transition-transform">
+                        Schedule a Consultation
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-md bg-white dark:bg-slate-950 rounded-[3rem] border-none shadow-2xl p-2">
+                      <div className="bg-white dark:bg-slate-950 rounded-[2.8rem] overflow-hidden">
+                        <AnimatedQuoteForm />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+                <div className="flex items-center gap-4 justify-center lg:justify-start text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 whitespace-nowrap">
+                  <div className="flex items-center gap-1.5"><CheckCircle2 size={12} className="text-primary" /> No-obligation</div>
+                  <span className="w-1 h-1 rounded-full bg-slate-700" />
+                  <div className="flex items-center gap-1.5"><CheckCircle2 size={12} className="text-primary" /> Confidential</div>
+                  <span className="w-1 h-1 rounded-full bg-slate-700" />
+                  <div className="flex items-center gap-1.5"><CheckCircle2 size={12} className="text-primary" /> 24h Response</div>
+                </div>
+              </div>
+
+              <div className="hidden lg:block relative">
+                <div className="aspect-square bg-gradient-to-br from-primary to-blue-600 rounded-[3rem] rotate-6 opacity-20 absolute inset-0" />
+                <div className="aspect-square bg-white/10 backdrop-blur-2xl rounded-[3rem] border border-white/20 flex flex-col items-center justify-center p-12 relative z-10">
+                  <div className="text-7xl font-black text-white mb-4 tracking-tighter">15</div>
+                  <div className="text-sm font-black text-primary uppercase tracking-[0.3em] mb-8">Minutes</div>
+                  <p className="text-center text-slate-300 font-bold uppercase tracking-tight">That could change your financial strategy forever.</p>
+                </div>
               </div>
             </div>
           </div>

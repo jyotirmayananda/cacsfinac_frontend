@@ -32,7 +32,7 @@ export function AddonServicesPopup({ open, onOpenChange }: DialogProps) {
           </DialogDescription>
         </DialogHeader>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {addOnServices.map((service, index) => (
             <Card key={index} className="relative flex flex-col h-full bg-card border border-border/50 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden group">
               <CardHeader className="pb-4">

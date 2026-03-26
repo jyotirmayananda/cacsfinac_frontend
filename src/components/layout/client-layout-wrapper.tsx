@@ -21,19 +21,19 @@ export default function ClientLayoutWrapper({
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
-      enableSystem
+      defaultTheme="dark"
+      enableSystem={false}
       disableTransitionOnChange
     >
       <CursorSpotlight />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full min-h-screen">
         <NextTopLoader color="#1678fb" showSpinner={false} />
         {isAuthPage ? (
           <main>{children}</main>
         ) : (
           <div className="flex flex-col min-h-screen">
             <Header />
-            <main className="flex-grow my-8">{children}</main>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         )}
