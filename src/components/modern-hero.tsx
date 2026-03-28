@@ -10,10 +10,11 @@ import { AnimatedQuoteForm } from "./animated-quote-form";
 
 interface ModernHeroProps {
   title?: React.ReactNode;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
+  rightContent?: React.ReactNode;
 }
 
-export function ModernHero({ title, subtitle }: ModernHeroProps) {
+export function ModernHero({ title, subtitle, rightContent }: ModernHeroProps) {
   const defaultTitle = (
     <>
       <span className="block text-primary">Virtual CFO</span>
@@ -36,6 +37,10 @@ export function ModernHero({ title, subtitle }: ModernHeroProps) {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col justify-center text-center lg:text-left items-center lg:items-start"
           >
+
+            <nav className="flex items-center gap-2 text-xs font-semibold tracking-wide text-muted-foreground mb-4">
+              Financial Advisory Services
+            </nav>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-slate-900 dark:text-white">
               {title || defaultTitle}
@@ -65,17 +70,23 @@ export function ModernHero({ title, subtitle }: ModernHeroProps) {
             transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center"
           >
-            <div className="w-full max-w-lg glass-panel p-2 rounded-[3.5rem] bg-white/20 dark:bg-slate-900/20 backdrop-blur-2xl border border-white/30 dark:border-slate-800/50 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)]">
-              <div className="bg-white dark:bg-slate-950 rounded-[3rem] overflow-hidden">
-                <AnimatedQuoteForm />
+            {rightContent ? (
+              rightContent
+            ) : (
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm text-primary text-xs font-bold tracking-wide">
+                <div className="w-full max-w-lg glass-panel p-2 rounded-[3.5rem] bg-white/20 dark:bg-slate-900/20 backdrop-blur-2xl border border-white/30 dark:border-slate-800/50 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)]">
+                  <div className="bg-white dark:bg-slate-950 rounded-[3rem] overflow-hidden">
+                    <AnimatedQuoteForm />
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </motion.div>
         </div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-slate-400 dark:text-slate-600">
-        <span className="text-[10px] font-bold tracking-[0.3em] uppercase">Scroll Down</span>
+        <span className="text-muted-foreground/60 text-xs font-bold tracking-wide">Institutional Service</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}

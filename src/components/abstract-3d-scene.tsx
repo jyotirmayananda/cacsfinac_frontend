@@ -14,7 +14,7 @@ export function Abstract3DScene() {
   return (
     <div className="absolute inset-0 z-0 h-full w-full pointer-events-none transition-opacity duration-1000 bg-white dark:bg-slate-950 overflow-hidden">
       {/* Space Background / Nebula Effect */}
-      <div className="absolute inset-0 opacity-40 dark:opacity-60">
+      <div className="absolute inset-0 opacity-20 dark:opacity-60">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_30%_50%,rgba(13,148,136,0.1)_0%,transparent_50%),radial-gradient(circle_at_70%_20%,rgba(59,130,246,0.15)_0%,transparent_50%),radial-gradient(circle_at_50%_80%,rgba(139,92,246,0.1)_0%,transparent_50%)] animate-pulse" style={{ animationDuration: '8s' }} />
       </div>
 
@@ -56,6 +56,7 @@ function ShootingStar({ delay }: { delay: number }) {
 }
 
 function Stars({ count = 2000, size = 0.012, color = "#ffffff" }) {
+  const { theme } = useTheme();
   const points = useMemo(() => {
     const p = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -98,7 +99,7 @@ function Stars({ count = 2000, size = 0.012, color = "#ffffff" }) {
         size={size}
         sizeAttenuation={true}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={theme === "light" ? THREE.NormalBlending : THREE.AdditiveBlending}
       />
     </Points>
   );

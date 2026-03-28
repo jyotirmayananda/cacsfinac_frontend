@@ -25,7 +25,7 @@ const popupServices = [
     title: "Corporate Tax & Compliance",
     description: "GST, TDS, ROC filings & audit support for your business.",
     buttonText: "Explore Services",
-    href: "/tax-filing/business-tax-filings",
+    href: "/services/income-tax-filing",
     color: "from-primary/20 to-blue-500/20"
   },
   {
@@ -34,7 +34,7 @@ const popupServices = [
     description:
       "Expert MIS, cash flow strategies, and growth planning for your business success.",
     buttonText: "Learn More",
-    href: "/compliance/cfo-services",
+    href: "/services/virtual-cfo",
     color: "from-purple-500/20 to-primary/20"
   },
 ];
@@ -44,7 +44,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className={cn(
-          "max-w-6xl p-0 border-none bg-slate-950 overflow-hidden shadow-2xl max-h-[95vh] overflow-y-auto"
+          "max-w-6xl p-0 border-none bg-background overflow-hidden shadow-2xl max-h-[95vh] overflow-y-auto"
         )}
       >
         <div className="relative w-full h-full p-6 md:py-12 md:px-16 overflow-hidden">
@@ -57,7 +57,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-primary font-black uppercase tracking-[0.4em] text-[10px]"
+              className="text-primary font-bold tracking-widest text-sm"
             >
               Exclusive Services
             </motion.div>
@@ -65,7 +65,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-[0.9]"
+              className="text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.1]"
             >
               File Taxes <span className="text-primary">Stress-Free.</span>
             </motion.h2>
@@ -73,7 +73,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.2 }}
-               className="text-slate-400 text-sm md:text-base font-medium max-w-2xl mx-auto"
+               className="text-muted-foreground text-sm md:text-base font-medium max-w-2xl mx-auto"
             >
               Experience the confidence of expert-led tax and financial services tailored for your success.
             </motion.p>
@@ -88,28 +88,28 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group relative flex flex-col p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-3xl hover:bg-white/10 transition-all duration-500 overflow-hidden"
+                className="group relative flex flex-col p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] bg-card/40 dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-3xl hover:bg-card/60 dark:hover:bg-white/10 transition-all duration-500 overflow-hidden"
               >
                 {/* Accent Background */}
                 <div className={cn("absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none", service.color)} />
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-muted/50 dark:bg-white/5 border border-border dark:border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
                     <service.icon className="h-6 w-6 md:h-8 md:w-8 text-primary group-hover:text-white transition-colors" />
                   </div>
                   
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-3 md:mb-4 leading-tight uppercase tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 md:mb-4 leading-tight tracking-tight">
                     {service.title}
                   </h3>
                   
-                  <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed mb-6 md:mb-10 flex-grow">
+                  <p className="text-muted-foreground text-xs md:text-sm font-medium leading-relaxed mb-6 md:mb-10 flex-grow">
                     {service.description}
                   </p>
                   
                   <div className="mt-auto">
                     <Button 
                       asChild 
-                      className="w-full rounded-full py-5 md:py-6 text-[10px] md:text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl shadow-primary/20"
+                      className="w-full rounded-full py-5 md:py-6 text-[10px] md:text-xs font-bold tracking-widest hover:scale-105 transition-transform shadow-xl shadow-primary/20"
                     >
                       <a href={service.href}>{service.buttonText}</a>
                     </Button>

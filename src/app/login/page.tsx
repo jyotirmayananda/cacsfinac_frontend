@@ -24,7 +24,7 @@ import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
 // import logo from "../../../public/Image/cacslogonew.png";
 // import loginimg from "../../../public/Image/loginbackground.jpg";
-const logo = "/Image/cacslogonew.png";
+const logo = "/Image/darklogo.png";
 const loginimg = "/Image/loginbackground.jpg";
 
 const loginFormSchema = z.object({

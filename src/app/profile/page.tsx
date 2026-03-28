@@ -61,7 +61,7 @@ export default function ProfilePage() {
         <div className="max-w-2xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold font-headline uppercase mb-2">
+            <h1 className="text-4xl md:text-5xl font-bold font-headline mb-2">
               My Profile
             </h1>
             <p className="text-muted-foreground text-lg">

@@ -108,7 +108,7 @@ export function PlanLeadForm({ planTitle, planPrice, open, onOpenChange }: PlanL
       <Dialog open={open} onOpenChange={onOpenChange}>
         <DialogContent className="max-w-[95vw] md:max-w-4xl w-full p-4 md:p-10 bg-card border-cyan-500/20 rounded-2xl md:rounded-3xl shadow-[0_0_50px_-12px_rgba(0,180,216,0.2)]">
           <DialogHeader className="mb-4 md:mb-6 flex flex-col items-center justify-center text-center">
-            <DialogTitle className="text-2xl md:text-4xl font-extrabold font-headline uppercase tracking-tight w-full text-center">
+            <DialogTitle className="text-2xl md:text-4xl font-bold tracking-tight w-full text-center">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 pb-1">
                 Get Started with {planTitle}
               </span>

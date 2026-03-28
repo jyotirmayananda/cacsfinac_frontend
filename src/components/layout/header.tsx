@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { Menu, X, ChevronDown, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
@@ -23,47 +22,48 @@ import {
 } from "../../components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "../../components/ui/avatar";
 import { cn } from "@/lib/utils";
-import { serviceCategories } from "@/lib/services";
+import { useTheme } from "next-themes";
+import { services } from "@/lib/services";
 import { ThemeToggle } from "../../components/theme-toggle";
 import { getStoredUser, clearStoredUser, type User } from "../../../lib/auth";
 
 const navLinks = [
   { href: "/", label: "Home" },
   {
-    href: "#",
+    href: "/services",
     label: "Services",
     dropdown: true,
-    items: serviceCategories,
+    items: services,
   },
   { href: "/about", label: "Company" },
   { href: "/blog", label: "Blog" },
   { href: "/calculators", label: "Calculators" },
-  // { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme } = useTheme();
-  const [logoSrc, setLogoSrc] = useState("/Image/cacslogonew.png");
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    setLogoSrc(
-      theme === "dark" ? "/Image/darklogo.png" : "/Image/cacslogonew.png"
-    );
-  }, [theme]);
+    setMounted(true);
+  }, []);
+
+  const logoSrc = mounted && (theme === "dark" || resolvedTheme === "dark")
+    ? "/Image/darklogo.png"
+    : "/Image/cacslogonew.png";
 
 
   useEffect(() => {
-    // Get user from localStorage
     const storedUser = getStoredUser();
     setUser(storedUser);
     setIsLoading(false);
 
-    // Listen for auth state changes
     const handleAuthChange = () => {
       setUser(getStoredUser());
     };
@@ -79,12 +79,7 @@ export function Header() {
 
 
   const isServicesActive = () => {
-    const path = pathname || "";
-    // Robust match: match /slug or /slug/... (avoid partial matches)
-    return serviceCategories.some((category) => {
-      const re = new RegExp(`/${category.slug}(?:/|$)`);
-      return re.test(path);
-    });
+    return pathname?.startsWith("/services");
   };
 
   const handleLogout = () => {
@@ -137,9 +132,12 @@ export function Header() {
           <nav className="navmenu flex items-center gap-6">
             {navLinks.map((link) =>
               link.dropdown ? (
-                <div key={link.label} className="listing-dropdown relative">
-                  <a
-                    href="#"
+                <div
+                  key={link.label}
+                  className="group/services-nav relative"
+                >
+                  <Link
+                    href={link.href}
                     data-active={isServicesActive()}
                     className={cn(
                       "flex items-center gap-1 font-nav text-base font-medium transition-colors hover:text-primary",
@@ -147,23 +145,62 @@ export function Header() {
                     )}
                   >
                     <span>{link.label}</span>
-                    <ChevronDown className="h-4 w-4" />
-                  </a>
-                  <ul className="w-max">
-                    {link.items?.map((category) => (
-                      <li key={category.slug}>
-                        <h3>{category.title}</h3>
-                        {category.services.map((service) => (
-                          <Link
-                            key={service.slug}
-                            href={`/${category.slug}/${service.slug}`}
+                    <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover/services-nav:rotate-180" />
+                  </Link>
+                  <ul
+                    className={cn(
+                      "absolute left-0 top-full z-50 mt-2 w-[min(calc(100vw-2rem),480px)] max-w-[480px] list-none p-4",
+                      "before:pointer-events-auto before:absolute before:inset-x-0 before:bottom-full before:h-3 before:content-['']",
+                      "grid grid-cols-2 gap-2 rounded-[1.5rem] border shadow-2xl backdrop-blur-3xl",
+                      "bg-background/95 border-border",
+                      "dark:bg-slate-950/95 dark:border-white/10 dark:shadow-black/50",
+                      "pointer-events-none opacity-0 transition-all duration-200",
+                      "invisible group-hover/services-nav:pointer-events-auto group-hover/services-nav:visible group-hover/services-nav:opacity-100",
+                      "max-h-[min(70vh,520px)] overflow-y-auto overflow-x-hidden"
+                    )}
+                  >
+                    <li className="col-span-2 -mt-0.5 border-b border-border pb-3 dark:border-white/10">
+                      <p className="text-primary font-bold tracking-widest text-[10px]">
+                        Exclusive Services
+                      </p>
+                      <p className="mt-1 font-bold tracking-tight text-foreground text-sm">
+                        Explore Offerings
+                      </p>
+                    </li>
+                    {link.items?.map((service) => (
+                      <li key={service.slug} className="min-w-0">
+                        <Link
+                          href={`/services/${service.slug}`}
+                          className={cn(
+                            "group/item flex items-center gap-3 rounded-2xl border border-transparent p-2.5 transition-all duration-300",
+                            "bg-muted/50 hover:border-border hover:bg-muted",
+                            "dark:border-white/5 dark:bg-white/5 dark:hover:border-white/10 dark:hover:bg-white/10"
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-all duration-300",
+                              "border-border bg-background",
+                              "dark:border-white/10 dark:bg-white/5",
+                              "group-hover/item:border-primary group-hover/item:bg-primary"
+                            )}
                           >
-                            <service.icon />
+                            <service.icon className="h-5 w-5 text-primary transition-colors group-hover/item:text-primary-foreground" />
+                          </span>
+                          <span className="min-w-0 flex-1 text-left text-[11px] font-bold leading-snug tracking-tight text-foreground group-hover/item:text-primary">
                             {service.title}
-                          </Link>
-                        ))}
+                          </span>
+                        </Link>
                       </li>
                     ))}
+                    <li className="col-span-2 mt-1 border-t border-border pt-3 dark:border-white/10">
+                      <Link
+                        href="/services"
+                        className="inline-flex text-[10px] font-bold tracking-widest text-primary transition-colors hover:text-primary/80"
+                      >
+                        View All Services
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               ) : (
@@ -264,7 +301,7 @@ export function Header() {
                     <span className="sr-only">Close menu</span>
                   </Button>
                 </div>
-                <nav className="flex flex-col gap-12">
+                <nav className="flex flex-col gap-8">
                   {navLinks.map((link) =>
                     link.dropdown ? (
                       <Accordion type="single" collapsible key={link.label}>
@@ -279,26 +316,26 @@ export function Header() {
                             {link.label}
                           </AccordionTrigger>
                           <AccordionContent>
-                            {link.items?.map((category) => (
-                              <div key={category.slug} className="mb-4">
-                                <h5 className="font-semibold mb-2 pl-4 text-primary">
-                                  {category.title}
-                                </h5>
-                                <div className="flex flex-col gap-3 pl-8">
-                                  {category.services.map((item) => (
-                                    <Link
-                                      key={item.slug}
-                                      href={`/${category.slug}/${item.slug}`}
-                                      className="flex items-center gap-2 text-muted-foreground hover:text-primary"
-                                      onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                      <item.icon className="h-4 w-4" />
-                                      <span>{item.title}</span>
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
+                            <div className="flex flex-col gap-4 pl-4 pt-2">
+                              <Link
+                                href="/services"
+                                className="flex items-center gap-2 font-semibold text-primary underline"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                View All Services
+                              </Link>
+                              {link.items?.map((service) => (
+                                <Link
+                                  key={service.slug}
+                                  href={`/services/${service.slug}`}
+                                  className="flex items-center gap-2 text-muted-foreground hover:text-primary"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  <service.icon className="h-4 w-4" />
+                                  <span>{service.title}</span>
+                                </Link>
+                              ))}
+                            </div>
                           </AccordionContent>
                         </AccordionItem>
                       </Accordion>

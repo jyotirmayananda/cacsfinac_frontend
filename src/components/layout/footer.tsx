@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import {
   ChevronRight,
   Linkedin,
@@ -12,6 +11,8 @@ import {
   Instagram,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 const socialLinks = [
   {
@@ -37,14 +38,16 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const { theme } = useTheme();
-  const [logoSrc, setLogoSrc] = useState("/Image/cacslogonew.png");
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setLogoSrc(
-      theme === "dark" ? "/Image/darklogo.png" : "/Image/cacslogonew.png"
-    );
-  }, [theme]);
+    setMounted(true);
+  }, []);
+
+  const logoSrc = mounted && (theme === "dark" || resolvedTheme === "dark")
+    ? "/Image/darklogo.png"
+    : "/Image/cacslogonew.png";
 
   const legalLinks = [
     { href: "/privacy", label: "Privacy Policy" },
@@ -59,18 +62,18 @@ export function Footer() {
   ];
 
   const servicesLinks = [
-    { href: "/registration/private-ltd", label: "Private Limited" },
-    { href: "/compliance/bookkeeping", label: "Bookkeeping" },
-    { href: "/compliance/hr-payroll", label: "Hr & Payroll" },
-    { href: "/tax-filing/income-tax-notice", label: "Income Tax Notice" },
-    { href: "/compliance/business-plan", label: "Business Plan" },
-    { href: "/registration/trust-registration", label: "Trust Registration" },
+    { href: "/services/income-tax-filing", label: "Income Tax Filing" },
+    { href: "/services/gst-services", label: "GST Services" },
+    { href: "/services/accounting-bookkeeping", label: "Accounting & Bookkeeping" },
+    { href: "/services/virtual-cfo", label: "Virtual CFO" },
+    { href: "/services/company-registration", label: "Company Registration" },
+    { href: "/services/roc-compliance", label: "ROC Compliance" },
   ];
 
   return (
-    <footer className="w-full bg-slate-950 text-slate-400 pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+    <footer className="w-full bg-white dark:bg-slate-950 text-muted-foreground pt-24 pb-12 border-t border-border/50 relative overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-50" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
@@ -96,7 +99,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -4, scale: 1.1 }}
-                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 shadow-sm"
                 >
                   <social.icon className="h-5 w-5" />
                   <span className="sr-only">{social.name}</span>
@@ -107,7 +110,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8">Navigation</h3>
+            <h3 className="text-foreground font-bold tracking-widest text-xs mb-8">Navigation</h3>
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -125,7 +128,7 @@ export function Footer() {
 
           {/* Services Links */}
           <div className="lg:col-span-3">
-            <h3 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8">Core Services</h3>
+            <h3 className="text-foreground font-bold tracking-widest text-xs mb-8">Core Services</h3>
             <ul className="space-y-4">
               {servicesLinks.map((link) => (
                 <li key={link.href}>
@@ -143,7 +146,7 @@ export function Footer() {
 
           {/* Contact Column */}
           <div className="lg:col-span-3 space-y-8">
-            <h3 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8">Get In Touch</h3>
+            <h3 className="text-foreground font-bold tracking-widest text-xs mb-8">Get In Touch</h3>
             <div className="space-y-4 text-sm font-bold">
               <div className="flex gap-3 items-start">
                 <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center mt-0.5">
@@ -169,7 +172,7 @@ export function Footer() {
               href="https://g.page/Bengaluru-Office-CACS-FinAcc-Services/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-4 rounded-2xl transition-all group w-full text-xs font-black uppercase tracking-wider text-white"
+              className="inline-flex items-center gap-3 bg-card hover:bg-muted border border-border px-6 py-4 rounded-2xl transition-all group w-full text-xs font-bold tracking-widest text-foreground shadow-sm"
             >
               <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#4285F4" d="M23.7449 12.27C23.7449 11.48 23.6849 10.73 23.5549 10H12.2549V14.51H18.7249C18.4349 15.99 17.5849 17.24 16.3249 18.09V21.09H20.1849C22.4449 19.01 23.7449 15.92 23.7449 12.27Z" />
@@ -183,10 +186,10 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em]">
+        <div className="pt-12 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest">
           <div className="flex items-center gap-4">
             <span>&copy; {new Date().getFullYear()} CACS FinAcc Services™</span>
-            <span className="w-1 h-1 rounded-full bg-slate-800" />
+            <span className="w-1 h-1 rounded-full bg-border" />
             <span className="opacity-50">All Rights Reserved</span>
           </div>
           

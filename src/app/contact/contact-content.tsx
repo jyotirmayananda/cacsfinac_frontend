@@ -88,7 +88,7 @@ function ContactForm() {
 
     return (
         <>
-            <Card className="w-full shadow-lg">
+            <Card className="w-full shadow-xl shadow-primary/5">
                 <CardContent className="p-6">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -215,7 +215,7 @@ export default function ContactContent() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
-                            <h1 className="text-4xl md:text-5xl font-bold font-headline tracking-tight uppercase">
+                            <h1 className="text-4xl md:text-5xl font-bold font-headline tracking-tight">
                                 <span className="text-primary">
                                     Virtual CFO, NRI Tax & Compliance
                                 </span>
@@ -233,7 +233,7 @@ export default function ContactContent() {
                                 alt="Business team collaborating"
                                 width={600}
                                 height={400}
-                                className="rounded-2xl shadow-lg object-cover"
+                                className="rounded-2xl shadow-xl shadow-primary/5 object-cover"
                                 data-ai-hint={placeholderImages.contactPage.hero.hint}
                             />
                         </div>
@@ -244,7 +244,7 @@ export default function ContactContent() {
             <section id="contact" className="py-12 md:py-20">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase">
+                        <h2 className="text-3xl md:text-4xl font-bold font-headline">
                             Contact
                         </h2>
                         <p className="mt-2 text-lg text-muted-foreground">
@@ -255,7 +255,7 @@ export default function ContactContent() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                         <div className="lg:col-span-5 space-y-6">
                             {contactInfo.map((item, index) => (
-                                <Card key={index} className="shadow-md">
+                                <Card key={index} className="shadow-xl shadow-primary/5 hover:border-primary/20 transition-all">
                                     <CardContent className="p-6 flex items-start gap-4">
                                         <div className="bg-primary/10 text-primary p-3 rounded-full">
                                             <item.icon className="h-6 w-6" />

@@ -32,7 +32,7 @@ export function ITRPlansPopup({ open, onOpenChange }: DialogProps) {
       <DialogContent className={cn("max-w-[95vw] sm:max-w-[90vw] lg:max-w-5xl xl:max-w-7xl w-full p-3 sm:p-4 md:p-6 bg-card rounded-2xl md:rounded-3xl max-h-[90svh] overflow-y-auto overflow-x-hidden border border-cyan-500/20 shadow-[0_0_50px_-12px_rgba(0,180,216,0.3)] backdrop-blur-md")}>
         <DialogHeader className="mb-4 md:mb-10 px-2">
           <div className="flex flex-col items-center justify-center text-center w-full space-y-2 md:space-y-3">
-            <DialogTitle className="text-xl md:text-3xl font-extrabold font-headline uppercase tracking-tight w-full text-center">
+            <DialogTitle className="text-xl md:text-3xl font-bold tracking-tight w-full text-center">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 pb-1">
                 Income Tax Return Plans
               </span>
@@ -65,7 +65,7 @@ export function ITRPlansPopup({ open, onOpenChange }: DialogProps) {
                     </div>
                   </CardHeader>
                   <CardContent className="flex-grow pb-3 px-4 md:px-6">
-                    <p className="text-xs font-bold text-cyan-500 uppercase tracking-widest mb-3 md:mb-4 flex items-center gap-2">
+                    <p className="text-xs font-bold text-cyan-500 tracking-widest mb-3 md:mb-4 flex items-center gap-2">
                       <span className="h-px w-3 md:w-4 bg-cyan-500 rounded-full"></span>
                       Service Includes
                     </p>

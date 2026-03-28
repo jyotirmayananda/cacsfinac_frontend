@@ -68,7 +68,7 @@ export default function CalculatorsPage() {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 uppercase">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             <span className="text-gradient bg-gradient-to-r from-blue-600 via-blue-400 to-cyan-400">
               Tax & TDS Calculators
             </span>

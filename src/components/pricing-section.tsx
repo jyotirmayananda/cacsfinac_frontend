@@ -152,11 +152,11 @@ export function PricingSection() {
   const [selectedPlan, setSelectedPlan] = useState<{title: string, price: string} | null>(null);
 
   return (
-    <section id="pricing" className="w-full py-12 md:py-20 bg-muted/30">
+    <section id="pricing" className="w-full py-12 md:py-20 bg-slate-50 dark:bg-muted/30">
       <div className="container mx-auto px-4">
         {/* ITR Plans */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline text-foreground">
             Income Tax Return (ITR) Filing Plans
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-center">
@@ -169,7 +169,7 @@ export function PricingSection() {
           {itrPlans.map((plan, index) => (
             <Card key={index} className="relative flex flex-col h-full bg-card border border-border/50 hover:border-cyan-400 hover:shadow-xl transition-all duration-300 rounded-2xl overflow-hidden group">
               <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-bold text-[#0D1B2A] dark:text-white group-hover:text-cyan-600 transition-colors">
+                <CardTitle className="text-xl font-bold text-foreground group-hover:text-cyan-600 transition-colors">
                   {plan.title}
                 </CardTitle>
                 <div className="mt-4 flex items-baseline">
@@ -181,10 +181,10 @@ export function PricingSection() {
                 <p className="text-xs text-muted-foreground mt-1">*Exclusive of Taxes</p>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-xs font-bold text-[#2EC4B6] uppercase tracking-wider mb-3">Service Includes:</p>
+                <p className="text-xs font-bold text-[#2EC4B6] tracking-widest mb-3">Service Includes:</p>
                 <ul className="space-y-2">
                   {plan.includes.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-[#4A4A4A] dark:text-white">
+                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground dark:text-white">
                       <CheckCircle2 className="h-4 w-4 text-[#00B4D8] flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
@@ -205,7 +205,7 @@ export function PricingSection() {
 
         {/* Add-On Services */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold font-headline text-foreground">
             Optional Add-On Services
           </h2>
           <p className="mt-4 text-muted-foreground">Extra services for specialized requirements.</p>
@@ -225,7 +225,7 @@ export function PricingSection() {
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-xs font-bold text-[#2EC4B6] uppercase tracking-wider mb-3">Service Includes:</p>
+                <p className="text-xs font-bold text-[#2EC4B6] tracking-widest mb-3">Service Includes:</p>
                 <ul className="space-y-2">
                   {service.includes.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-[#4A4A4A] dark:text-white">

@@ -25,7 +25,7 @@ export function ModernServiceCard({ icon: Icon, title, description, href, index 
       className="h-full"
     >
       <Link href={href} className="group block h-full">
-        <Card className="h-full relative overflow-hidden bg-white/60 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 backdrop-blur-xl rounded-[2.5rem] p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 group-hover:border-primary/50">
+        <Card className="h-full relative overflow-hidden bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 backdrop-blur-xl rounded-[2.5rem] p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/20 hover:-translate-y-2 group-hover:border-primary/50">
           <div className="absolute top-0 right-0 p-10 opacity-[0.07] dark:opacity-[0.1] group-hover:opacity-[0.15] transition-opacity">
             <Icon size={180} strokeWidth={0.5} />
           </div>
@@ -45,7 +45,7 @@ export function ModernServiceCard({ icon: Icon, title, description, href, index 
             </p>
           </div>
           
-          <div className="relative z-10 flex items-center text-primary font-bold text-sm tracking-wider uppercase group-hover:translate-x-2 transition-transform duration-300">
+          <div className="relative z-10 flex items-center text-primary font-bold text-sm tracking-widest group-hover:translate-x-2 transition-transform duration-300">
             Know More
             <svg
               className="ml-2 w-4 h-4"

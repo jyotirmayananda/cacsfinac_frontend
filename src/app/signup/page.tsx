@@ -21,7 +21,7 @@ import {
 import { Input } from "../../components/ui/input";
 // import logo from "../../../public/Image/cacslogonew.png";
 // import signupimg from "../../../public/Image/loginbackground.jpg";
-const logo = "/Image/cacslogonew.png";
+const logo = "/Image/darklogo.png";
 const signupimg = "/Image/loginbackground.jpg";
 
 const signupFormSchema = z

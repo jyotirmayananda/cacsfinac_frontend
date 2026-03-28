@@ -24,7 +24,7 @@ export function AddonServicesPopup({ open, onOpenChange }: DialogProps) {
       <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className={cn("max-w-[90vw] xl:max-w-7xl w-full p-6 md:p-10 border-cyan-500/20 bg-card rounded-2xl max-h-[90svh] overflow-y-auto overflow-x-hidden")}>
         <DialogHeader className="mb-8">
-          <DialogTitle className="text-3xl md:text-4xl font-bold font-headline uppercase text-foreground text-center">
+          <DialogTitle className="text-3xl md:text-4xl font-bold text-foreground text-center">
             Optional Add-On Services
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground text-base mt-2">
@@ -46,7 +46,7 @@ export function AddonServicesPopup({ open, onOpenChange }: DialogProps) {
                 </div>
               </CardHeader>
               <CardContent className="flex-grow pb-4">
-                <p className="text-xs font-bold text-[#2EC4B6] uppercase tracking-wider mb-3">Service Includes:</p>
+                <p className="text-xs font-bold text-[#2EC4B6] tracking-widest mb-3">Service Includes:</p>
                 <ul className="space-y-2">
                   {service.includes.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-[#4A4A4A] dark:text-white">

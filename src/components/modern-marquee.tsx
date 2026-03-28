@@ -11,7 +11,7 @@ interface MarqueeItemProps {
 }
 
 const MarqueeItem = ({ icon: Icon, text, color }: MarqueeItemProps) => (
-  <div className="flex items-center gap-4 px-8 py-5 rounded-full bg-white/40 dark:bg-slate-900/40 border border-white/20 dark:border-slate-800/50 backdrop-blur-xl shadow-xl transition-all duration-300 hover:scale-105 hover:border-primary/50 group mx-4">
+  <div className="flex items-center gap-4 px-8 py-5 rounded-full bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 backdrop-blur-xl shadow-lg dark:shadow-xl transition-all duration-300 hover:scale-105 hover:border-primary/50 group mx-4">
     <div className={`p-3 rounded-full ${color} text-white group-hover:scale-110 transition-transform`}>
       <Icon size={24} />
     </div>
@@ -29,10 +29,10 @@ export function ModernMarquee() {
   ];
 
   return (
-    <section className="w-full py-24 bg-slate-50 dark:bg-slate-900/20 overflow-hidden relative">
+    <section className="w-full py-24 bg-slate-50 dark:bg-slate-900/10 overflow-hidden relative">
       <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-white/[0.02]" />
       <div className="container mx-auto px-4 relative z-10 mb-12">
-        <p className="text-center text-xs font-black text-primary uppercase tracking-[0.5em]">
+        <p className="text-center text-xs font-bold text-primary tracking-widest">
           Recognized & Trusted Authority
         </p>
       </div>

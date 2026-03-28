@@ -11,9 +11,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-roboto)', 'sans-serif'],
+        body: ['var(--font-raleway)', 'sans-serif'],
         headline: ['var(--font-raleway)', 'sans-serif'],
-        nav: ['var(--font-ubuntu)', 'sans-serif'],
+        nav: ['var(--font-raleway)', 'sans-serif'],
       },
       colors: {
         'whatsapp-green': '#25D366',
