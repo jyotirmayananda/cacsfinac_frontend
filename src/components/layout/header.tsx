@@ -149,13 +149,13 @@ export function Header() {
                   </Link>
                   <ul
                     className={cn(
-                      "absolute left-0 top-full z-50 mt-2 w-[min(calc(100vw-2rem),480px)] max-w-[480px] list-none p-4",
-                      "before:pointer-events-auto before:absolute before:inset-x-0 before:bottom-full before:h-3 before:content-['']",
+                      "absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[min(calc(100vw-2rem),700px)] max-w-[700px] list-none p-4",
+                      "before:pointer-events-auto before:absolute before:inset-x-0 before:bottom-full before:h-4 before:content-['']",
                       "grid grid-cols-2 gap-2 rounded-[1.5rem] border shadow-2xl backdrop-blur-3xl",
                       "bg-background/95 border-border",
                       "dark:bg-slate-950/95 dark:border-white/10 dark:shadow-black/50",
-                      "pointer-events-none opacity-0 transition-all duration-200",
-                      "invisible group-hover/services-nav:pointer-events-auto group-hover/services-nav:visible group-hover/services-nav:opacity-100",
+                      "pointer-events-none opacity-0 transition-all duration-300 delay-75",
+                      "invisible group-hover/services-nav:pointer-events-auto group-hover/services-nav:visible group-hover/services-nav:opacity-100 group-hover/services-nav:delay-0",
                       "max-h-[min(70vh,520px)] overflow-y-auto overflow-x-hidden"
                     )}
                   >

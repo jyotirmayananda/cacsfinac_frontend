@@ -140,7 +140,7 @@ export default function BlogPage() {
                         <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white/90 text-[10px] font-semibold border border-white/10 mb-2">
                           Featured Insight
                         </span>
-                        <h2 className="text-2xl md:text-5xl font-bold font-headline text-white leading-tight">
+                        <h2 className="text-2xl md:text-4xl font-extrabold font-headline text-white leading-tight">
                           {item.title}
                         </h2>
                         <div className="pt-4 flex items-center justify-center gap-2 text-white/60 text-xs">
@@ -161,11 +161,10 @@ export default function BlogPage() {
       </section>
 
       {/* Main Grid */}
-      <section id="blog-posts" className="py-12 md:py-24">
+      <section id="blog-posts" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-primary font-bold tracking-widest text-xs mb-4 block">Our Perspectives</span>
-            <h2 className="text-3xl md:text-6xl font-bold font-headline text-foreground tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold font-headline text-slate-800 dark:text-white tracking-tight">
               Latest from CACS
             </h2>
             <p className="mt-6 text-xl text-muted-foreground/80 max-w-2xl mx-auto">
@@ -216,12 +215,11 @@ export default function BlogPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 md:py-32 bg-muted/30">
+      <section id="faq" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-16">
             <div className="space-y-6">
-              <span className="text-primary font-bold tracking-widest text-xs block">Knowledge Hub</span>
-              <h2 className="text-3xl md:text-5xl font-bold font-headline leading-tight">
+              <h2 className="text-2xl md:text-4xl font-extrabold font-headline leading-tight text-slate-800 dark:text-white">
                 Answering Critical Queries
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">

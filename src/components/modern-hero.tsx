@@ -42,9 +42,9 @@ export function ModernHero({ title, subtitle, rightContent }: ModernHeroProps) {
               Financial Advisory Services
             </nav>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-slate-900 dark:text-white">
-              {title || defaultTitle}
-            </h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-slate-800 dark:text-white">
+               {title || defaultTitle}
+             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl mb-10 leading-relaxed">
               {subtitle || defaultSubtitle}
@@ -57,9 +57,9 @@ export function ModernHero({ title, subtitle, rightContent }: ModernHeroProps) {
                 </Link>
               </Button>
 
-              <Link href="#services" className="text-slate-900 dark:text-white font-bold tracking-tight hover:text-primary transition-colors flex items-center gap-2 group">
+              <Link href="#services" className="text-slate-800 dark:text-white font-bold tracking-tight hover:text-primary transition-colors flex items-center gap-2 group">
                 Explore Services
-                <span className="w-8 h-px bg-slate-900 dark:bg-white group-hover:w-12 group-hover:bg-primary transition-all"></span>
+                <span className="w-8 h-px bg-slate-800 dark:bg-white group-hover:w-12 group-hover:bg-primary transition-all"></span>
               </Link>
             </div>
           </motion.div>

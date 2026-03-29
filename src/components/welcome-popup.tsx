@@ -3,6 +3,9 @@
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
 } from "../components/ui/dialog";
 import { Button } from "../components/ui/button";
 import { FileText, Building2, Briefcase, X } from "lucide-react";
@@ -44,40 +47,44 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className={cn(
-          "max-w-6xl p-0 border-none bg-background overflow-hidden shadow-2xl max-h-[95vh] overflow-y-auto"
+          "max-w-6xl p-0 border-none bg-background overflow-hidden shadow-2xl max-h-[95vh]"
         )}
       >
-        <div className="relative w-full h-full p-6 md:py-12 md:px-16 overflow-hidden">
+        <div className="relative w-full h-full p-6 md:py-8 md:px-12 overflow-hidden">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
           {/* Header */}
-          <div className="relative z-10 text-center mb-10 md:mb-14 space-y-4">
+          <DialogHeader className="relative z-10 flex flex-col items-center text-center sm:text-center mb-6 md:mb-8 space-y-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-primary font-bold tracking-widest text-sm"
+              className="text-primary font-bold tracking-widest text-xs text-center"
             >
               Exclusive Services
             </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.1]"
-            >
-              File Taxes <span className="text-primary">Stress-Free.</span>
-            </motion.h2>
-            <motion.p 
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.2 }}
-               className="text-muted-foreground text-sm md:text-base font-medium max-w-2xl mx-auto"
-            >
-              Experience the confidence of expert-led tax and financial services tailored for your success.
-            </motion.p>
-          </div>
+            <DialogTitle asChild>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-2xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.1] text-center"
+              >
+                File Taxes <span className="text-primary">Stress-Free.</span>
+              </motion.h2>
+            </DialogTitle>
+            <DialogDescription asChild>
+              <motion.p 
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ delay: 0.2 }}
+                 className="text-muted-foreground text-xs md:text-sm font-medium max-w-2xl mx-auto text-center"
+              >
+                Experience the confidence of expert-led tax and financial services tailored for your success.
+              </motion.p>
+            </DialogDescription>
+          </DialogHeader>
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10">
@@ -88,13 +95,13 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group relative flex flex-col p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] bg-card/40 dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-3xl hover:bg-card/60 dark:hover:bg-white/10 transition-all duration-500 overflow-hidden"
+                className="group relative flex flex-col p-6 rounded-[2.5rem] md:rounded-[3rem] bg-card/40 dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-3xl hover:bg-card/60 dark:hover:bg-white/10 transition-all duration-500 overflow-hidden"
               >
                 {/* Accent Background */}
                 <div className={cn("absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none", service.color)} />
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-muted/50 dark:bg-white/5 border border-border dark:border-white/10 flex items-center justify-center mb-6 md:mb-8 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-muted/50 dark:bg-white/5 border border-border dark:border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
                     <service.icon className="h-6 w-6 md:h-8 md:w-8 text-primary group-hover:text-white transition-colors" />
                   </div>
                   

@@ -19,18 +19,17 @@ export default function ServicesPage() {
       <ServicesHero />
 
       {/* Services Grid Section */}
-      <section id="all-services" className="py-24 md:py-36 relative overflow-hidden">
+      <section id="all-services" className="py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -ml-48 -mb-48" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-24">
-            <span className="text-primary font-bold tracking-widest text-[10px] mb-6 block">Our Expertise Matrix</span>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 font-headline tracking-tight text-foreground">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-8 font-headline tracking-tight text-slate-800 dark:text-white">
               Core Capabilities
             </h2>
-            <div className="h-1.5 w-24 bg-primary mx-auto rounded-full mb-10 shadow-lg shadow-primary/20"></div>
-            <p className="text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
+            <div className="h-1 w-20 bg-primary mx-auto rounded-full mb-10 shadow-lg shadow-primary/20 opacity-50"></div>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed font-medium">
               We provide end-to-end support in taxation, corporate compliance, and financial management
               through a structured, professional-driven approach.
             </p>
@@ -69,17 +68,17 @@ export default function ServicesPage() {
       </section>
 
       {/* Enhanced Trust Section */}
-      <section className="py-24 md:py-40 dark:bg-slate-950 bg-slate-50 text-foreground overflow-hidden relative border-y border-border/50">
+      <section className="py-20 dark:bg-slate-950 bg-slate-50 text-foreground overflow-hidden relative border-y border-border/50">
         {/* Subtle decorative elements */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--primary),transparent_70%)] opacity-5"></div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="max-w-4xl mx-auto space-y-12">
             <span className="text-primary font-bold tracking-widest text-[10px] block">Institutional Standards</span>
-            <h2 className="text-4xl md:text-7xl font-bold font-headline leading-[1.1] tracking-tight text-foreground">
+            <h2 className="text-2xl md:text-4xl font-extrabold font-headline leading-tight tracking-tight text-slate-800 dark:text-white">
               Ready to <span className="text-primary">Transform Your Finances?</span>
             </h2>
-            <p className="text-muted-foreground text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-medium">
               Join hundreds of organizations who leverage CACS FinAcc for strategic 
               precision in taxation and compliance. We don't just file; we engineer financial health.
             </p>

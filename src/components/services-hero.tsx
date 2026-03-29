@@ -31,7 +31,7 @@ export default function ServicesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-7xl font-bold text-foreground mb-8 leading-[1.1] font-headline tracking-tight">
+            <h1 className="text-4xl md:text-7xl font-bold text-slate-800 dark:text-white mb-8 leading-[1.1] font-headline tracking-tight">
               Powering Your Business <br />
               <span className="text-primary">Through Compliance.</span>
             </h1>
@@ -58,7 +58,7 @@ export default function ServicesHero() {
                   <Shield size={20} />
                 </div>
                 <div>
-                  <h4 className="text-foreground font-bold text-sm mb-1 tracking-wide">Zero-Risk Focus</h4>
+                  <h4 className="text-slate-800 dark:text-white font-bold text-sm mb-1 tracking-wide">Zero-Risk Focus</h4>
                   <p className="text-muted-foreground text-xs">Abolishing compliance lag and penalties.</p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function ServicesHero() {
                   <TrendingUp size={20} />
                 </div>
                 <div>
-                  <h4 className="text-foreground font-bold text-sm mb-1 tracking-wide">Profit Expansion</h4>
+                  <h4 className="text-slate-800 dark:text-white font-bold text-sm mb-1 tracking-wide">Profit Expansion</h4>
                   <p className="text-muted-foreground text-xs">Unlock value through tax optimization.</p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ export default function ServicesHero() {
                   <Clock size={20} />
                 </div>
                 <div>
-                  <h4 className="text-foreground font-bold text-sm mb-1 tracking-wide">Timed Delivery</h4>
+                  <h4 className="text-slate-800 dark:text-white font-bold text-sm mb-1 tracking-wide">Timed Delivery</h4>
                   <p className="text-muted-foreground text-xs">Zero-delay policy for every filing.</p>
                 </div>
               </div>

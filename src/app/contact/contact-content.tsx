@@ -211,16 +211,16 @@ const contactInfo = [
 export default function ContactContent() {
     return (
         <main>
-            <section id="hero" className="py-12 md:py-20">
+            <section id="hero" className="py-20">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
-                            <h1 className="text-4xl md:text-5xl font-bold font-headline tracking-tight">
+                            <h1 className="text-2xl md:text-4xl font-extrabold font-headline tracking-tight text-slate-800 dark:text-white">
                                 <span className="text-primary">
                                     Virtual CFO, NRI Tax & Compliance
                                 </span>
                                 <br />
-                                <span className="text-foreground">— All in One Place</span>
+                                <span className="text-slate-800 dark:text-white">— All in One Place</span>
                             </h1>
                             <p className="mt-4 text-lg text-muted-foreground max-w-lg">
                                 We help startups, NRIs & SMEs with taxation, ROC, MIS, financial
@@ -241,13 +241,13 @@ export default function ContactContent() {
                 </div>
             </section>
 
-            <section id="contact" className="py-12 md:py-20">
+            <section id="contact" className="py-20">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold font-headline">
+                    <div className="text-center mb-16">
+                        <h2 className="text-2xl md:text-4xl font-extrabold font-headline text-slate-800 dark:text-white">
                             Contact
                         </h2>
-                        <p className="mt-2 text-lg text-muted-foreground">
+                        <p className="mt-4 text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
                             Connect with us — let’s strategize your next move.
                         </p>
                     </div>

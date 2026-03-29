@@ -128,7 +128,7 @@ export default function SignupPage() {
             <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-4">
               <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
             </div>
-            <h2 className="text-3xl font-bold font-headline tracking-tight text-foreground">
+            <h2 className="text-2xl font-extrabold font-headline tracking-tight text-foreground">
               Account Successfully Created
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
@@ -184,7 +184,7 @@ export default function SignupPage() {
               priority
             />
           </Link>
-          <h2 className="text-4xl font-bold font-headline mb-4">
+          <h2 className="text-2xl md:text-3xl font-extrabold font-headline mb-4">
             Join Us Today
           </h2>
           <p className="text-blue-200 max-w-sm mx-auto">
@@ -196,7 +196,7 @@ export default function SignupPage() {
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div className="animate-in slide-in-from-bottom-4 duration-500">
-            <h2 className="mt-6 text-center text-4xl font-bold font-headline tracking-tight text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <h2 className="mt-6 text-center text-2xl md:text-3xl font-extrabold font-headline tracking-tight text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Create Account
             </h2>
             <p className="mt-2 text-center text-sm text-muted-foreground">
