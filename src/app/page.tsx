@@ -130,7 +130,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col overflow-x-hidden bg-white dark:bg-slate-950">
+    <div className="flex flex-col overflow-x-hidden bg-white dark:bg-slate-900">
       <WelcomePopup open={isPopupOpen} onOpenChange={handleWelcomeClose} />
 
       <ModernHero
@@ -141,7 +141,7 @@ export default function Home() {
       <ModernMarquee />
 
       {/* Our Core Services Section */}
-      <section id="services" className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 relative">
+      <section id="services" className="w-full py-24 md:py-32 bg-white dark:bg-slate-900 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.h2
@@ -225,14 +225,14 @@ export default function Home() {
                     Schedule Consultation
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md bg-white dark:bg-slate-950 rounded-[3rem] border-none shadow-2xl p-2">
+                <DialogContent className="max-w-md bg-white dark:bg-slate-900 rounded-[3rem] border-none shadow-2xl p-2">
                   <DialogHeader className="sr-only">
                     <DialogTitle>Schedule a Financial Consultation</DialogTitle>
                     <DialogDescription>
                       Fill out the form below to receive expert financial and compliance advisory.
                     </DialogDescription>
                   </DialogHeader>
-                  <div className="bg-white dark:bg-slate-950 rounded-[2.8rem] overflow-hidden">
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.8rem] overflow-hidden">
                     <AnimatedQuoteForm />
                   </div>
                 </DialogContent>
@@ -253,7 +253,7 @@ export default function Home() {
               className="space-y-8"
             >
               <div className="text-primary font-bold tracking-widest uppercase text-base">Who We Are</div>
-              <div className="space-y-6 text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+              <div className="space-y-6 text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 <p>
                   CACS FinAcc is a Bengaluru-based financial and compliance support platform working with startups, SMEs, and professionals across India.
                 </p>
@@ -286,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose CACS FinAcc Section */}
-      <section id="why-choose-us" className="w-full py-24 md:py-32 bg-white dark:bg-slate-950">
+      <section id="why-choose-us" className="w-full py-24 md:py-32 bg-white dark:bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.h2
@@ -441,7 +441,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS Section */}
-      <section id="testimonials" className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 overflow-hidden">
+      <section id="testimonials" className="w-full py-24 md:py-32 bg-white dark:bg-slate-900 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.h2
@@ -479,7 +479,7 @@ export default function Home() {
                             </span>
                             <Quote className="text-primary/20 w-8 h-8 rotate-180" />
                           </div>
-                          <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-8">
+                          <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
                             "{testimonial.text}"
                           </p>
                         </div>
@@ -514,7 +514,7 @@ export default function Home() {
       {/* CTA SECTION */}
       <section id="cta" className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900/10">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto bg-white dark:bg-slate-950 rounded-[4rem] p-12 md:p-24 border border-slate-200 dark:border-slate-800 shadow-2xl relative overflow-hidden text-center">
+          <div className="max-w-6xl mx-auto bg-white dark:bg-slate-900 rounded-[4rem] p-12 md:p-24 border border-slate-200 dark:border-slate-800 shadow-2xl relative overflow-hidden text-center">
             {/* Background Animations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {/* Subtle Grid Pattern */}

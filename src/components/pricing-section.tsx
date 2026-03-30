@@ -159,7 +159,7 @@ export function PricingSection() {
           <h2 className="text-3xl md:text-4xl font-bold font-headline text-foreground">
             Income Tax Return (ITR) Filing Plans
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground text-center">
+          <p className="mt-4 max-w-2xl mx-auto text-slate-600 text-center">
             Get your Income Tax Return (ITR) filed quickly and securely with CA assistance.<br/>
             Suitable for salary, business, capital gains, trading and crypto income.
           </p>
@@ -215,7 +215,7 @@ export function PricingSection() {
           {addOnServices.map((service, index) => (
             <Card key={index} className="relative flex flex-col bg-card border border-border/50 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden group">
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-bold text-[#0D1B2A] dark:text-white group-hover:text-cyan-600 transition-colors h-14 flex items-center">
+                <CardTitle className="text-lg font-bold text-slate-600 dark:text-white group-hover:text-cyan-600 transition-colors h-14 flex items-center">
                   {service.title}
                 </CardTitle>
                 <div className="mt-2 flex items-baseline">
@@ -228,7 +228,7 @@ export function PricingSection() {
                 <p className="text-xs font-bold text-[#2EC4B6] tracking-widest mb-3">Service Includes:</p>
                 <ul className="space-y-2">
                   {service.includes.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-[#4A4A4A] dark:text-white">
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-white">
                       <CheckCircle2 className="h-4 w-4 text-[#00B4D8] flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>

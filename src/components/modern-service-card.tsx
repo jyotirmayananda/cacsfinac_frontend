@@ -32,7 +32,7 @@ export function ModernServiceCard({ icon: Icon, title, description, href, index 
           
           <div className="relative z-10">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-blue-400 p-px mb-8 group-hover:scale-110 transition-transform duration-500">
-              <div className="w-full h-full rounded-2xl bg-white dark:bg-slate-950 flex items-center justify-center">
+              <div className="w-full h-full rounded-2xl bg-white dark:bg-slate-900 flex items-center justify-center">
                 <Icon className="w-8 h-8 text-primary" />
               </div>
             </div>

@@ -92,7 +92,7 @@ export default function AboutContent() {
               className="space-y-6"
             >
               <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-6 leading-tight">Who We Are</h2>
-              <div className="space-y-8 text-xl text-slate-300 font-medium leading-relaxed">
+              <div className="space-y-6 text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 <p>
                   CACS FinAcc is a Bengaluru-based financial and compliance support platform working in collaboration with qualified Chartered Accountants and professionals.
                 </p>
@@ -109,14 +109,14 @@ export default function AboutContent() {
               className="aspect-[4/3] relative rounded-[4rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] border border-white/10"
             >
               <Image src={whoweareNew} alt="Team collaboration" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent pointer-events-none" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* 3. What Makes Us Different */}
-      <section className="w-full py-24 md:py-32 bg-slate-50 dark:bg-slate-950/20">
+      <section className="w-full py-24 md:py-32 bg-slate-50 dark:bg-slate-900/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mb-12 text-center mx-auto">
              <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">What Makes Us Different</h2>
@@ -171,7 +171,7 @@ export default function AboutContent() {
       </section>
 
       {/* 4. Our Approach */}
-      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 overflow-hidden">
+      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-900 overflow-hidden">
         <div className="container mx-auto px-4">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="max-w-xl">
@@ -241,7 +241,7 @@ export default function AboutContent() {
       </section>
 
       {/* 6. Our Capabilities */}
-      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-950">
+      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">Our Capabilities</h2>
@@ -267,7 +267,7 @@ export default function AboutContent() {
       </section>
 
       {/* 7. How We Work */}
-      <section className="w-full py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden">
+      <section className="w-full bg-slate-50 dark:bg-slate-900 py-24 md:py-32 overflow-hidden relative">
         <div className="absolute inset-0 opacity-10 blur-3xl"><Abstract3DScene /></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 max-w-4xl mx-auto">
@@ -325,7 +325,7 @@ export default function AboutContent() {
           </div>
       </section>
 
-      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 overflow-hidden">
+      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-900 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-4xl mx-auto">
              <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">
@@ -417,7 +417,7 @@ export default function AboutContent() {
       </section>
 
       {/* 10. Our Philosophy */}
-      <section className="w-full py-20 bg-slate-50 dark:bg-slate-950/20">
+      <section className="w-full py-20 bg-slate-50 dark:bg-slate-900/20">
         <div className="container mx-auto px-4 text-center">
             <motion.div
                initial={{ opacity: 0, scale: 0.95 }}
@@ -438,7 +438,7 @@ export default function AboutContent() {
       </section>
 
       {/* 11. CTA Section */}
-      <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-slate-950 text-white">
+      <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-slate-900 text-white">
         <div className="absolute inset-0 opacity-20 scale-150"><Abstract3DScene /></div>
         
         {/* Animated Background Blobs */}
@@ -478,14 +478,14 @@ export default function AboutContent() {
                         Schedule Consultation
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-md bg-white dark:bg-slate-950 rounded-[4rem] border-none shadow-5xl p-2 scale-105">
+                    <DialogContent className="max-w-md bg-white dark:bg-slate-900 rounded-[4rem] border-none shadow-5xl p-2 scale-105">
                       <DialogHeader className="sr-only">
                         <DialogTitle>Schedule a Consultation</DialogTitle>
                         <DialogDescription>
                           Share your requirements to get structured financial advisory and professional support.
                         </DialogDescription>
                       </DialogHeader>
-                      <div className="bg-white dark:bg-slate-950 rounded-[3.8rem] overflow-hidden shadow-2xl">
+                      <div className="flex flex-col bg-white dark:bg-slate-900 rounded-[3.8rem] overflow-hidden shadow-2xl">
                         <AnimatedQuoteForm />
                       </div>
                     </DialogContent>

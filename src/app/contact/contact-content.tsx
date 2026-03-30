@@ -253,7 +253,7 @@ export default function ContactContent() {
                 </div>
             </section>
 
-            <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
+            <section id="contact" className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
                         <div className="max-w-2xl">
@@ -281,7 +281,7 @@ export default function ContactContent() {
                                                 {item.title}
                                             </h3>
                                             {item.details.map((line, i) => (
-                                                <p key={i} className="text-xl font-bold text-slate-700 dark:text-white leading-tight">
+                                                <p key={i} className="text-xl font-bold text-slate-600 dark:text-white leading-tight">
                                                     {line}
                                                 </p>
                                             ))}

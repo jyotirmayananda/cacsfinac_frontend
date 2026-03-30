@@ -112,7 +112,7 @@ export default function BlogPage() {
       <section id="blog-posts" className="py-24 md:py-32">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-6">
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-6">
               Latest from CACS
             </h2>
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -163,7 +163,7 @@ export default function BlogPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden">
+      <section id="faq" className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(59,130,246,0.05),transparent)] pointer-events-none" />
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
           <div className="text-center mb-16 space-y-6">
@@ -201,7 +201,7 @@ export default function BlogPage() {
           </Accordion>
 
           <div className="mt-20 text-center">
-            <div className="bg-white dark:bg-slate-800/80 backdrop-blur-xl p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/10 shadow-xl inline-flex flex-col md:flex-row items-center gap-8">
+            <div className="bg-white dark:bg-slate-900 backdrop-blur-xl p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/10 shadow-xl inline-flex flex-col md:flex-row items-center gap-8">
               <p className="text-slate-600 dark:text-slate-400 font-medium">Still have questions? Our experts are here to help.</p>
               <Button className="rounded-full px-10 py-6 h-auto text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all font-bold" asChild>
                 <Link href="/contact">Ask a Question</Link>

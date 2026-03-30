@@ -58,7 +58,7 @@ export default function ServicesPage() {
       <ServicesHero />
 
       {/* Guide Section: Not Sure Where to Start? */}
-      <section className="py-16 bg-slate-50 dark:bg-slate-900/30 border-y border-border/50">
+      <section className="py-16 bg-slate-50 dark:bg-slate-900 border-y border-border/50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-10 font-headline tracking-tight">Not Sure Where to Start?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">

@@ -145,7 +145,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       </section>
 
       {/* Process Flow */}
-      <section className="py-24 md:py-40 dark:bg-slate-950 bg-slate-100/30 text-foreground overflow-hidden relative border-y border-border/50">
+      <section className="py-24 md:py-40 dark:bg-slate-900 bg-slate-100/30 text-foreground overflow-hidden relative border-y border-border/50">
         <div className="absolute top-0 right-0 w-[50vw] h-[50vh] bg-primary/10 rounded-full blur-[120px] -mr-40 -mt-40 -z-1 opacity-20" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-24 space-y-6">
@@ -246,7 +246,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       {/* Global CTA Banner */}
       <section className="py-24 md:py-40 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="relative rounded-[4rem] overflow-hidden dark:bg-slate-950 bg-slate-50 text-foreground p-12 md:p-24 text-center border border-border/50 shadow-2xl">
+          <div className="relative rounded-[4rem] overflow-hidden dark:bg-slate-900 bg-slate-50 text-foreground p-12 md:p-24 text-center border border-border/50 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 opacity-30 pointer-events-none" />
             <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 -z-1 opacity-30" />
             
