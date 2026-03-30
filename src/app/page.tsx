@@ -134,21 +134,21 @@ export default function Home() {
       <WelcomePopup open={isPopupOpen} onOpenChange={handleWelcomeClose} />
 
       <ModernHero
-        title={<>Strategic Financial <br /> Advisory & <br /> <span className="text-blue-600">Compliance</span> <br /> Solutions</>}
+        title={<>Strategic Financial <br /> Advisory & <span className="text-blue-600">Compliance</span> Solutions</>}
         subtitle="Supporting startups, SMEs, and professionals with taxation, regulatory compliance, and financial management — in collaboration with qualified professionals."
       />
 
       <ModernMarquee />
 
       {/* Our Core Services Section */}
-      <section id="services" className="w-full py-20 bg-white dark:bg-slate-950 relative">
+      <section id="services" className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white mb-6"
+              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-6"
             >
               Our Core Services
             </motion.h2>
@@ -185,7 +185,7 @@ export default function Home() {
               Services delivered through structured processes and in collaboration with qualified professionals.
             </p>
             <Button asChild variant="outline" size="lg" className="rounded-full px-12 py-7 text-lg font-bold border-2 hover:bg-primary hover:text-white transition-all shadow-xl dark:border-slate-800 dark:bg-slate-900 group">
-              <Link href="/services" className="flex items-center gap-2">
+              <Link href="/services" className="flex items-center gap-2 text-slate-600 dark:text-white">
                 Explore All Services
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -195,7 +195,7 @@ export default function Home() {
       </section>
 
       {/* Request a Consultation Section */}
-      <section className="w-full py-24 bg-primary text-white">
+      <section className="w-full py-32 bg-primary text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
@@ -243,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* WHO WE ARE Section */}
-      <section id="who-we-are" className="w-full py-20 bg-slate-50 dark:bg-slate-900/10">
+      <section id="who-we-are" className="w-full py-24 md:py-32 bg-slate-50 dark:bg-slate-900/10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -252,7 +252,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="text-primary font-bold tracking-widest uppercase text-sm">Who We Are</div>
+              <div className="text-primary font-bold tracking-widest uppercase text-base">Who We Are</div>
               <div className="space-y-6 text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                 <p>
                   CACS FinAcc is a Bengaluru-based financial and compliance support platform working with startups, SMEs, and professionals across India.
@@ -260,7 +260,7 @@ export default function Home() {
                 <p>
                   We collaborate with qualified Chartered Accountants and professionals to deliver structured financial management, taxation, and regulatory compliance services.
                 </p>
-                <p className="border-l-4 border-primary pl-6 font-bold py-2 text-slate-800 dark:text-slate-100">
+                <p className="border-l-4 border-primary pl-6 font-bold py-2 text-slate-600 dark:text-slate-100">
                   Focused on clarity, consistency, and professional execution across all engagements.
                 </p>
               </div>
@@ -286,14 +286,14 @@ export default function Home() {
       </section>
 
       {/* Why Choose CACS FinAcc Section */}
-      <section id="why-choose-us" className="w-full py-20 bg-white dark:bg-slate-950">
+      <section id="why-choose-us" className="w-full py-24 md:py-32 bg-white dark:bg-slate-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white mb-6"
+              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-6"
             >
               Why Choose CACS FinAcc
             </motion.h2>
@@ -342,7 +342,7 @@ export default function Home() {
                     <item.icon size={28} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">{item.title}</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-slate-600 dark:text-white">{item.title}</h3>
                     <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{item.description}</p>
                   </div>
                 </div>
@@ -353,14 +353,14 @@ export default function Home() {
       </section>
 
       {/* How We Support Your Business Section - Reverted to Old UI */}
-      <section id="how-we-support" className="w-full py-20 bg-slate-50 dark:bg-slate-900/10">
+      <section id="how-we-support" className="w-full py-24 md:py-32 bg-slate-50 dark:bg-slate-900/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-20">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white mb-6"
+              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-6"
             >
               How We Support Your Business
             </motion.h2>
@@ -410,17 +410,17 @@ export default function Home() {
                   <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary transition-colors">
                     <item.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                   </div>
-                  <span className="text-5xl font-black text-slate-100 dark:text-slate-800">{item.id}</span>
+                  <span className="text-5xl font-black text-slate-100 dark:text-slate-600">{item.id}</span>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-8 text-slate-800 dark:text-white leading-tight tracking-tight">
+                <h3 className="text-2xl font-bold mb-8 text-slate-600 dark:text-white leading-tight tracking-tight">
                   {item.title}
                 </h3>
 
                 <div className="space-y-6">
                   <div>
-                    <div className="text-[10px] font-bold text-primary tracking-widest mb-2 uppercase">The Challenge</div>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm font-medium">
+                    <div className="text-xs font-bold text-primary tracking-widest mb-2 uppercase">The Challenge</div>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base font-medium">
                       {item.challenge}
                     </p>
                   </div>
@@ -428,8 +428,8 @@ export default function Home() {
                   <div className="h-px w-full bg-slate-100 dark:bg-slate-800" />
 
                   <div>
-                    <div className="text-[10px] font-bold text-green-500 tracking-widest mb-2 uppercase">Our Approach</div>
-                    <p className="text-slate-800 dark:text-white leading-relaxed font-bold text-sm">
+                    <div className="text-xs font-bold text-green-500 tracking-widest mb-2 uppercase">Our Approach</div>
+                    <p className="text-slate-600 dark:text-white leading-relaxed font-bold text-base">
                       {item.approach}
                     </p>
                   </div>
@@ -441,14 +441,14 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS Section */}
-      <section id="testimonials" className="w-full py-20 bg-white dark:bg-slate-950 overflow-hidden">
+      <section id="testimonials" className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white"
+              className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white"
             >
               Testimonials
             </motion.h2>
@@ -474,7 +474,7 @@ export default function Home() {
                       <CardContent className="p-0 flex-grow flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start mb-6">
-                            <span className="px-4 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest whitespace-nowrap">
+                            <span className="px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-widest whitespace-nowrap">
                               {testimonial.category}
                             </span>
                             <Quote className="text-primary/20 w-8 h-8 rotate-180" />
@@ -491,10 +491,10 @@ export default function Home() {
                             </AvatarFallback>
                           </Avatar>
                           <div className="flex flex-col">
-                            <span className="text-base font-bold text-slate-800 dark:text-white uppercase truncate">
+                            <span className="text-base font-bold text-slate-600 dark:text-white uppercase truncate">
                               {testimonial.name}
                             </span>
-                            <span className="text-xs text-primary font-bold tracking-wider leading-tight mt-1 uppercase">
+                            <span className="text-sm text-primary font-bold tracking-wider leading-tight mt-1 uppercase">
                               {testimonial.company}
                             </span>
                           </div>
@@ -512,7 +512,7 @@ export default function Home() {
       </section>
 
       {/* CTA SECTION */}
-      <section id="cta" className="py-20 bg-slate-50 dark:bg-slate-900/10">
+      <section id="cta" className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto bg-white dark:bg-slate-950 rounded-[4rem] p-12 md:p-24 border border-slate-200 dark:border-slate-800 shadow-2xl relative overflow-hidden text-center">
             {/* Background Animations */}
@@ -570,7 +570,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white mb-8"
+                className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-8"
               >
                 Looking for a reliable financial and compliance partner?
               </motion.h2>
@@ -609,7 +609,7 @@ export default function Home() {
                   </DialogContent>
                 </Dialog>
 
-                <div className="flex flex-wrap justify-center items-center gap-6 text-sm font-bold text-slate-500 dark:text-slate-400">
+                <div className="flex flex-wrap justify-center items-center gap-6 text-base font-bold text-slate-500 dark:text-slate-400">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 size={18} className="text-primary" />
                     No-obligation discussion

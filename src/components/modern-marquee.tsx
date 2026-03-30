@@ -15,7 +15,7 @@ const MarqueeItem = ({ icon: Icon, text, color }: MarqueeItemProps) => (
     <div className={`p-3 rounded-full ${color} text-white group-hover:scale-110 transition-transform`}>
       <Icon size={24} />
     </div>
-    <span className="font-bold text-lg tracking-tight whitespace-nowrap text-slate-900 dark:text-white">{text}</span>
+    <span className="font-bold text-lg tracking-tight whitespace-nowrap text-slate-600 dark:text-white">{text}</span>
   </div>
 );
 

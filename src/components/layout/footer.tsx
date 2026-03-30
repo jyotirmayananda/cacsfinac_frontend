@@ -83,9 +83,9 @@ export function Footer() {
               <Image
                 src={logoSrc}
                 alt="CACS FinAcc Logo"
-                width={200}
-                height={50}
-                className="h-12 w-auto object-contain brightness-110"
+                width={300}
+                height={80}
+                className="h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-lg font-medium leading-relaxed max-w-sm">
@@ -110,13 +110,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="text-foreground font-bold tracking-widest text-xs mb-8">Navigation</h3>
+            <h3 className="text-foreground font-bold tracking-widest text-sm mb-8">Navigation</h3>
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-bold hover:text-primary transition-colors flex items-center group"
+                    className="text-base font-bold hover:text-primary transition-colors flex items-center group"
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-primary mr-0 group-hover:mr-2 transition-all" />
                     {link.label}
@@ -128,13 +128,13 @@ export function Footer() {
 
           {/* Services Links */}
           <div className="lg:col-span-3">
-            <h3 className="text-foreground font-bold tracking-widest text-xs mb-8">Core Services</h3>
+            <h3 className="text-foreground font-bold tracking-widest text-sm mb-8">Core Services</h3>
             <ul className="space-y-4">
               {servicesLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-bold hover:text-primary transition-colors flex items-center group"
+                    className="text-base font-bold hover:text-primary transition-colors flex items-center group"
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-primary mr-0 group-hover:mr-2 transition-all" />
                     {link.label}
@@ -146,8 +146,8 @@ export function Footer() {
 
           {/* Contact Column */}
           <div className="lg:col-span-3 space-y-8">
-            <h3 className="text-foreground font-bold tracking-widest text-xs mb-8">Get In Touch</h3>
-            <div className="space-y-4 text-sm font-bold">
+            <h3 className="text-foreground font-bold tracking-widest text-sm mb-8">Get In Touch</h3>
+            <div className="space-y-4 text-base font-bold">
               <div className="flex gap-3 items-start">
                 <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center mt-0.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -172,7 +172,7 @@ export function Footer() {
               href="https://g.page/Bengaluru-Office-CACS-FinAcc-Services/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-card hover:bg-muted border border-border px-6 py-4 rounded-2xl transition-all group w-full text-xs font-bold tracking-widest text-foreground shadow-sm"
+              className="inline-flex items-center gap-3 bg-card hover:bg-muted border border-border px-6 py-4 rounded-2xl transition-all group w-full text-sm font-bold tracking-widest text-foreground shadow-sm"
             >
               <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#4285F4" d="M23.7449 12.27C23.7449 11.48 23.6849 10.73 23.5549 10H12.2549V14.51H18.7249C18.4349 15.99 17.5849 17.24 16.3249 18.09V21.09H20.1849C22.4449 19.01 23.7449 15.92 23.7449 12.27Z" />
@@ -186,7 +186,7 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-12 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest">
+        <div className="pt-12 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-bold tracking-widest">
           <div className="flex items-center gap-4">
             <span>&copy; {new Date().getFullYear()} CACS FinAcc Services™</span>
             <span className="w-1 h-1 rounded-full bg-border" />

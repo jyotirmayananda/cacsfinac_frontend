@@ -134,15 +134,15 @@ export default function SignupPage() {
             <p className="text-muted-foreground text-base leading-relaxed">
               Welcome to <span className="font-semibold text-foreground">CACS FinAcc Services</span> — Chartered Accountancy driven solutions for finance, taxation, and regulatory compliance.
             </p>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-base leading-relaxed">
               Your registration has been completed successfully. Please verify your registered email address to activate your account.
             </p>
             <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-              <p className="text-sm text-blue-800 dark:text-blue-300">
+              <p className="text-base text-blue-800 dark:text-blue-300">
                 A verification link has been sent to <br />
                 <span className="font-semibold">{userEmail}</span>
               </p>
-              <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+               <p className="text-sm text-blue-600 dark:text-blue-400 mt-2">
                 Email verification is mandatory to ensure secure access to your compliance records.
               </p>
             </div>
@@ -151,7 +151,7 @@ export default function SignupPage() {
                 <Link href="/login">Return to Login</Link>
               </Button>
             </div>
-            <div className="text-xs text-muted-foreground pt-2 space-y-1">
+            <div className="text-sm text-muted-foreground pt-2 space-y-1">
               <p className="font-medium">CACS FinAcc Services</p>
               <p>+91-9591633648 · info@cacsfinaccservices.com</p>
               <p>Bengaluru, Karnataka</p>
@@ -199,7 +199,7 @@ export default function SignupPage() {
             <h2 className="mt-6 text-center text-2xl md:text-3xl font-extrabold font-headline tracking-tight text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Create Account
             </h2>
-            <p className="mt-2 text-center text-sm text-muted-foreground">
+            <p className="mt-2 text-center text-base text-muted-foreground">
               Enter your information to get started.
             </p>
           </div>
@@ -320,7 +320,7 @@ export default function SignupPage() {
               </Button>
             </form>
           </Form>
-          <div className="text-center text-sm text-muted-foreground">
+          <div className="text-center text-base text-muted-foreground">
             Already have an account?{" "}
             <Link
               href="/login"

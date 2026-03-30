@@ -90,7 +90,7 @@ export default function ServiceDetailHero({ title, subtitle, slug }: ServiceDeta
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary/30 rounded-full blur-[100px] -z-1 animate-pulse" />
             
             {/* The Icon Card */}
-            <div className="relative z-10 w-full max-w-[400px] aspect-square rounded-[3rem] border border-border bg-card hover:bg-card/80 transition-all duration-300 backdrop-blur-xl p-16 flex flex-col items-center justify-center shadow-2xl group overflow-hidden">
+            <div className="relative z-10 w-full max-w-[500px] aspect-square rounded-[4rem] border border-border bg-card hover:bg-card/80 transition-all duration-300 backdrop-blur-xl flex flex-col items-center justify-center shadow-2xl group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
               
               <motion.div 
@@ -103,16 +103,16 @@ export default function ServiceDetailHero({ title, subtitle, slug }: ServiceDeta
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="relative z-10 bg-primary/20 p-8 rounded-[2.5rem] text-primary shadow-2xl shadow-primary/20 border border-primary/30"
+                className="relative z-10 bg-primary/20 p-12 rounded-[3rem] text-primary shadow-2xl shadow-primary/20 border border-primary/30 flex items-center justify-center"
               >
-                <Icon size={120} strokeWidth={1} />
+                <Icon size={160} strokeWidth={1} />
               </motion.div>
               
-              <div className="mt-12 text-center relative z-10">
-                <span className="text-muted-foreground/60 text-xs font-bold tracking-[0.3em]">Institutional Service</span>
-                <div className="mt-4 flex gap-1 justify-center">
+              <div className="absolute bottom-16 left-0 right-0 text-center z-10">
+                <span className="text-muted-foreground/60 text-sm font-bold tracking-[0.3em] uppercase">Institutional Service</span>
+                <div className="mt-4 flex gap-2 justify-center">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <div key={i} className="w-2 h-2 rounded-full bg-primary" />
                   ))}
                 </div>
               </div>

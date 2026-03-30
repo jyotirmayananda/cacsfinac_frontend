@@ -46,10 +46,15 @@ export default function AboutContent() {
       {/* 1. Hero Section (Company / About CACS FinAcc) */}
       <ModernHero
         title={<>About <br /> CACS FinAcc</>}
+        ctaText="Get Expert Consultation"
+        secondaryCtaText="View Services"
+        secondaryCtaLink="/services"
         subtitle={
-          <div className="space-y-4">
-            <p className="font-bold text-primary tracking-widest text-xs uppercase">Financial Advisory, Taxation & Compliance Support for Businesses, Professionals, and NRIs</p>
-            <p className="text-lg md:text-xl font-bold leading-tight tracking-tight text-slate-800 dark:text-slate-100">
+          <div className="space-y-6">
+            <nav className="flex items-center justify-center lg:justify-start gap-2 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+              Financial Advisory Services
+            </nav>
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
               Supporting clients across Bengaluru and India with structured financial management,
               regulatory compliance, and business advisory—focused on clarity, consistency, and execution.
             </p>
@@ -75,7 +80,7 @@ export default function AboutContent() {
       />
 
       {/* 2. Who We Are */}
-      <section className="w-full py-20 relative overflow-hidden bg-slate-950 text-white">
+      <section className="w-full py-24 md:py-32 relative overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-primary/5 pointer-events-none opacity-50" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -86,8 +91,8 @@ export default function AboutContent() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">Who We Are</h2>
-              <div className="space-y-8 text-lg md:text-xl text-slate-300 font-medium leading-[1.6]">
+              <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-6 leading-tight">Who We Are</h2>
+              <div className="space-y-8 text-xl text-slate-300 font-medium leading-relaxed">
                 <p>
                   CACS FinAcc is a Bengaluru-based financial and compliance support platform working in collaboration with qualified Chartered Accountants and professionals.
                 </p>
@@ -111,10 +116,10 @@ export default function AboutContent() {
       </section>
 
       {/* 3. What Makes Us Different */}
-      <section className="w-full py-20 bg-slate-50 dark:bg-slate-950/20">
+      <section className="w-full py-24 md:py-32 bg-slate-50 dark:bg-slate-950/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mb-12 text-center mx-auto">
-             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white leading-tight">What Makes Us Different</h2>
+             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">What Makes Us Different</h2>
           </div>
           <div className="space-y-8">
             {/* Top row - 3 items */}
@@ -135,7 +140,7 @@ export default function AboutContent() {
                   <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary transition-colors">
                      <ShieldCheck className="h-5 w-5 text-primary group-hover:text-white" />
                   </div>
-                  <p className="text-base font-bold text-slate-800 dark:text-slate-200 leading-snug tracking-tight max-w-[240px]">{text}</p>
+                  <p className="text-lg font-bold text-slate-600 dark:text-slate-200 leading-snug tracking-tight max-w-[240px]">{text}</p>
                 </motion.div>
               ))}
             </div>
@@ -157,7 +162,7 @@ export default function AboutContent() {
                   <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary transition-colors">
                      <ShieldCheck className="h-5 w-5 text-primary group-hover:text-white" />
                   </div>
-                  <p className="text-base font-bold text-slate-800 dark:text-slate-200 leading-snug tracking-tight max-w-[240px]">{text}</p>
+                  <p className="text-base font-bold text-slate-600 dark:text-slate-200 leading-snug tracking-tight max-w-[240px]">{text}</p>
                 </motion.div>
               ))}
             </div>
@@ -166,12 +171,12 @@ export default function AboutContent() {
       </section>
 
       {/* 4. Our Approach */}
-      <section className="w-full py-20 bg-white dark:bg-slate-950 overflow-hidden">
+      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 overflow-hidden">
         <div className="container mx-auto px-4">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="max-w-xl">
-                 <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white mb-6 leading-tight">Our Approach</h2>
-                 <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 font-medium mb-10">
+                 <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-8 leading-tight">Our Approach</h2>
+                 <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-medium mb-10">
                    Our work is built on disciplined execution and clearly defined processes. <br /><br />
                    We ensure:
                  </p>
@@ -183,8 +188,8 @@ export default function AboutContent() {
                       "Consistent execution across engagements"
                     ].map((text, i) => (
                       <div key={i} className="flex items-center gap-6 group">
-                         <div className="text-3xl md:text-5xl font-bold text-slate-100 dark:text-slate-800 group-hover:text-primary/20 transition-colors duration-500 line-clamp-1 select-none leading-none">0{i + 1}</div>
-                         <p className="text-lg font-bold text-slate-800 dark:text-slate-100 tracking-tight">{text}</p>
+                         <div className="text-3xl md:text-5xl font-bold text-slate-100 dark:text-slate-600 group-hover:text-primary/20 transition-colors duration-500 line-clamp-1 select-none leading-none">0{i + 1}</div>
+                         <p className="text-lg font-bold text-slate-600 dark:text-slate-100 tracking-tight">{text}</p>
                       </div>
                     ))}
                  </div>
@@ -204,10 +209,10 @@ export default function AboutContent() {
       </section>
 
       {/* 5. Who We Work With */}
-      <section className="w-full py-20 bg-slate-50 dark:bg-slate-900/10">
+      <section className="w-full py-24 md:py-32 bg-slate-50 dark:bg-slate-900/10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white leading-tight">Who We Work With</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-12 leading-tight">Who We Work With</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {[
@@ -228,7 +233,7 @@ export default function AboutContent() {
                 <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <p className="text-xs font-bold tracking-widest text-slate-800 dark:text-white leading-tight">{item.text}</p>
+                <p className="text-sm font-bold tracking-widest text-slate-600 dark:text-white leading-tight">{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -236,10 +241,10 @@ export default function AboutContent() {
       </section>
 
       {/* 6. Our Capabilities */}
-      <section className="w-full py-20 bg-white dark:bg-slate-950">
+      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white leading-tight">Our Capabilities</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">Our Capabilities</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -251,8 +256,8 @@ export default function AboutContent() {
               { text: "Payroll and statutory compliance", icon: Users }
             ].map((capability, i) => (
               <div key={i} className="p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-900 transition-all group duration-300 text-center">
-                <capability.icon className="h-6 w-6 text-primary mb-8 mx-auto group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white tracking-tight leading-snug">
+                <capability.icon className="h-7 w-7 text-primary mb-8 mx-auto group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl md:text-2xl font-bold text-slate-600 dark:text-white tracking-tight leading-snug">
                   {capability.text}
                 </h3>
               </div>
@@ -262,7 +267,7 @@ export default function AboutContent() {
       </section>
 
       {/* 7. How We Work */}
-      <section className="w-full py-20 bg-slate-950 text-white relative overflow-hidden">
+      <section className="w-full py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 blur-3xl"><Abstract3DScene /></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 max-w-4xl mx-auto">
@@ -292,7 +297,7 @@ export default function AboutContent() {
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-colors">
                    <CheckCircle2 size={24} className="text-primary group-hover:text-white transition-colors" />
                 </div>
-                <p className="text-xs font-bold tracking-widest leading-snug relative z-10">{step}</p>
+                <p className="text-sm font-bold tracking-widest leading-snug relative z-10">{step}</p>
                 {i < 4 && (
                   <div className="hidden md:block absolute top-1/2 -right-2 translate-y-[-50%] z-20">
                     <ArrowRight className="text-primary/30 w-4 h-4 group-hover:text-primary transition-colors" />
@@ -320,10 +325,10 @@ export default function AboutContent() {
           </div>
       </section>
 
-      <section className="w-full py-20 bg-white dark:bg-slate-950 overflow-hidden">
+      <section className="w-full py-24 md:py-32 bg-white dark:bg-slate-950 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-4xl mx-auto">
-             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white leading-tight">
+             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">
                Why CACS FinAcc
              </h2>
           </div>
@@ -360,10 +365,10 @@ export default function AboutContent() {
                      <item.icon className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-500" />
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-lg md:text-xl font-bold tracking-tight leading-loose text-slate-800 dark:text-white">
+                    <h3 className="text-xl md:text-2xl font-bold tracking-tight leading-tight text-slate-600 dark:text-white mb-4">
                       {item.title}
                     </h3>
-                    <p className="text-xs font-medium leading-relaxed opacity-70 text-slate-500 dark:text-slate-400">
+                    <p className="text-base font-medium leading-relaxed text-slate-500 dark:text-slate-400 opacity-80">
                       {item.desc}
                     </p>
                   </div>
@@ -397,7 +402,7 @@ export default function AboutContent() {
                      <item.icon className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-500" />
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-lg md:text-xl font-bold tracking-tight leading-loose text-slate-800 dark:text-white">
+                    <h3 className="text-lg md:text-xl font-bold tracking-tight leading-loose text-slate-600 dark:text-white">
                       {item.title}
                     </h3>
                     <p className="text-xs font-medium leading-relaxed opacity-70 text-slate-500 dark:text-slate-400">
@@ -421,7 +426,7 @@ export default function AboutContent() {
                viewport={{ once: true }}
                className="max-w-4xl mx-auto py-16 border-none rounded-[2rem] bg-white dark:bg-slate-900 shadow-xl flex flex-col items-center gap-8 px-8"
             >
-                <h2 className="text-xl md:text-3xl font-extrabold tracking-tight text-slate-800 dark:text-white leading-tight">
+                <h2 className="text-xl md:text-3xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight">
                    "Financial and compliance functions must operate with structure, clarity, and consistency."
                 </h2>
                 <div className="w-12 h-1 bg-primary/20 rounded-full" />
@@ -433,7 +438,7 @@ export default function AboutContent() {
       </section>
 
       {/* 11. CTA Section */}
-      <section id="cta" className="py-20 relative overflow-hidden bg-slate-950 text-white">
+      <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 opacity-20 scale-150"><Abstract3DScene /></div>
         
         {/* Animated Background Blobs */}
@@ -485,7 +490,7 @@ export default function AboutContent() {
                       </div>
                     </DialogContent>
                   </Dialog>
-                  <div className="flex items-center gap-8 text-xs font-bold tracking-widest text-slate-500">
+                  <div className="flex items-center gap-8 text-sm font-bold tracking-widest text-slate-500">
                     <div className="flex items-center gap-2">Confidential</div>
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
                     <div className="flex items-center gap-2">Professional support</div>

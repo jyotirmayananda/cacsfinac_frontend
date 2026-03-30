@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Phone, Mail, CheckCircle2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
@@ -88,19 +89,23 @@ function ContactForm() {
 
     return (
         <>
-            <Card className="w-full shadow-xl shadow-primary/5">
-                <CardContent className="p-6">
+            <Card className="w-full border-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] bg-white dark:bg-slate-900/40 backdrop-blur-xl">
+                <CardContent className="p-8 md:p-12">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <FormField
                                     control={form.control}
                                     name="name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Your Name</FormLabel>
+                                            <FormLabel className="text-sm font-bold tracking-widest uppercase text-slate-500">Your Name</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="John Doe" {...field} />
+                                                <Input 
+                                                    placeholder="John Doe" 
+                                                    className="h-14 bg-slate-50/50 dark:bg-slate-950/50 border-slate-200 dark:border-slate-800 rounded-xl focus:ring-primary focus:border-primary transition-all text-base" 
+                                                    {...field} 
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -111,11 +116,12 @@ function ContactForm() {
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Your Email</FormLabel>
+                                            <FormLabel className="text-sm font-bold tracking-widest uppercase text-slate-500">Your Email</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     type="email"
                                                     placeholder="john@example.com"
+                                                    className="h-14 bg-slate-50/50 dark:bg-slate-950/50 border-slate-200 dark:border-slate-800 rounded-xl focus:ring-primary focus:border-primary transition-all text-base"
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -129,9 +135,13 @@ function ContactForm() {
                                 name="subject"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Subject</FormLabel>
+                                        <FormLabel className="text-sm font-bold tracking-widest uppercase text-slate-500">Subject</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Regarding your services" {...field} />
+                                            <Input 
+                                                placeholder="Regarding your services" 
+                                                className="h-14 bg-slate-50/50 dark:bg-slate-950/50 border-slate-200 dark:border-slate-800 rounded-xl focus:ring-primary focus:border-primary transition-all text-base" 
+                                                {...field} 
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -142,11 +152,11 @@ function ContactForm() {
                                 name="message"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Message</FormLabel>
+                                        <FormLabel className="text-sm font-bold tracking-widest uppercase text-slate-500">Message</FormLabel>
                                         <FormControl>
                                             <Textarea
                                                 placeholder="Tell us a little bit about your needs"
-                                                className="min-h-[150px]"
+                                                className="min-h-[180px] bg-slate-50/50 dark:bg-slate-950/50 border-slate-200 dark:border-slate-800 rounded-xl focus:ring-primary focus:border-primary transition-all text-base resize-none"
                                                 {...field}
                                             />
                                         </FormControl>
@@ -154,8 +164,13 @@ function ContactForm() {
                                     </FormItem>
                                 )}
                             />
-                            <div className="text-center">
-                                <Button type="submit" size="lg" disabled={isSubmitting}>
+                            <div className="pt-2">
+                                <Button 
+                                    type="submit" 
+                                    size="lg" 
+                                    disabled={isSubmitting}
+                                    className="w-full md:w-auto rounded-full px-12 py-8 text-lg font-bold shadow-2xl shadow-primary/20 hover:scale-[1.02] transition-transform bg-primary"
+                                >
                                     {isSubmitting ? "Sending..." : "Send Message"}
                                 </Button>
                             </div>
@@ -211,61 +226,62 @@ const contactInfo = [
 export default function ContactContent() {
     return (
         <main>
-            <section id="hero" className="py-20">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                        <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
-                            <h1 className="text-2xl md:text-4xl font-extrabold font-headline tracking-tight text-slate-800 dark:text-white">
-                                <span className="text-primary">
-                                    Virtual CFO, NRI Tax & Compliance
-                                </span>
-                                <br />
-                                <span className="text-slate-800 dark:text-white">— All in One Place</span>
-                            </h1>
-                            <p className="mt-4 text-lg text-muted-foreground max-w-lg">
-                                We help startups, NRIs & SMEs with taxation, ROC, MIS, financial
-                                strategy
-                            </p>
-                        </div>
-                        <div className="flex justify-center">
-                            <Image
-                                src={contactimage}
-                                alt="Business team collaborating"
-                                width={600}
-                                height={400}
-                                className="rounded-2xl shadow-xl shadow-primary/5 object-cover"
-                                data-ai-hint={placeholderImages.contactPage.hero.hint}
-                            />
+            <section id="hero" className="py-32 md:py-48 bg-slate-50 dark:bg-slate-900/10 relative overflow-hidden">
+                <div className="container mx-auto px-4 relative z-10 text-center">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-600 dark:text-white leading-[1.1] mb-8">
+                            Need support with your <br />
+                            <span className="text-primary">financial or compliance</span> <br />
+                            requirements?
+                        </h1>
+                        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
+                            Get clarity on your next steps with a structured and professional approach.
+                        </p>
+                        <div className="flex flex-col items-center gap-10 pt-4">
+                            <Button size="lg" className="rounded-full px-12 py-8 text-xl font-bold shadow-2xl shadow-primary/20 hover:scale-105 transition-transform bg-primary" asChild>
+                                <Link href="#contact">Get Expert Consultation</Link>
+                            </Button>
+                            <div className="flex flex-wrap justify-center items-center gap-8 text-sm font-bold tracking-widest text-slate-500 uppercase">
+                                <div className="flex items-center gap-2">Confidential</div>
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/30 hidden md:block" />
+                                <div className="flex items-center gap-2">No obligation</div>
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/30 hidden md:block" />
+                                <div className="flex items-center gap-2">Response within 24 hours</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="contact" className="py-20">
+            <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h2 className="text-2xl md:text-4xl font-extrabold font-headline text-slate-800 dark:text-white">
-                            Contact
-                        </h2>
-                        <p className="mt-4 text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-                            Connect with us — let’s strategize your next move.
-                        </p>
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
+                        <div className="max-w-2xl">
+                            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight mb-6">
+                                Get in <span className="text-primary">Touch</span>
+                            </h2>
+                            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl">
+                                Connect with our experts — let’s strategize your next move for professional financial growth.
+                            </p>
+                        </div>
+                        <div className="hidden lg:block w-24 h-px bg-slate-200 dark:bg-slate-800 mb-6" />
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                        <div className="lg:col-span-5 space-y-6">
+                        <div className="lg:col-span-5 space-y-8">
                             {contactInfo.map((item, index) => (
-                                <Card key={index} className="shadow-xl shadow-primary/5 hover:border-primary/20 transition-all">
-                                    <CardContent className="p-6 flex items-start gap-4">
-                                        <div className="bg-primary/10 text-primary p-3 rounded-full">
-                                            <item.icon className="h-6 w-6" />
+                                <Card key={index} className="border-0 shadow-lg shadow-slate-200/50 dark:shadow-none bg-slate-50/50 dark:bg-slate-900/50 hover:bg-white dark:hover:bg-slate-800 transition-all group overflow-hidden relative">
+                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <CardContent className="p-8 flex items-center gap-6">
+                                        <div className="w-16 h-16 rounded-2xl bg-white dark:bg-slate-950 shadow-md group-hover:shadow-primary/20 group-hover:scale-110 transition-all flex items-center justify-center text-primary">
+                                            <item.icon className="h-7 w-7" />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-semibold font-headline">
+                                            <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-2 opacity-80">
                                                 {item.title}
                                             </h3>
                                             {item.details.map((line, i) => (
-                                                <p key={i} className="text-muted-foreground">
+                                                <p key={i} className="text-xl font-bold text-slate-700 dark:text-white leading-tight">
                                                     {line}
                                                 </p>
                                             ))}

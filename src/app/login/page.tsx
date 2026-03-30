@@ -134,7 +134,7 @@ function LoginForm() {
             <h2 className="mt-6 text-center text-4xl font-bold font-headline tracking-tight text-primary bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Welcome Back
             </h2>
-            <p className="mt-2 text-center text-sm text-muted-foreground">
+            <p className="mt-2 text-center text-base text-muted-foreground">
               Please enter your details to sign in.
             </p>
           </div>
@@ -202,14 +202,14 @@ function LoginForm() {
                       </FormControl>
                       <label
                         htmlFor="remember"
-                        className="text-sm font-medium leading-none text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        className="text-base font-medium leading-none text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
                         Remember me
                       </label>
                     </FormItem>
                   )}
                 />
-                <div className="text-sm">
+                <div className="text-base">
                   <Link
                     href="/forgot-password"
                     className="font-medium text-primary hover:text-primary/80"
@@ -238,7 +238,7 @@ function LoginForm() {
               </Button>
             </form>
           </Form>
-          <div className="text-center text-sm text-muted-foreground">
+          <div className="text-center text-base text-muted-foreground">
             Don't have an account?{" "}
             <Link
               href="/signup"

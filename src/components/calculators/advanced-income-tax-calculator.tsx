@@ -41,7 +41,7 @@ const SectionHeader = ({ icon: Icon, title, description }: { icon: any, title: s
       <Icon className="h-6 w-6" />
     </div>
     <div>
-      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">{title}</h3>
+      <h3 className="text-lg font-bold text-slate-600 dark:text-slate-100">{title}</h3>
       <p className="text-sm text-slate-500 dark:text-slate-400">{description}</p>
     </div>
   </div>

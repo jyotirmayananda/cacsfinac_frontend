@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ServiceDetailHero from "@/components/service-detail-hero";
-import { AuthGuard } from "@/components/auth-guard";
 
 interface ServiceDetailPageProps {
   params: Promise<{
@@ -56,8 +55,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   const { details } = service;
 
   return (
-    <AuthGuard>
-      <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Premium Hero Section */}
       <ServiceDetailHero 
         title={details.heroTitle}
@@ -278,7 +276,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
         </div>
       </section>
     </div>
-    </AuthGuard>
   );
 }
 

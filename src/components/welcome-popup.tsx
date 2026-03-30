@@ -69,7 +69,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-2xl md:text-4xl font-bold text-foreground tracking-tight leading-[1.1] text-center"
+                className="text-2xl md:text-4xl font-bold text-slate-600 dark:text-white tracking-tight leading-[1.1] text-center"
               >
                 File Taxes <span className="text-primary">Stress-Free.</span>
               </motion.h2>
@@ -105,7 +105,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
                     <service.icon className="h-6 w-6 md:h-8 md:w-8 text-primary group-hover:text-white transition-colors" />
                   </div>
                   
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 md:mb-4 leading-tight tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-600 dark:text-white mb-3 md:mb-4 leading-tight tracking-tight">
                     {service.title}
                   </h3>
                   

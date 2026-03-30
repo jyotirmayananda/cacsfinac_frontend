@@ -12,9 +12,21 @@ interface ModernHeroProps {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   rightContent?: React.ReactNode;
+  ctaText?: string;
+  ctaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
 }
 
-export function ModernHero({ title, subtitle, rightContent }: ModernHeroProps) {
+export function ModernHero({ 
+  title, 
+  subtitle, 
+  rightContent,
+  ctaText = "Get Started",
+  ctaLink = "/contact",
+  secondaryCtaText = "Explore Services",
+  secondaryCtaLink = "#services"
+}: ModernHeroProps) {
   const defaultTitle = (
     <>
       <span className="block text-primary">Virtual CFO</span>
@@ -42,24 +54,24 @@ export function ModernHero({ title, subtitle, rightContent }: ModernHeroProps) {
               Financial Advisory Services
             </nav>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-slate-800 dark:text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-slate-600 dark:text-white">
                {title || defaultTitle}
              </h1>
 
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-xl mb-10 leading-relaxed">
               {subtitle || defaultSubtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
               <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-10 py-8 text-lg font-bold shadow-2xl shadow-primary/30 hover:scale-105 transition-transform">
-                <Link href="/contact" className="flex items-center gap-2">
-                  Get Started <ArrowRight size={20} />
+                <Link href={ctaLink} className="flex items-center gap-2">
+                  {ctaText} <ArrowRight size={20} />
                 </Link>
               </Button>
 
-              <Link href="#services" className="text-slate-800 dark:text-white font-bold tracking-tight hover:text-primary transition-colors flex items-center gap-2 group">
-                Explore Services
-                <span className="w-8 h-px bg-slate-800 dark:bg-white group-hover:w-12 group-hover:bg-primary transition-all"></span>
+              <Link href={secondaryCtaLink} className="text-slate-600 dark:text-white font-bold tracking-tight hover:text-primary transition-colors flex items-center gap-2 group">
+                {secondaryCtaText}
+                <span className="w-8 h-px bg-slate-600 dark:bg-white group-hover:w-12 group-hover:bg-primary transition-all"></span>
               </Link>
             </div>
           </motion.div>

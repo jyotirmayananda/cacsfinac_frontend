@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { Menu, X, ChevronDown, LogOut, User as UserIcon } from "lucide-react";
+import { Menu, X, ChevronDown, LogOut, User as UserIcon, ArrowRight } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
   Accordion,
@@ -38,6 +38,21 @@ const navLinks = [
   { href: "/about", label: "Company" },
   { href: "/blog", label: "Blog" },
   { href: "/calculators", label: "Calculators" },
+];
+
+const serviceGroups = [
+  {
+    title: "Taxation & Compliance",
+    slugs: ["income-tax-filing", "gst-services", "nri-taxation"]
+  },
+  {
+    title: "Business & Registration",
+    slugs: ["company-registration", "ngo-trust-registration", "other-registrations"]
+  },
+  {
+    title: "Advisory & Support",
+    slugs: ["virtual-cfo", "roc-compliance", "audit-support"]
+  }
 ];
 
 export function Header() {
@@ -115,16 +130,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/70 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-20 max-w-full items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-24 max-w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Image
               src={logoSrc}
               alt="CACS FinAcc Logo"
-              width={240}
-              height={80}
+              width={260}
+              height={100}
               priority
-              style={{ height: "80px", width: "auto" }}
+              style={{ height: "100px", width: "auto" }}
             />
           </Link>
         </div>
@@ -149,58 +164,97 @@ export function Header() {
                   </Link>
                   <ul
                     className={cn(
-                      "absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[min(calc(100vw-2rem),700px)] max-w-[700px] list-none p-4",
-                      "before:pointer-events-auto before:absolute before:inset-x-0 before:bottom-full before:h-4 before:content-['']",
-                      "grid grid-cols-2 gap-2 rounded-[1.5rem] border shadow-2xl backdrop-blur-3xl",
+                      "absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[min(calc(100vw-2rem),1150px)] max-w-[1150px] list-none p-10",
+                      "before:pointer-events-auto before:absolute before:inset-x-0 before:bottom-full before:h-8 before:content-['']",
+                      "grid grid-cols-3 gap-8 rounded-[1.5rem] border shadow-2xl backdrop-blur-3xl",
                       "bg-background/95 border-border",
                       "dark:bg-slate-950/95 dark:border-white/10 dark:shadow-black/50",
                       "pointer-events-none opacity-0 transition-all duration-300 delay-75",
                       "invisible group-hover/services-nav:pointer-events-auto group-hover/services-nav:visible group-hover/services-nav:opacity-100 group-hover/services-nav:delay-0",
-                      "max-h-[min(70vh,520px)] overflow-y-auto overflow-x-hidden"
+                      "max-h-[min(70vh,600px)] overflow-y-auto overflow-x-hidden"
                     )}
                   >
-                    <li className="col-span-2 -mt-0.5 border-b border-border pb-3 dark:border-white/10">
-                      <p className="text-primary font-bold tracking-widest text-[10px]">
-                        Exclusive Services
-                      </p>
-                      <p className="mt-1 font-bold tracking-tight text-foreground text-sm">
-                        Explore Offerings
-                      </p>
-                    </li>
-                    {link.items?.map((service) => (
-                      <li key={service.slug} className="min-w-0">
-                        <Link
-                          href={`/services/${service.slug}`}
-                          className={cn(
-                            "group/item flex items-center gap-3 rounded-2xl border border-transparent p-2.5 transition-all duration-300",
-                            "bg-muted/50 hover:border-border hover:bg-muted",
-                            "dark:border-white/5 dark:bg-white/5 dark:hover:border-white/10 dark:hover:bg-white/10"
-                          )}
-                        >
-                          <span
-                            className={cn(
-                              "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-all duration-300",
-                              "border-border bg-background",
-                              "dark:border-white/10 dark:bg-white/5",
-                              "group-hover/item:border-primary group-hover/item:bg-primary"
-                            )}
-                          >
-                            <service.icon className="h-5 w-5 text-primary transition-colors group-hover/item:text-primary-foreground" />
-                          </span>
-                          <span className="min-w-0 flex-1 text-left text-[11px] font-bold leading-snug tracking-tight text-foreground group-hover/item:text-primary">
-                            {service.title}
-                          </span>
-                        </Link>
+
+                    {serviceGroups.map((group) => (
+                      <li key={group.title} className="space-y-6">
+                        <div className="px-4 space-y-1.5 w-fit">
+                          <h4 className="text-[13px] font-black tracking-[0.2em] text-primary uppercase whitespace-nowrap">
+                            {group.title}
+                          </h4>
+                          <div className="h-0.5 w-full bg-primary rounded-full shadow-sm shadow-primary/20" />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          {group.slugs.map((slug) => {
+                            const service = services.find(s => s.slug === slug);
+                            if (!service) return null;
+                            return (
+                              <Link
+                                key={service.slug}
+                                href={`/services/${service.slug}`}
+                                className={cn(
+                                  "group/item flex items-center gap-4 rounded-3xl border border-transparent p-4 transition-all duration-500",
+                                  "hover:border-primary/20 hover:bg-muted/80",
+                                  "dark:hover:border-white/20 dark:hover:bg-white/5"
+                                )}
+                              >
+                                <span
+                                  className={cn(
+                                    "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border transition-all duration-300",
+                                    "border-border bg-background",
+                                    "dark:border-white/10 dark:bg-white/5",
+                                    "group-hover/item:border-primary group-hover/item:bg-primary shadow-lg shadow-black/5"
+                                  )}
+                                >
+                                  <service.icon className="h-6 w-6 text-primary transition-colors group-hover/item:text-primary-foreground" />
+                                </span>
+                                <span className="min-w-0 flex-1 text-left text-[15px] font-bold leading-snug tracking-tight text-slate-600 dark:text-white group-hover/item:text-primary transition-colors">
+                                  {service.title}
+                                </span>
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </li>
                     ))}
-                    <li className="col-span-2 mt-1 border-t border-border pt-3 dark:border-white/10">
+                    <li className="col-span-3 mt-12 mb-2 bg-primary/[0.03] rounded-[2rem] p-10 border border-primary/10 dark:bg-white/[0.02] dark:border-white/10">
+                      <div className="flex flex-col md:flex-row items-center gap-12">
+                        <div className="max-w-[300px]">
+                          <h5 className="text-xl font-bold tracking-tight text-foreground">Not sure where to start?</h5>
+                          <p className="mt-2 text-muted-foreground text-sm leading-relaxed">
+                            Get expert guidance based on your requirement.
+                          </p>
+                        </div>
+                        
+                        <div className="flex-1 grid grid-cols-2 gap-12">
+                          <Link href="/services/income-tax-filing" className="group/help block p-1 transition-all">
+                            <h6 className="font-bold text-primary text-base group-hover/help:underline underline-offset-4">Income Tax Filing</h6>
+                            <p className="mt-2 text-sm text-muted-foreground/80 leading-snug">ITR filing for salary, business, capital gains & NRIs</p>
+                          </Link>
+                          
+                          <Link href="/services/gst-services" className="group/help block p-1 transition-all">
+                            <h6 className="font-bold text-primary text-base group-hover/help:underline underline-offset-4">GST Compliance</h6>
+                            <p className="mt-2 text-sm text-muted-foreground/80 leading-snug">Registration, monthly filing & ITC reconciliation</p>
+                          </Link>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li className="col-span-3 mt-8 flex justify-center">
                       <Link
                         href="/services"
-                        className="inline-flex text-[10px] font-bold tracking-widest text-primary transition-colors hover:text-primary/80"
+                        className={cn(
+                          "group/all flex items-center gap-4 rounded-full bg-primary/5 px-10 py-5 transition-all duration-500",
+                          "hover:bg-primary hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1 active:scale-95",
+                          "dark:bg-white/5 dark:hover:bg-primary"
+                        )}
                       >
-                        View All Services
+                        <span className="text-[13px] font-black tracking-[0.2em] text-primary group-hover/all:text-primary-foreground transition-colors uppercase">
+                          Explore All Services
+                        </span>
+                        <ArrowRight className="h-5 w-5 text-primary group-hover/all:text-primary-foreground transform group-hover/all:translate-x-1 transition-all" />
                       </Link>
                     </li>
+
                   </ul>
                 </div>
               ) : (
@@ -316,25 +370,45 @@ export function Header() {
                             {link.label}
                           </AccordionTrigger>
                           <AccordionContent>
-                            <div className="flex flex-col gap-4 pl-4 pt-2">
+                            <div className="flex flex-col gap-8 pl-4 pt-4">
+
+                              {serviceGroups.map((group) => (
+                                <div key={group.title} className="space-y-4">
+                                  <div className="space-y-1.5 w-fit">
+                                    <h4 className="text-[12px] font-black tracking-widest text-muted-foreground uppercase opacity-80 whitespace-nowrap">
+                                      {group.title}
+                                    </h4>
+                                    <div className="h-0.5 w-full bg-primary/40 rounded-full" />
+                                  </div>
+                                  <div className="flex flex-col gap-4">
+                                    {group.slugs.map((slug) => {
+                                      const service = services.find(s => s.slug === slug);
+                                      if (!service) return null;
+                                      return (
+                                        <Link
+                                          key={service.slug}
+                                          href={`/services/${service.slug}`}
+                                          className="flex items-center gap-4 text-foreground/80 hover:text-primary group transition-colors"
+                                          onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                          <div className="bg-primary/5 p-2 rounded-lg group-hover:bg-primary/10 transition-colors">
+                                            <service.icon className="h-5 w-5 text-primary" />
+                                          </div>
+                                          <span className="font-semibold text-base">{service.title}</span>
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              ))}
                               <Link
                                 href="/services"
-                                className="flex items-center gap-2 font-semibold text-primary underline"
+                                className="flex items-center justify-center gap-2 rounded-xl bg-primary/5 p-5 font-bold text-primary tracking-widest text-xs uppercase transition-colors hover:bg-primary/10"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
-                                View All Services
+                                Explore All Services
+                                <ArrowRight size={16} />
                               </Link>
-                              {link.items?.map((service) => (
-                                <Link
-                                  key={service.slug}
-                                  href={`/services/${service.slug}`}
-                                  className="flex items-center gap-2 text-muted-foreground hover:text-primary"
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                  <service.icon className="h-4 w-4" />
-                                  <span>{service.title}</span>
-                                </Link>
-                              ))}
                             </div>
                           </AccordionContent>
                         </AccordionItem>

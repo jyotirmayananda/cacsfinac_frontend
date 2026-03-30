@@ -126,7 +126,7 @@ export default function BlogDetailView({ post, recentPosts }: BlogDetailViewProp
                           {post.cta}
                         </p>
                         <Button className="rounded-full px-8 py-6 h-auto text-lg group" asChild>
-                          <Link href="/contact">
+                          <Link href="/contact" className="!no-underline">
                             Connect for Consultation
                             <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                           </Link>
@@ -173,11 +173,11 @@ export default function BlogDetailView({ post, recentPosts }: BlogDetailViewProp
                           />
                         </div>
                         <div className="space-y-1">
-                          <p className="text-xs font-bold tracking-widest text-slate-900 dark:text-white leading-tight">{otherPost.title}</p>
+                          <p className="text-xs font-bold tracking-widest text-slate-600 dark:text-white leading-tight">{otherPost.title}</p>
                           <h4 className="text-sm font-semibold line-clamp-2 leading-snug group-hover:text-primary transition-colors">
                             {otherPost.title}
                           </h4>
-                          <p className="text-xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">{otherPost.date}</p>
+                          <p className="text-xl font-bold text-slate-600 dark:text-slate-100 tracking-tight">{otherPost.date}</p>
                           <p className="text-[10px] text-muted-foreground tracking-widest">
                             {otherPost.date}
                           </p>

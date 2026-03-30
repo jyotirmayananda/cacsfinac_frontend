@@ -26,96 +26,44 @@ export default function BlogPage() {
 
   const faqs = [
     {
-      question: "How can I save tax legally in FY 2024-25?",
+      question: "Why am I receiving tax notices even after filing returns?",
       answer:
-        "By investing in ELSS, PPF, NPS, claiming deductions under 80C to 80U, and optimizing HRA/LTA benefits.",
+        "Tax notices are often triggered by data mismatches across GST filings, AIS, and income tax returns rather than non-compliance.",
     },
     {
-      question: "What are the latest changes in ITR forms for AY 2025-26?",
+      question: "How can I reduce GST compliance risks?",
       answer:
-        "Updated ITR-1 to ITR-7 now include new AIS/TIS reconciliation, capital gains details, and digital asset disclosures.",
+        "By implementing structured reconciliation processes, vendor tracking systems, and periodic reviews before filing.",
     },
     {
-      question:
-        "How do I compute capital gains on inherited property for FY 2024-25?",
+      question: "Do growing businesses need financial reporting beyond accounting?",
       answer:
-        "To calculate capital gains on inherited assets, use the Indexed Cost of Acquisition from the previous owner. Even though inheritance isn’t taxable, selling the property will attract Long-Term Capital Gains (LTCG) under Section 112.",
+        "Yes. Accounting reflects past transactions, while structured financial reporting provides decision-making clarity and risk visibility.",
     },
     {
-      question:
-        "Can I save LTCG tax under Section 54, 54EC, and 54F simultaneously?",
+      question: "How can NRIs optimize taxation in India?",
       answer:
-        "Yes, but each has specific conditions—e.g., Section 54 applies to residential properties; 54EC requires investment in NHAI/REC bonds within 6 months. Simultaneous claims must not overlap the same gain portion.",
+        "Through proper structuring, DTAA utilization, and accurate reporting of income and capital gains.",
     },
     {
-      question:
-        "I received a GST notice for mismatch in GSTR-2B and ITC claimed. What should I do?",
+      question: "What causes compliance failures in businesses?",
       answer:
-        "Reconcile GSTR-2B with your purchase register. If genuine mismatch exists, revise future ITC claims. Failure to respond to GST notices can lead to suspension of registration under Rule 21A.",
+        "Most compliance failures result from lack of systems, not lack of knowledge—such as missing calendars, processes, and accountability.",
     },
     {
-      question:
-        "Can I avail GST input on blocked credits like office furniture and staff food?",
+      question: "What are the common financial mistakes made by startups?",
       answer:
-        "No. As per Section 17(5) of CGST Act, input tax credit is disallowed on personal consumption, food & beverages, and office furniture unless used exclusively for taxable supplies.",
+        "Startups often: <ul class='list-disc pl-6 my-2'><li>Focus only on revenue growth without understanding profitability</li><li>Lack structured cash flow planning</li><li>Do not maintain consistent financial reporting</li><li>Delay building financial controls</li></ul> These gaps can impact long-term sustainability.",
     },
     {
-      question:
-        "What are the consequences of non-compliance with Section 185 and 186 of Companies Act?",
+      question: "Why is financial visibility important for business decisions?",
       answer:
-        "Violation of loan and investment provisions can attract heavy penalties. Loans to directors or investment beyond limits without Board/Shareholder approval are prosecutable offences.",
+        "Without structured financial visibility, decisions are based on assumptions rather than data. Clear financial reporting enables businesses to understand performance, manage risks, and allocate resources efficiently.",
     },
     {
-      question:
-        "Can a Pvt Ltd company issue shares at premium without valuation report?",
+      question: "How can businesses improve their financial visibility?",
       answer:
-        "No. Income Tax Section 56(2)(viib) and Companies Act require a valuation report from a merchant banker or CA to justify premium and avoid angel tax liability.",
-    },
-    {
-      question:
-        "What is the process and timeline for filing FLA (Foreign Liabilities and Assets) Return?",
-      answer:
-        "Every Indian company receiving FDI or ODI must file FLA Return by July 15 annually through RBI's portal. Late filing attracts compliance penalties and affects creditworthiness.",
-    },
-    {
-      question: "How do I report ECB (External Commercial Borrowing) with RBI?",
-      answer:
-        "You must obtain a Loan Registration Number (LRN) via ECB-Form 83 submission and report drawdowns through Form ECB-2 monthly.",
-    },
-    {
-      question:
-        "Who is liable if a contractor defaults on PF contributions of workers?",
-      answer:
-        "The principal employer is liable under EPF Act to ensure contractors comply. Failure leads to joint liability and prosecution under Section 14B of EPF Act.",
-    },
-    {
-      question:
-        "How can startups automate PF/ESI compliance to avoid human error?",
-      answer:
-        "Use dedicated payroll & compliance software with direct API filing. Or, outsource to experts like CACSFinacc who track deadlines, ECR uploads, and DSCR auto-checks.",
-    },
-    {
-      question:
-        "I got a notice under Section 148 for reassessment. What does it mean?",
-      answer:
-        "This means the department has reason to believe escaped income exists. You must respond with justification. Non-compliance may result in penalty under Section 270A.",
-    },
-    {
-      question: "How to handle income mismatch in AIS/TIS vs ITR for FY 2024-25?",
-      answer:
-        "Discrepancies between Annual Information Statement (AIS) and filed ITR may trigger CPC queries. File a revised return or use grievance redressal with justification.",
-    },
-    {
-      question:
-        "What is the compliance checklist post angel investment round in India?",
-      answer:
-        "<ul><li>File MCA allotment forms (PAS-3)</li><li>Update register of members & valuation report</li><li>RBI’s FC-GPR filing under FEMA</li><li>Shareholder agreements, ROC & income tax reporting</li></ul>",
-    },
-    {
-      question:
-        "Is it mandatory for a DPIIT-recognized startup to be GST registered?",
-      answer:
-        "Yes, if turnover exceeds threshold or interstate sales exist—even if under tax holiday. DPIIT recognition doesn’t provide GST exemption.",
+        "By integrating accounting, GST, and income tax systems, performing regular reconciliations, and using modern financial dashboards that provide real-time data for strategic decision-making.",
     },
   ];
 
@@ -137,16 +85,16 @@ export default function BlogPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col items-center justify-end text-center p-8 md:p-12 pb-16">
                       <div className="space-y-4 max-w-3xl">
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white/90 text-[10px] font-semibold border border-white/10 mb-2">
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white/90 text-[10px] font-bold tracking-widest uppercase border border-white/10 mb-4">
                           Featured Insight
                         </span>
-                        <h2 className="text-2xl md:text-4xl font-extrabold font-headline text-white leading-tight">
+                        <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                           {item.title}
                         </h2>
-                        <div className="pt-4 flex items-center justify-center gap-2 text-white/60 text-xs">
-                          <span className="flex items-center gap-1"><Calendar size={14} /> {item.date}</span>
+                        <div className="pt-4 flex items-center justify-center gap-2 text-white/60 text-sm">
+                          <span className="flex items-center gap-1"><Calendar size={16} /> {item.date}</span>
                           <span className="w-1 h-1 bg-white/30 rounded-full" />
-                          <span className="flex items-center gap-1"><User size={14} /> {item.author}</span>
+                          <span className="flex items-center gap-1"><User size={16} /> {item.author}</span>
                         </div>
                       </div>
                     </div>
@@ -161,13 +109,13 @@ export default function BlogPage() {
       </section>
 
       {/* Main Grid */}
-      <section id="blog-posts" className="py-20">
+      <section id="blog-posts" className="py-24 md:py-32">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold font-headline text-slate-800 dark:text-white tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white mb-6">
               Latest from CACS
             </h2>
-            <p className="mt-6 text-xl text-muted-foreground/80 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
               Strategic advisory, compliance engineering, and high-impact financial insights.
             </p>
           </div>
@@ -184,16 +132,16 @@ export default function BlogPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 dark:bg-black/90 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest text-primary shadow-sm">
+                      <span className="bg-white/90 dark:bg-black/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold tracking-widest text-primary shadow-sm">
                         Financial
                       </span>
                     </div>
                   </div>
                   <CardContent className="p-8 flex flex-col flex-grow">
-                    <div className="flex items-center gap-4 text-[10px] text-muted-foreground tracking-widest font-semibold mb-4">
-                      <span className="flex items-center gap-1.5"><Calendar size={12} className="text-primary/70" /> {post.date}</span>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground tracking-widest font-semibold mb-4">
+                      <span className="flex items-center gap-1.5"><Calendar size={14} className="text-primary/70" /> {post.date}</span>
                       <span className="w-1 h-1 bg-muted-foreground/30 rounded-full" />
-                      <span className="flex items-center gap-1.5"><User size={12} className="text-primary/70" /> {post.author}</span>
+                      <span className="flex items-center gap-1.5"><User size={14} className="text-primary/70" /> {post.author}</span>
                     </div>
                     <h3 className="text-2xl font-bold font-headline text-foreground mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
@@ -202,8 +150,8 @@ export default function BlogPage() {
                       {post.summary}
                     </p>
                     <div className="mt-auto pt-6 border-t border-muted-foreground/10 flex items-center justify-between">
-                      <span className="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-xs tracking-widest">
-                        Read Analysis <ArrowRight size={18} />
+                      <span className="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all text-sm tracking-widest">
+                        Read Analysis <ArrowRight size={20} />
                       </span>
                     </div>
                   </CardContent>
@@ -215,39 +163,50 @@ export default function BlogPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-16">
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-extrabold font-headline leading-tight text-slate-800 dark:text-white">
-                Answering Critical Queries
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                A repository of regulatory frameworks, tax compliance, and financial management queries answered by our experts.
-              </p>
-              <Button className="rounded-full px-8 py-6 h-auto" variant="outline" asChild>
+      <section id="faq" className="py-24 md:py-32 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(59,130,246,0.05),transparent)] pointer-events-none" />
+        <div className="container mx-auto px-4 max-w-4xl relative z-10">
+          <div className="text-center mb-16 space-y-6">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase mb-4">
+              Financial Wisdom
+            </span>
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight mb-6">
+              Answering Critical Queries
+            </h2>
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
+              A repository of regulatory frameworks, tax compliance, and financial management queries answered by our experts.
+            </p>
+          </div>
+          
+          <Accordion type="single" collapsible className="w-full space-y-6">
+            {faqs.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`} 
+                className="bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-white/5 rounded-3xl group shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.05)] transition-all duration-300"
+              >
+                <AccordionTrigger className="text-left px-8 py-7 hover:no-underline font-bold text-lg md:text-2xl text-slate-600 dark:text-white hover:text-primary transition-colors data-[state=open]:text-primary">
+                  <div className="flex items-center gap-6">
+                    <span className="text-2xl md:text-4xl font-bold text-slate-100 dark:text-slate-600/50 group-data-[state=open]:text-primary/20 transition-colors leading-none">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {faq.question}
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-8 pb-8 text-muted-foreground leading-relaxed text-base md:text-lg border-t border-slate-100 dark:border-white/5 pt-6">
+                  <div className="pl-10" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          <div className="mt-20 text-center">
+            <div className="bg-white dark:bg-slate-800/80 backdrop-blur-xl p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/10 shadow-xl inline-flex flex-col md:flex-row items-center gap-8">
+              <p className="text-slate-600 dark:text-slate-400 font-medium">Still have questions? Our experts are here to help.</p>
+              <Button className="rounded-full px-10 py-6 h-auto text-lg shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all font-bold" asChild>
                 <Link href="/contact">Ask a Question</Link>
               </Button>
             </div>
-            
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`} 
-                  className="bg-card px-6 rounded-2xl border-none shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <AccordionTrigger className="text-left py-6 hover:no-underline font-semibold text-lg hover:text-primary">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-6 text-muted-foreground leading-relaxed text-md">
-                    <div
-                      dangerouslySetInnerHTML={{ __html: faq.answer }}
-                    />
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
           </div>
         </div>
       </section>

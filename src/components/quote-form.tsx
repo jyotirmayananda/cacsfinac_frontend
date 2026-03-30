@@ -107,7 +107,7 @@ export function QuoteForm() {
     <>
       <Card className="w-full shadow-lg">
         <CardHeader className="space-y-4 pb-8">
-          <CardTitle className="text-3xl font-black text-center tracking-tight text-slate-900 dark:text-white">
+          <CardTitle className="text-3xl font-black text-center tracking-tight text-slate-600 dark:text-white">
             Request a Consultation
           </CardTitle>
           <CardDescription className="text-center text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed max-w-[280px] mx-auto">

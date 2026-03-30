@@ -40,7 +40,7 @@ export function ModernServiceCard({ icon: Icon, title, description, href, index 
             <h3 className="text-2xl font-bold tracking-tight mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
               {title}
             </h3>
-            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 block">
+            <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6 block">
               {description}
             </p>
           </div>
