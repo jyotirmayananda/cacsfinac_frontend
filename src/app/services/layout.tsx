@@ -1,5 +1,5 @@
-import { AuthGuard } from "@/components/auth-guard";
 import React from "react";
+import { AuthGuard } from "@/components/auth-guard";
 
 export default function ServicesLayout({
   children,

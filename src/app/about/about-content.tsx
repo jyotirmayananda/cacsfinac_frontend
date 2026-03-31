@@ -80,8 +80,8 @@ export default function AboutContent() {
       />
 
       {/* 2. Who We Are */}
-      <section className="w-full py-24 md:py-32 relative overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-primary/5 pointer-events-none opacity-50" />
+      <section className="w-full py-24 md:py-32 relative overflow-hidden bg-slate-50 dark:bg-slate-950 text-foreground">
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-primary/5 dark:from-slate-950 dark:via-slate-900 dark:to-primary/5 pointer-events-none opacity-80 dark:opacity-50" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -91,8 +91,10 @@ export default function AboutContent() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-6 leading-tight">Who We Are</h2>
-              <div className="space-y-6 text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+              <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white mb-6 leading-tight">
+                Who We Are
+              </h2>
+              <div className="space-y-6 text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 <p>
                   CACS FinAcc is a Bengaluru-based financial and compliance support platform working in collaboration with qualified Chartered Accountants and professionals.
                 </p>
@@ -106,10 +108,10 @@ export default function AboutContent() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className="aspect-[4/3] relative rounded-[4rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] border border-white/10"
+              className="aspect-[4/3] relative rounded-[4rem] overflow-hidden border border-slate-200/80 shadow-[0_24px_60px_-20px_rgba(15,23,42,0.12)] dark:border-white/10 dark:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]"
             >
               <Image src={whoweareNew} alt="Team collaboration" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent dark:from-slate-900/40 dark:to-transparent pointer-events-none" />
             </motion.div>
           </div>
         </div>
@@ -438,9 +440,14 @@ export default function AboutContent() {
       </section>
 
       {/* 11. CTA Section */}
-      <section id="cta" className="py-24 md:py-32 relative overflow-hidden bg-slate-900 text-white">
-        <div className="absolute inset-0 opacity-20 scale-150"><Abstract3DScene /></div>
-        
+      <section
+        id="cta"
+        className="py-24 md:py-32 relative overflow-hidden bg-slate-50 text-foreground dark:bg-slate-900 dark:text-white"
+      >
+        <div className="absolute inset-0 opacity-[0.08] dark:opacity-20 scale-150 pointer-events-none">
+          <Abstract3DScene />
+        </div>
+
         {/* Animated Background Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -450,7 +457,7 @@ export default function AboutContent() {
               y: [0, -30, 0],
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full opacity-50"
+            className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/15 blur-[120px] rounded-full opacity-40 dark:bg-primary/20 dark:opacity-50"
           />
           <motion.div
             animate={{
@@ -459,22 +466,22 @@ export default function AboutContent() {
               y: [0, 30, 0],
             }}
             transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full opacity-40"
+            className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full opacity-25 dark:opacity-40"
           />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">
             <div className="max-w-5xl mx-auto space-y-12">
-               <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+               <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-800 dark:text-white">
                  Looking for <span className="text-primary">structured</span> financial and compliance support?
                </h2>
-               <p className="text-lg md:text-xl text-slate-300 font-medium tracking-tight max-w-3xl mx-auto leading-relaxed">
+               <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-medium tracking-tight max-w-3xl mx-auto leading-relaxed">
                  Connect with us to understand how we can support your requirements with clarity and consistency.
                </p>
                <div className="flex flex-col items-center gap-10">
                   <Dialog open={isQuoteFormPopupOpen} onOpenChange={setIsQuoteFormPopupOpen}>
                     <DialogTrigger asChild>
-                      <Button size="lg" className="rounded-full px-12 py-8 text-xl font-bold tracking-tight shadow-[0_20px_60px_-10px_rgba(255,107,0,0.5)] hover:scale-105 transition-transform duration-500 bg-primary hover:bg-white hover:text-primary border-none">
+                      <Button size="lg" className="rounded-full px-12 py-8 text-xl font-bold tracking-tight shadow-lg shadow-primary/25 dark:shadow-[0_20px_60px_-10px_rgba(255,107,0,0.5)] hover:scale-105 transition-transform duration-500 bg-primary hover:bg-primary/90 dark:hover:bg-white dark:hover:text-primary border-none text-primary-foreground">
                         Schedule Consultation
                       </Button>
                     </DialogTrigger>
@@ -490,7 +497,7 @@ export default function AboutContent() {
                       </div>
                     </DialogContent>
                   </Dialog>
-                  <div className="flex items-center gap-8 text-sm font-bold tracking-widest text-slate-500">
+                  <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-xs md:text-sm font-bold tracking-widest text-slate-500 dark:text-slate-500">
                     <div className="flex items-center gap-2">Confidential</div>
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
                     <div className="flex items-center gap-2">Professional support</div>

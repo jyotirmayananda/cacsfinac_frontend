@@ -15,13 +15,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/services',
         '/services/income-tax-filing',
         '/services/gst-services',
-        '/services/accounting-bookkeeping',
         '/services/virtual-cfo',
+        '/services/nri-taxation',
         '/services/company-registration',
-        '/services/roc-compliance',
-        '/services/audit-support',
         '/services/ngo-trust-registration',
-        '/services/other-registrations',
+        '/services/accounting-bookkeeping',
+        '/services/roc-compliance',
+        '/services/payroll-hr-compliance',
+        '/services/audit-support',
     ]
 
     return routes.map((route) => ({

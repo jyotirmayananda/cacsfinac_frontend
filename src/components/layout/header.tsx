@@ -43,16 +43,21 @@ const navLinks = [
 const serviceGroups = [
   {
     title: "Taxation & Compliance",
-    slugs: ["income-tax-filing", "gst-services", "nri-taxation"]
+    slugs: [
+      "income-tax-filing",
+      "gst-services",
+      "nri-taxation",
+      "company-registration",
+    ],
   },
   {
     title: "Business & Registration",
-    slugs: ["company-registration", "ngo-trust-registration", "other-registrations"]
+    slugs: ["ngo-trust-registration", "accounting-bookkeeping", "roc-compliance"],
   },
   {
     title: "Advisory & Support",
-    slugs: ["virtual-cfo", "roc-compliance", "audit-support"]
-  }
+    slugs: ["virtual-cfo", "payroll-hr-compliance", "audit-support"],
+  },
 ];
 
 export function Header() {
@@ -227,13 +232,13 @@ export function Header() {
                         
                         <div className="flex-1 grid grid-cols-2 gap-12">
                           <Link href="/services/income-tax-filing" className="group/help block p-1 transition-all">
-                            <h6 className="font-bold text-primary text-base group-hover/help:underline underline-offset-4">Income Tax Filing</h6>
-                            <p className="mt-2 text-sm text-muted-foreground/80 leading-snug">ITR filing for salary, business, capital gains & NRIs</p>
+                            <h6 className="font-bold text-primary text-base group-hover/help:underline underline-offset-4">Income Tax Filing & Tax Advisory Services</h6>
+                            <p className="mt-2 text-sm text-muted-foreground/80 leading-snug">Structured income tax filing and advisory support</p>
                           </Link>
                           
                           <Link href="/services/gst-services" className="group/help block p-1 transition-all">
-                            <h6 className="font-bold text-primary text-base group-hover/help:underline underline-offset-4">GST Compliance</h6>
-                            <p className="mt-2 text-sm text-muted-foreground/80 leading-snug">Registration, monthly filing & ITC reconciliation</p>
+                            <h6 className="font-bold text-primary text-base group-hover/help:underline underline-offset-4">GST Registration & Compliance Services</h6>
+                            <p className="mt-2 text-sm text-muted-foreground/80 leading-snug">Structured GST registration, filing, and compliance support</p>
                           </Link>
                         </div>
                       </div>

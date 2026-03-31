@@ -62,12 +62,16 @@ export function Footer() {
   ];
 
   const servicesLinks = [
-    { href: "/services/income-tax-filing", label: "Income Tax Filing" },
-    { href: "/services/gst-services", label: "GST Services" },
-    { href: "/services/accounting-bookkeeping", label: "Accounting & Bookkeeping" },
-    { href: "/services/virtual-cfo", label: "Virtual CFO" },
-    { href: "/services/company-registration", label: "Company Registration" },
-    { href: "/services/roc-compliance", label: "ROC Compliance" },
+    { href: "/services/income-tax-filing", label: "Income Tax Filing & Tax Advisory Services" },
+    { href: "/services/gst-services", label: "GST Registration & Compliance Services" },
+    { href: "/services/virtual-cfo", label: "Virtual CFO & Financial Advisory Services" },
+    { href: "/services/nri-taxation", label: "NRI Taxation & Compliance Services" },
+    { href: "/services/company-registration", label: "Company Registration & Business Setup Services" },
+    { href: "/services/ngo-trust-registration", label: "NGO & Trust Registration" },
+    { href: "/services/accounting-bookkeeping", label: "Accounting & Bookkeeping Services" },
+    { href: "/services/roc-compliance", label: "ROC Compliance & Corporate Filing Services" },
+    { href: "/services/payroll-hr-compliance", label: "Payroll & HR Compliance Services" },
+    { href: "/services/audit-support", label: "Audit Support & Financial Review Services" },
   ];
 
   return (

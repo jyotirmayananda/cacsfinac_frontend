@@ -66,9 +66,10 @@
 
 @layer base {
   html {
-    font-size: 17px;
+    /* Base rem scale: ~medium body text site-wide (was 17px / 18px) */
+    font-size: 15px;
     @screen md {
-      font-size: 18px;
+      font-size: 16px;
     }
     scroll-behavior: smooth;
   }
@@ -79,7 +80,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    line-height: 1.625;
+    line-height: 1.55;
     position: relative;
     overflow-x: hidden;
   }

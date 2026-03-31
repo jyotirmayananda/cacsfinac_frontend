@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Calendar, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import heroBg from "../../public/Image/services-hero-bg.png";
 import { services } from "@/lib/services";
 
@@ -13,12 +13,19 @@ interface ServiceDetailHeroProps {
   title: string;
   subtitle: string;
   slug: string;
+  primaryCtaText?: string;
 }
 
-export default function ServiceDetailHero({ title, subtitle, slug }: ServiceDetailHeroProps) {
+export default function ServiceDetailHero({
+  title,
+  subtitle,
+  slug,
+  primaryCtaText = "Schedule Consultation",
+}: ServiceDetailHeroProps) {
   const service = services.find((s) => s.slug === slug);
   const Icon = service?.icon || (() => null);
-  const badge = service?.title || "Service";
+  const breadcrumbLabel =
+    service?.details?.heroTitle ?? service?.title ?? "Service";
 
   return (
     <section className="relative min-h-[70vh] flex items-center pt-32 pb-24 overflow-hidden bg-background">
@@ -50,13 +57,8 @@ export default function ServiceDetailHero({ title, subtitle, slug }: ServiceDeta
               <ChevronRight size={12} />
               <Link href="/services" className="hover:text-primary transition-colors">Services</Link>
               <ChevronRight size={12} />
-              <span className="text-primary/80">{badge}</span>
+              <span className="text-primary/80">{breadcrumbLabel}</span>
             </nav>
-
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm text-primary text-[10px] font-bold tracking-widest">
-              <Icon size={14} />
-              {badge}
-            </div>
 
             <h1 className="text-4xl md:text-6xl font-bold font-headline text-foreground leading-[1.15] tracking-tight">
               {title}
@@ -69,12 +71,9 @@ export default function ServiceDetailHero({ title, subtitle, slug }: ServiceDeta
             <div className="flex flex-wrap gap-6 pt-4">
               <Button size="lg" className="rounded-full px-10 h-16 text-lg font-bold group shadow-xl shadow-primary/20" asChild>
                 <Link href="/contact">
-                  Schedule Consultation
+                  {primaryCtaText}
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-10 h-16 text-lg font-semibold border-border hover:bg-muted text-foreground backdrop-blur-sm" asChild>
-                <Link href="#our-services">Explore Modules</Link>
               </Button>
             </div>
           </motion.div>
@@ -108,15 +107,6 @@ export default function ServiceDetailHero({ title, subtitle, slug }: ServiceDeta
                 <Icon size={160} strokeWidth={1} />
               </motion.div>
               
-              <div className="absolute bottom-16 left-0 right-0 text-center z-10">
-                <span className="text-muted-foreground/60 text-sm font-bold tracking-[0.3em] uppercase">Institutional Service</span>
-                <div className="mt-4 flex gap-2 justify-center">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-2 h-2 rounded-full bg-primary" />
-                  ))}
-                </div>
-              </div>
-
               {/* Decorative corners */}
               <div className="absolute top-8 right-8 w-6 h-6 border-t border-r border-border" />
               <div className="absolute bottom-8 left-8 w-6 h-6 border-b border-l border-border" />
