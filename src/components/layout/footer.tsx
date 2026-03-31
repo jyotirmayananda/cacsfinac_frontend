@@ -81,7 +81,7 @@ export function Footer() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-10">
           {/* Brand Column */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-3 space-y-8">
             <Link href="/" className="inline-block transition-transform hover:scale-105">
               <Image
                 src={logoSrc}
@@ -130,14 +130,17 @@ export function Footer() {
           </div>
 
           {/* Services Links */}
-          <div className="lg:col-span-3">
-            <h3 className="text-foreground font-bold tracking-widest text-sm mb-8">Core Services</h3>
-            <ul className="space-y-4">
+          <div className="lg:col-span-4">
+            <div className="grid grid-cols-2 gap-x-4 mb-8">
+              <h3 className="text-foreground font-bold tracking-widest text-sm">Core Services</h3>
+              <h3 className="text-foreground font-bold tracking-widest text-sm">Core Services</h3>
+            </div>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-4">
               {servicesLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-base font-bold hover:text-primary transition-colors flex items-center group"
+                    className="text-base font-bold hover:text-primary transition-colors flex items-center group whitespace-nowrap"
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-primary mr-0 group-hover:mr-2 transition-all" />
                     {link.label}
@@ -161,7 +164,12 @@ export function Footer() {
                 <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center mt-0.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                 </div>
-                <p>+91 95916 33648</p>
+                <a
+                  href="tel:+919591633648"
+                  className="no-underline hover:text-primary transition-colors lining-nums"
+                >
+                  +91 95916 33648
+                </a>
               </div>
               <div className="flex gap-3 items-start">
                 <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center mt-0.5">
