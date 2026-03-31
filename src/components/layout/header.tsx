@@ -42,21 +42,16 @@ const navLinks = [
 
 const serviceGroups = [
   {
-    title: "Taxation & Compliance",
-    slugs: [
-      "income-tax-filing",
-      "gst-services",
-      "nri-taxation",
-      "company-registration",
-    ],
+    title: "Taxation & Regulatory Compliance",
+    slugs: ["income-tax-filing", "gst-services", "nri-taxation"],
   },
   {
-    title: "Business & Registration",
-    slugs: ["ngo-trust-registration", "accounting-bookkeeping", "roc-compliance"],
+    title: "Corporate & Business Compliance",
+    slugs: ["company-registration", "roc-compliance", "payroll-hr-compliance"],
   },
   {
-    title: "Advisory & Support",
-    slugs: ["virtual-cfo", "payroll-hr-compliance", "audit-support"],
+    title: "Financial Advisory & Business Support",
+    slugs: ["virtual-cfo", "accounting-bookkeeping", "audit-support"],
   },
 ];
 
@@ -183,7 +178,7 @@ export function Header() {
                     {serviceGroups.map((group) => (
                       <li key={group.title} className="space-y-6">
                         <div className="px-4 space-y-1.5 w-fit">
-                          <h4 className="text-[13px] font-black tracking-[0.2em] text-primary uppercase whitespace-nowrap">
+                          <h4 className="text-[11px] md:text-[12px] font-black tracking-[0.15em] md:tracking-[0.18em] text-primary uppercase leading-snug max-w-[14rem]">
                             {group.title}
                           </h4>
                           <div className="h-0.5 w-full bg-primary rounded-full shadow-sm shadow-primary/20" />
@@ -380,7 +375,7 @@ export function Header() {
                               {serviceGroups.map((group) => (
                                 <div key={group.title} className="space-y-4">
                                   <div className="space-y-1.5 w-fit">
-                                    <h4 className="text-[12px] font-black tracking-widest text-muted-foreground uppercase opacity-80 whitespace-nowrap">
+                                    <h4 className="text-[11px] font-black tracking-[0.12em] text-muted-foreground uppercase opacity-80 leading-snug max-w-[16rem]">
                                       {group.title}
                                     </h4>
                                     <div className="h-0.5 w-full bg-primary/40 rounded-full" />
