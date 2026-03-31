@@ -171,7 +171,7 @@ export default function BlogPage() {
               Financial Wisdom
             </span>
             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-600 dark:text-white leading-tight mb-6">
-              Answering Critical Queries
+              FAQ
             </h2>
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
               A repository of regulatory frameworks, tax compliance, and financial management queries answered by our experts.

@@ -133,7 +133,7 @@ export const services: Service[] = [
         "Clear communication and practical guidance",
         "Reliable and timely execution",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Who is required to file an income tax return in India?",
@@ -245,7 +245,7 @@ export const services: Service[] = [
         "Clear communication and compliance guidance",
         "Reliable and timely execution",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Who needs GST registration in India?",
@@ -366,7 +366,7 @@ export const services: Service[] = [
         "Clear financial insights and practical guidance",
         "Reliable and consistent advisory support",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "What is a Virtual CFO?",
@@ -487,7 +487,7 @@ export const services: Service[] = [
         "Clear financial insights and practical guidance",
         "Reliable and consistent advisory support",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Do NRIs need to file income tax returns in India?",
@@ -608,7 +608,7 @@ export const services: Service[] = [
         "Clear guidance on business structuring",
         "Reliable and timely execution",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Which business structure is best for startups?",
@@ -711,7 +711,7 @@ export const services: Service[] = [
         "Specialized knowledge in non-profit regulations",
         "Reliable and timely execution",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "What is the difference between a Trust and a Society?",
@@ -832,7 +832,7 @@ export const services: Service[] = [
         "Consistent and accurate reporting",
         "Reliable and timely support",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Do small businesses need bookkeeping services?",
@@ -953,7 +953,7 @@ export const services: Service[] = [
         "Clear guidance on business structuring",
         "Reliable and timely execution",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "What is ROC compliance?",
@@ -1073,7 +1073,7 @@ export const services: Service[] = [
         "Accurate and timely payroll processing",
         "Reliable compliance support",
       ],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Is payroll compliance mandatory for all businesses?",
@@ -1186,7 +1186,7 @@ export const services: Service[] = [
       ],
       whyChooseUsHeading: "WHY CHOOSE US",
       whyChooseUs: [],
-      faqHeading: "FREQUENTLY ASKED QUESTIONS",
+      faqHeading: "FAQ",
       faqs: [
         {
           question: "Do you conduct audits?",

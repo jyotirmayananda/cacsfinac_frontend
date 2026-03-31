@@ -115,31 +115,35 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             <div className="h-1.5 w-24 bg-primary mx-auto rounded-full shadow-lg shadow-primary/20" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+          <div 
+            className={`grid grid-cols-1 md:grid-cols-2 ${
+              details.serviceGroups.length >= 4 ? "xl:grid-cols-4" : "xl:grid-cols-3"
+            } gap-6 xl:gap-8`}
+          >
             {details.serviceGroups.map((group, index) => (
               <Card
                 key={index}
                 className="border-none bg-card shadow-lg hover:shadow-2xl transition-all duration-500 rounded-[2.5rem] overflow-hidden group border border-border/50 flex flex-col"
               >
-                <CardHeader className="bg-primary/5 pt-10 pb-8 px-10 border-b border-border/50 group-hover:bg-primary transition-all duration-500">
-                  <div className="flex justify-between items-center">
-                    <CardTitle className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary-foreground transition-colors">
+                <CardHeader className="bg-primary/5 p-8 border-b border-border/50 group-hover:bg-primary transition-all duration-500">
+                  <div className="flex justify-between items-center gap-4">
+                    <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary-foreground transition-colors leading-tight">
                       {group.title}
                     </CardTitle>
-                    <div className="text-primary group-hover:text-primary-foreground opacity-40 group-hover:scale-110 transition-all">
+                    <div className="text-primary group-hover:text-primary-foreground opacity-40 group-hover:scale-110 transition-all shrink-0">
                       <FileText size={24} />
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-10 flex-grow">
-                  <ul className="space-y-6">
+                <CardContent className="p-8 flex-grow">
+                  <ul className="space-y-5">
                     {group.items.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-4 group/item">
                         <ArrowRight
                           size={18}
-                          className="mt-1 text-primary transition-transform group-hover/item:translate-x-1"
+                          className="mt-1 text-primary transition-transform group-hover/item:translate-x-1 shrink-0"
                         />
-                        <span className="text-muted-foreground leading-relaxed">
+                        <span className="text-muted-foreground leading-relaxed text-sm md:text-base">
                           {item}
                         </span>
                       </li>

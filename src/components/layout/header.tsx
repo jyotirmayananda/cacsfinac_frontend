@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -61,6 +61,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
+  const servicesCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -92,6 +94,34 @@ export function Header() {
     };
   }, []);
 
+  const clearServicesCloseTimer = useCallback(() => {
+    if (servicesCloseTimerRef.current) {
+      clearTimeout(servicesCloseTimerRef.current);
+      servicesCloseTimerRef.current = null;
+    }
+  }, []);
+
+  const openServicesMenu = useCallback(() => {
+    clearServicesCloseTimer();
+    setServicesMenuOpen(true);
+  }, [clearServicesCloseTimer]);
+
+  const scheduleCloseServicesMenu = useCallback(() => {
+    clearServicesCloseTimer();
+    servicesCloseTimerRef.current = setTimeout(() => {
+      setServicesMenuOpen(false);
+      servicesCloseTimerRef.current = null;
+    }, 220);
+  }, [clearServicesCloseTimer]);
+
+  useEffect(() => {
+    return () => clearServicesCloseTimer();
+  }, [clearServicesCloseTimer]);
+
+  useEffect(() => {
+    setServicesMenuOpen(false);
+    clearServicesCloseTimer();
+  }, [pathname, clearServicesCloseTimer]);
 
   const isServicesActive = () => {
     return pathname?.startsWith("/services");
@@ -147,32 +177,48 @@ export function Header() {
           <nav className="navmenu flex items-center gap-6">
             {navLinks.map((link) =>
               link.dropdown ? (
-                <div
-                  key={link.label}
-                  className="group/services-nav relative"
-                >
+                <div key={link.label} className="relative">
                   <Link
                     href={link.href}
                     data-active={isServicesActive()}
+                    onMouseEnter={openServicesMenu}
+                    onMouseLeave={scheduleCloseServicesMenu}
                     className={cn(
                       "flex items-center gap-1 font-nav text-base font-medium transition-colors hover:text-primary",
                       isServicesActive() ? "text-primary" : "text-foreground"
                     )}
                   >
                     <span>{link.label}</span>
-                    <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover/services-nav:rotate-180" />
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform duration-200",
+                        servicesMenuOpen && "rotate-180"
+                      )}
+                    />
                   </Link>
+                  {/* Invisible hit-area between nav link and fixed panel (fixed children don’t extend parent hover box) */}
+                  {servicesMenuOpen ? (
+                    <div
+                      aria-hidden
+                      onMouseEnter={openServicesMenu}
+                      onMouseLeave={scheduleCloseServicesMenu}
+                      className="fixed left-1/2 top-24 z-[99] h-14 w-[min(calc(100vw-2rem),1150px)] max-w-[1150px] -translate-x-1/2"
+                    />
+                  ) : null}
                   <ul
                     className={cn(
-                      "absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[min(calc(100vw-2rem),1150px)] max-w-[1150px] list-none p-10",
-                      "before:pointer-events-auto before:absolute before:inset-x-0 before:bottom-full before:h-8 before:content-['']",
+                      "fixed left-1/2 top-24 z-[100] mt-2 w-[min(calc(100vw-2rem),1150px)] max-w-[1150px] -translate-x-1/2 list-none p-10",
                       "grid grid-cols-3 gap-8 rounded-[1.5rem] border shadow-2xl backdrop-blur-3xl",
                       "bg-background/95 border-border",
                       "dark:bg-slate-950/95 dark:border-white/10 dark:shadow-black/50",
-                      "pointer-events-none opacity-0 transition-all duration-300 delay-75",
-                      "invisible group-hover/services-nav:pointer-events-auto group-hover/services-nav:visible group-hover/services-nav:opacity-100 group-hover/services-nav:delay-0",
-                      "max-h-[min(70vh,600px)] overflow-y-auto overflow-x-hidden"
+                      "max-h-[min(70vh,600px)] overflow-y-auto overflow-x-hidden",
+                      "transition-[opacity,visibility] duration-200",
+                      servicesMenuOpen
+                        ? "visible pointer-events-auto opacity-100"
+                        : "invisible pointer-events-none opacity-0"
                     )}
+                    onMouseEnter={openServicesMenu}
+                    onMouseLeave={scheduleCloseServicesMenu}
                   >
 
                     {serviceGroups.map((group) => (

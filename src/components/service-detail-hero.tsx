@@ -23,7 +23,6 @@ export default function ServiceDetailHero({
   primaryCtaText = "Schedule Consultation",
 }: ServiceDetailHeroProps) {
   const service = services.find((s) => s.slug === slug);
-  const Icon = service?.icon || (() => null);
   const breadcrumbLabel =
     service?.details?.heroTitle ?? service?.title ?? "Service";
 
@@ -88,8 +87,8 @@ export default function ServiceDetailHero({
             {/* Decorative Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary/30 rounded-full blur-[100px] -z-1 animate-pulse" />
             
-            {/* The Icon Card */}
-            <div className="relative z-10 w-full max-w-[500px] aspect-square rounded-[4rem] border border-border bg-card hover:bg-card/80 transition-all duration-300 backdrop-blur-xl flex flex-col items-center justify-center shadow-2xl group overflow-hidden">
+            {/* The Image Card */}
+            <div className="relative z-10 w-full max-w-[500px] aspect-square rounded-[4rem] border border-border bg-card/50 hover:bg-card/80 transition-all duration-300 backdrop-blur-xl flex flex-col items-center justify-center shadow-2xl group overflow-hidden mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
               
               <motion.div 
@@ -102,9 +101,18 @@ export default function ServiceDetailHero({
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="relative z-10 bg-primary/20 p-12 rounded-[3rem] text-primary shadow-2xl shadow-primary/20 border border-primary/30 flex items-center justify-center"
+                className="relative z-10 w-full h-full p-8 flex items-center justify-center"
               >
-                <Icon size={160} strokeWidth={1} />
+                <div className="relative w-full h-full rounded-[3rem] overflow-hidden shadow-2xl border border-primary/20 bg-background/50 backdrop-blur-sm">
+                  {/* Dynamic image resolution logic based on slug */}
+                  <Image
+                    src={`/Image/${slug}.png`}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
               </motion.div>
               
               {/* Decorative corners */}

@@ -87,31 +87,37 @@ const coreServices = [
     icon: Landmark,
     title: "Financial Advisory & Virtual CFO",
     description: "Supporting businesses with financial planning, cash flow management, and decisionmaking insights to improve control and growth.",
+    href: "/services/virtual-cfo",
   },
   {
     icon: FileText,
     title: "Taxation & Compliance",
     description: "Handling income tax, GST, and regulatory filings with accuracy, ensuring timely compliance and reduced risk.",
+    href: "/services/income-tax-filing",
   },
   {
     icon: Book,
     title: "Accounting & Financial Management",
     description: "Maintaining structured books, financial reports, and MIS to provide clear and reliable financial information.",
+    href: "/services/accounting-bookkeeping",
   },
   {
     icon: CheckSquare,
     title: "Corporate & Legal Compliance",
     description: "Managing ROC filings, company law requirements, and regulatory documentation in a systematic manner.",
+    href: "/services/roc-compliance",
   },
   {
     icon: ShieldCheck,
     title: "Audit Support & Financial Review",
     description: "Preparing and supporting audit processes in coordination with qualified professionals to ensure smooth compliance.",
+    href: "/services/audit-support",
   },
   {
     icon: Rocket,
     title: "Business Setup & Registrations",
     description: "Assisting with company formation, registrations, and initial structuring for a compliant business start.",
+    href: "/services/company-registration",
   },
 ];
 
@@ -165,12 +171,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreServices.map((service, index) => (
               <ModernServiceCard
-                key={index}
+                key={service.href}
                 index={index}
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
-                href="#"
+                href={service.href}
               />
             ))}
           </div>

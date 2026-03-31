@@ -201,8 +201,13 @@ export default function AboutContent() {
                      <Image src={whoweare2} alt="Approach background" fill className="object-cover" />
                  </div>
                  <div className="absolute -bottom-8 -left-8 w-full max-w-sm">
-                    <div className="p-8 rounded-[2.5rem] bg-white/80 dark:bg-slate-900/80 shadow-2xl border border-white/20 dark:border-white/5 backdrop-blur-xl">
-                        <CheckCircle2 className="h-8 w-8 text-primary" />
+                    <div className="flex items-center gap-4 rounded-full px-6 py-4 md:px-8 md:py-5 bg-white/90 dark:bg-slate-900/90 shadow-2xl border border-slate-200/80 dark:border-white/10 backdrop-blur-xl">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md">
+                          <CheckCircle2 className="h-6 w-6" strokeWidth={2.5} />
+                        </span>
+                        <span className="text-base md:text-lg font-bold tracking-tight text-slate-700 dark:text-slate-100">
+                          10+ Years Experience
+                        </span>
                     </div>
                  </div>
               </div>

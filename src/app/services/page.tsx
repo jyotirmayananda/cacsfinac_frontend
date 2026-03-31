@@ -13,7 +13,9 @@ import {
   PieChart,
   Globe,
   UserPlus,
-  Building,
+  BookOpen,
+  ShieldCheck,
+  Wallet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ServicesHero from "@/components/services-hero";
@@ -24,7 +26,7 @@ const coreServices = [
     slug: "income-tax-filing",
     title: "Income Tax Filing",
     description:
-      "Accurate income tax filing and advisory for individuals, professionals, and businesses, including capital gains and multiple income sources.",
+      "Structured income tax filing and advisory for individuals, professionals, businesses, and NRIs, including capital gains and multiple income sources.",
     icon: FileText,
   },
   {
@@ -38,29 +40,43 @@ const coreServices = [
     slug: "virtual-cfo",
     title: "Virtual CFO",
     description:
-      "Strategic financial management, cash flow planning, and advisory support for growing businesses and startups.",
+      "Strategic financial management, cash flow planning, and advisory support for startups and growing businesses.",
     icon: PieChart,
   },
   {
     slug: "nri-taxation",
     title: "NRI Taxation",
     description:
-      "Specialized tax support for NRIs with Indian income, including DTAA and capital gains.",
+      "Specialized tax advisory and compliance support for NRIs with Indian income, including DTAA and capital gains.",
     icon: Globe,
   },
   {
     slug: "company-registration",
     title: "Company Setup",
     description:
-      "End-to-end support for business registration and structuring, including Private Limited and LLP.",
+      "End-to-end business setup and structuring support, including Private Limited, LLP, and regulatory registrations.",
     icon: UserPlus,
   },
   {
-    slug: "ngo-trust-registration",
-    title: "NGO & Trust Registration",
+    slug: "accounting-bookkeeping",
+    title: "Accounting & Bookkeeping",
     description:
-      "Structured registration and compliance support for trusts, NGOs, and non-profit organizations.",
-    icon: Building,
+      "Structured accounting, financial reporting, and MIS support for compliance and business decision-making.",
+    icon: BookOpen,
+  },
+  {
+    slug: "roc-compliance",
+    title: "ROC Compliance",
+    description:
+      "Company law compliance, ROC filings, and regulatory support to ensure timely and accurate filings.",
+    icon: ShieldCheck,
+  },
+  {
+    slug: "payroll-hr-compliance",
+    title: "Payroll & HR Compliance",
+    description:
+      "Payroll processing and statutory compliance support, including PF, ESI, and labour law requirements.",
+    icon: Wallet,
   },
 ];
 

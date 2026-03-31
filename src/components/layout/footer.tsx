@@ -62,25 +62,24 @@ export function Footer() {
   ];
 
   const servicesLinks = [
-    { href: "/services/income-tax-filing", label: "Income Tax Filing & Tax Advisory Services" },
-    { href: "/services/gst-services", label: "GST Registration & Compliance Services" },
-    { href: "/services/virtual-cfo", label: "Virtual CFO & Financial Advisory Services" },
-    { href: "/services/nri-taxation", label: "NRI Taxation & Compliance Services" },
-    { href: "/services/company-registration", label: "Company Registration & Business Setup Services" },
-    { href: "/services/ngo-trust-registration", label: "NGO & Trust Registration" },
-    { href: "/services/accounting-bookkeeping", label: "Accounting & Bookkeeping Services" },
-    { href: "/services/roc-compliance", label: "ROC Compliance & Corporate Filing Services" },
-    { href: "/services/payroll-hr-compliance", label: "Payroll & HR Compliance Services" },
-    { href: "/services/audit-support", label: "Audit Support & Financial Review Services" },
+    { href: "/services/income-tax-filing", label: "Income Tax" },
+    { href: "/services/gst-services", label: "GST" },
+    { href: "/services/nri-taxation", label: "NRI Tax" },
+    { href: "/services/company-registration", label: "Company Setup" },
+    { href: "/services/roc-compliance", label: "ROC Compliance" },
+    { href: "/services/payroll-hr-compliance", label: "Payroll" },
+    { href: "/services/virtual-cfo", label: "Virtual CFO" },
+    { href: "/services/accounting-bookkeeping", label: "Accounting" },
+    { href: "/services/audit-support", label: "Audit" },
   ];
 
   return (
-    <footer className="w-full bg-white dark:bg-slate-950 text-muted-foreground pt-24 pb-12 border-t border-border/50 relative overflow-hidden">
+    <footer className="w-full bg-white dark:bg-slate-950 text-muted-foreground pt-16 pb-6 md:pb-8 border-t border-border/50 relative overflow-hidden">
       {/* Background Decorative Element */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-50" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-h-[280px] h-[280px] bg-primary/5 blur-[100px] rounded-full pointer-events-none opacity-40" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-10">
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-8">
             <Link href="/" className="inline-block transition-transform hover:scale-105">
@@ -164,11 +163,16 @@ export function Footer() {
                 </div>
                 <p>+91 95916 33648</p>
               </div>
-              <div className="flex gap-3 items-start underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
+              <div className="flex gap-3 items-start">
                 <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center mt-0.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                 </div>
-                <a href="mailto:info@cacsfinaccservices.com">info@cacsfinaccservices.com</a>
+                <a
+                  href="mailto:info@cacsfinaccservices.com"
+                  className="no-underline hover:text-primary transition-colors"
+                >
+                  info@cacsfinaccservices.com
+                </a>
               </div>
             </div>
 
@@ -190,7 +194,7 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="pt-12 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-bold tracking-widest">
+        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-bold tracking-widest">
           <div className="flex items-center gap-4">
             <span>&copy; {new Date().getFullYear()} CACS FinAcc Services™</span>
             <span className="w-1 h-1 rounded-full bg-border" />
