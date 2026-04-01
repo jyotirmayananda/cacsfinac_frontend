@@ -33,6 +33,30 @@ export async function generateMetadata({ params }: ServiceDetailPageProps) {
   return {
     title: `${service.details.pageTitle} | CACS FinAcc`,
     description: service.details.heroSubtitle,
+    alternates: {
+      canonical: `https://cacsfinaccservices.com/services/${slug}`,
+    },
+    openGraph: {
+      title: `${service.details.pageTitle} | CACS FinAcc`,
+      description: service.details.heroSubtitle,
+      url: `https://cacsfinaccservices.com/services/${slug}`,
+      type: "website",
+      siteName: "CACS FinAcc",
+      images: [
+        {
+          url: "/Image/cacshero.png",
+          width: 1200,
+          height: 630,
+          alt: service.details.pageTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.details.pageTitle} | CACS FinAcc`,
+      description: service.details.heroSubtitle,
+      images: ["/Image/cacshero.png"],
+    },
   };
 }
 
@@ -46,8 +70,29 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
 
   const { details } = service;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": details.pageTitle,
+    "provider": {
+      "@type": "AccountingService",
+      "name": "CACS FinAcc Services",
+      "url": "https://cacsfinaccservices.com"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "description": details.heroSubtitle,
+    "url": `https://cacsfinaccservices.com/services/${slug}`
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ServiceDetailHero
         title={details.heroTitle}
         subtitle={details.heroSubtitle}

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "About Us | CACS FinAcc - Top Chartered Accountants & Financial Advisors",
   description: "Learn about CACS FinAcc, a team of expert Chartered Accountants, Company Secretaries, and financial professionals providing Virtual CFO, Audit, and Tax Compliance services.",
   keywords: ["About CACS FinAcc", "Chartered Accountants Bangalore", "Virtual CFO India", "Tax Consultants", "Financial Advisors"],
+  alternates: {
+    canonical: "https://cacsfinaccservices.com/about",
+  },
   openGraph: {
     title: "About Us | CACS FinAcc",
     description: "Your strategic partner for accounting, taxation, compliance, and corporate governance.",

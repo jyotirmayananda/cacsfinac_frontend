@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Contact Us | CACS FinAcc - Free Financial Consultation',
   description: 'Connect with CACS FinAcc for expert tax filing, Virtual CFO services, and business compliance. Get a free 15-minute consultation today.',
   keywords: ['Contact CACS FinAcc', 'Financial Consultation Bangalore', 'Tax Experts Contact', 'Chartered Accountant Number', 'Business Advisory Contact'],
+  alternates: {
+    canonical: 'https://cacsfinaccservices.com/contact',
+  },
   openGraph: {
     title: 'Contact Us | CACS FinAcc',
     description: 'Get in touch for expert financial advice and compliance services.',
