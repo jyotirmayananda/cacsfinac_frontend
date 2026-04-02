@@ -64,17 +64,23 @@ export function ServicesGatekeeper({ children }: { children: React.ReactNode }) 
       )}
 
       <Dialog open={showModal} onOpenChange={(open) => {
-        // Prevent closing the modal without choosing an option
-        if (!isAuthorized) {
-           // Do nothing, force a choice
-        } else {
-          setShowModal(open);
+        if (!open && !isAuthorized) {
+          // If they close the modal without choosing, treat it as guest access
+          // or at least let them close it if they want to "remove" it
+          handleContinueAsGuest();
         }
+        setShowModal(open);
       }}>
         <DialogContent 
-          onPointerDownOutside={(e) => e.preventDefault()} 
-          onEscapeKeyDown={(e) => e.preventDefault()}
-          className="sm:max-w-[480px] p-0 overflow-hidden border-none bg-transparent shadow-2xl [&>button]:hidden"
+          onPointerDownOutside={(e) => {
+            // Keep the restriction to force a choice, but allow the close button to work
+            e.preventDefault();
+          }} 
+          onEscapeKeyDown={(e) => {
+             // Keep the restriction
+             e.preventDefault();
+          }}
+          className="sm:max-w-[480px] p-0 overflow-hidden border-none bg-transparent shadow-2xl"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
