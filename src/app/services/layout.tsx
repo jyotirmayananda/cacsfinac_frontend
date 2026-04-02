@@ -1,10 +1,10 @@
 import React from "react";
-import { AuthGuard } from "@/components/auth-guard";
+import { ServicesGatekeeper } from "@/components/services-gatekeeper";
 
 export default function ServicesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <AuthGuard>{children}</AuthGuard>;
+  return <ServicesGatekeeper>{children}</ServicesGatekeeper>;
 }
