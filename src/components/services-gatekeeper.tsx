@@ -80,7 +80,7 @@ export function ServicesGatekeeper({ children }: { children: React.ReactNode }) 
              // Keep the restriction
              e.preventDefault();
           }}
-          className="sm:max-w-[480px] p-0 border-none bg-transparent shadow-2xl max-h-[95vh] overflow-y-auto scrollbar-hide [&>button]:top-6 [&>button]:right-6 [&>button]:w-10 [&>button]:h-10 [&>button]:bg-white dark:[&>button]:bg-slate-900 [&>button]:rounded-full [&>button]:shadow-2xl [&>button]:border [&>button]:border-slate-100 dark:[&>button]:border-slate-800 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:z-[100] [&>button]:opacity-100"
+          className="max-w-[calc(100%-2rem)] sm:max-w-[480px] w-full p-0 border-none bg-transparent shadow-2xl max-h-[95vh] overflow-y-auto overflow-x-hidden scrollbar-hide [&>button]:top-6 [&>button]:right-6 [&>button]:w-10 [&>button]:h-10 [&>button]:bg-white dark:[&>button]:bg-slate-900 [&>button]:rounded-full [&>button]:shadow-2xl [&>button]:border [&>button]:border-slate-100 dark:[&>button]:border-slate-800 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:z-[100] [&>button]:opacity-100"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}

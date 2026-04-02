@@ -45,7 +45,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
         className={cn(
-          "max-w-5xl w-[95vw] md:w-full p-0 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-2xl rounded-[1.5rem] max-h-[95vh] overflow-y-auto scrollbar-hide [&>button]:top-6 [&>button]:right-6 [&>button]:w-10 [&>button]:h-10 [&>button]:bg-white dark:[&>button]:bg-slate-900 [&>button]:rounded-full [&>button]:shadow-2xl [&>button]:border [&>button]:border-slate-100 dark:[&>button]:border-slate-800 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:z-[100] [&>button]:opacity-100"
+          "max-w-5xl w-[calc(100%-2rem)] md:w-full p-0 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-2xl rounded-[1.5rem] max-h-[95vh] overflow-y-auto overflow-x-hidden scrollbar-hide [&>button]:top-6 [&>button]:right-6 [&>button]:w-10 [&>button]:h-10 [&>button]:bg-white dark:[&>button]:bg-slate-900 [&>button]:rounded-full [&>button]:shadow-2xl [&>button]:border [&>button]:border-slate-100 dark:[&>button]:border-slate-800 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:z-[100] [&>button]:opacity-100"
         )}
       >
         <div className="relative w-full h-full p-6 md:p-8">
