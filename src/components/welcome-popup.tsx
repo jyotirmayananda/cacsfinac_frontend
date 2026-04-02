@@ -54,7 +54,7 @@ export function WelcomePopup({ open, onOpenChange }: DialogProps) {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
           {/* Header */}
-          <DialogHeader className="relative z-10 flex flex-col items-center text-center sm:text-center mb-6 space-y-2">
+          <DialogHeader className="relative z-10 flex flex-col items-center text-center sm:text-center mb-6 space-y-2 pt-12 md:pt-0 pr-0 md:pr-0">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

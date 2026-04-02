@@ -97,8 +97,8 @@ export function ServicesGatekeeper({ children }: { children: React.ReactNode }) 
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-cyan-400/20 rounded-full blur-[80px] pointer-events-none animate-pulse" />
             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
 
-            <div className="p-8 md:p-12 relative z-10">
-              <DialogHeader className="space-y-6">
+            <div className="p-8 md:p-12 relative z-10 pt-16 md:pt-12">
+              <DialogHeader className="space-y-6 pt-4 md:pt-0">
                 <div className="mx-auto relative group">
                   <div className="absolute inset-0 bg-cyan-500/20 rounded-[2rem] blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100" />
                   <div className="relative w-20 h-20 bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 rounded-[2rem] flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] border border-white/50 dark:border-white/10">
