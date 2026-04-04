@@ -21,7 +21,7 @@ export default function ClientLayoutWrapper({
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       enableSystem={false}
       disableTransitionOnChange
     >
