@@ -5,7 +5,21 @@ import React from "react";
 export const metadata: Metadata = {
   title: "About Us | CACS FinAcc - Top Chartered Accountants & Financial Advisors",
   description: "Learn about CACS FinAcc, a team of expert Chartered Accountants, Company Secretaries, and financial professionals providing Virtual CFO, Audit, and Tax Compliance services.",
-  keywords: ["About CACS FinAcc", "Chartered Accountants Bangalore", "Virtual CFO India", "Tax Consultants", "Financial Advisors"],
+  keywords: [
+    "About CACS FinAcc",
+    "Chartered Accountants Bangalore",
+    "Virtual CFO India",
+    "Tax Consultants",
+    "Financial Advisors",
+    "CACS",
+    "CA",
+    "Tax",
+    "GST",
+    "ITR",
+    "CFO",
+    "FinAcc",
+    "Audit"
+  ],
   alternates: {
     canonical: "https://cacsfinaccservices.com/about",
   },
