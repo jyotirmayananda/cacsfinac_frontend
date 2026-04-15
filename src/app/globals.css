@@ -118,6 +118,16 @@
     @apply font-headline tracking-tight;
     line-height: 1.2;
   }
+
+  /* Hide standard number input arrows */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
 }
 
 @keyframes gradient-animation {

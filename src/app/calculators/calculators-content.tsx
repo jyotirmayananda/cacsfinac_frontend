@@ -12,12 +12,22 @@ import { cn } from "@/lib/utils";
 
 const tdsRates = [
   { value: "192", label: "Salary (Section 192)", rate: "Slab", threshold: 0 },
+  { value: "193", label: "Interest on Securities (Section 193)", rate: 10, threshold: 10000 },
+  { value: "194", label: "Dividend (Section 194)", rate: 10, threshold: 5000 },
   { value: "194A", label: "Interest (Bank/PO) (Section 194A)", rate: 10, threshold: 40000 },
   { value: "194C_I", label: "Contractor (Individual/HUF) (Section 194C)", rate: 1, threshold: 30000 },
   { value: "194C_O", label: "Contractor (Others) (Section 194C)", rate: 2, threshold: 30000 },
+  { value: "194DA", label: "Life Insurance Policy (Section 194DA)", rate: 2, threshold: 100000 },
+  { value: "194G", label: "Commission on Lottery Tickets (Section 194G)", rate: 2, threshold: 15000 },
   { value: "194H", label: "Commission/Brokerage (Section 194H)", rate: 2, threshold: 15000 },
-  { value: "194I", label: "Rent (Land/Building) (Section 194I)", rate: 10, threshold: 240000 },
-  { value: "194J", label: "Professional/Technical Services (Section 194J)", rate: 10, threshold: 30000 },
+  { value: "194I_PB", label: "Rent (Plant & Machinery) (Section 194I)", rate: 2, threshold: 240000 },
+  { value: "194I", label: "Rent (Land/Building/Furniture) (Section 194I)", rate: 10, threshold: 240000 },
+  { value: "194IB", label: "Rent by Individual/HUF (Section 194-IB)", rate: 2, threshold: 600000 },
+  { value: "194J_T", label: "Technical Services/Royalty (Section 194J)", rate: 2, threshold: 30000 },
+  { value: "194J", label: "Professional Services (Section 194J)", rate: 10, threshold: 30000 },
+  { value: "194M", label: "Contract/Commission/Prof. Fee Ind/HUF (Section 194M)", rate: 2, threshold: 5000000 },
+  { value: "194O", label: "E-Commerce Operator (Section 194-O)", rate: 0.1, threshold: 500000 },
+  { value: "194S", label: "Transfer of Virtual Digital Asset (Section 194S)", rate: 1, threshold: 10000 },
 ];
 
 import { AdvancedIncomeTaxCalculator } from "@/components/calculators/advanced-income-tax-calculator";
@@ -210,7 +220,7 @@ export default function CalculatorsPage() {
 
             {/* Disclaimer disclaimer bottom footer support text */}
             <p className="mt-6 text-center text-xs text-muted-foreground max-w-xl mx-auto">
-              *Calculators are to provide indicative guidance based on FY 2024-25 criteria. Always consult a Chartered Accountant before filing accurate financial disclosures.
+              *Calculators are to provide indicative guidance based on current rates for FY 2025-26 (AY 2026-27). Always consult a Chartered Accountant before filing accurate financial disclosures.
             </p>
           </div>
         </div>
