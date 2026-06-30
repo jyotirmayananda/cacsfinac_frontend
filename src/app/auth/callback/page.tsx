@@ -84,7 +84,7 @@ function AuthCallbackContent() {
                     </div>
                     <div className="text-xs text-muted-foreground pt-2 space-y-1">
                         <p className="font-medium">CACS FinAcc Services</p>
-                        <p>+91-9591633648 · info@cacsfinaccservices.com</p>
+                        <p>+91-9591633648 · cacsfinacc@gmail.com</p>
                         <p>Bengaluru, Karnataka</p>
                     </div>
                 </div>

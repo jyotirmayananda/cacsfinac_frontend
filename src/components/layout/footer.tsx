@@ -176,28 +176,13 @@ export function Footer() {
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                 </div>
                 <a
-                  href="mailto:info@cacsfinaccservices.com"
+                  href="mailto:cacsfinacc@gmail.com"
                   className="no-underline hover:text-primary transition-colors"
                 >
-                  info@cacsfinaccservices.com
+                  cacsfinacc@gmail.com
                 </a>
               </div>
             </div>
-
-            <a
-              href="https://g.page/Bengaluru-Office-CACS-FinAcc-Services/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-card hover:bg-muted border border-border px-6 py-4 rounded-2xl transition-all group w-full text-sm font-bold tracking-widest text-foreground shadow-sm"
-            >
-              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#4285F4" d="M23.7449 12.27C23.7449 11.48 23.6849 10.73 23.5549 10H12.2549V14.51H18.7249C18.4349 15.99 17.5849 17.24 16.3249 18.09V21.09H20.1849C22.4449 19.01 23.7449 15.92 23.7449 12.27Z" />
-                <path fill="#34A853" d="M12.2549 24C15.4949 24 18.2049 22.92 20.1849 21.09L16.3249 18.09C15.2449 18.81 13.8749 19.25 12.2549 19.25C9.1349 19.25 6.47491 17.14 5.52491 14.29H1.54492V17.38C3.51492 21.3 7.5649 24 12.2549 24Z" />
-                <path fill="#FBBC05" d="M5.52491 14.29C5.27491 13.57 5.14491 12.8 5.14491 12C5.14491 11.2 5.28491 10.43 5.52491 9.71V6.62H1.54492C0.724915 8.24 0.254913 10.06 0.254913 12C0.254913 13.94 0.724915 15.76 1.54492 17.38L5.52491 14.29Z" />
-                <path fill="#EA4335" d="M12.2549 4.75C14.0249 4.75 15.6049 5.36 16.8549 6.55L20.2749 3.13C18.2049 1.19 15.4949 0 12.2549 0C7.5649 0 3.51492 2.7 1.54492 6.62L5.52491 9.71C6.47491 6.86 9.1349 4.75 12.2549 4.75Z" />
-              </svg>
-              Review our Bengaluru Office
-            </a>
           </div>
         </div>
 

@@ -155,7 +155,7 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 telephone: "+91-9591633648",
                 contactType: "customer service",
-                email: "info@cacsfinaccservices.com",
+                email: "cacsfinacc@gmail.com",
                 areaServed: "IN",
                 availableLanguage: ["English", "Hindi"],
               },

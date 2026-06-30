@@ -219,7 +219,7 @@ const contactInfo = [
     {
         icon: Mail,
         title: "Email Us",
-        details: ["info@cacsfinaccservices.com"],
+        details: ["cacsfinacc@gmail.com"],
     },
 ];
 
