@@ -219,8 +219,8 @@ export default function PrivacyPolicyPage() {
                 <strong>CA CS FINACC</strong>
                 <br />
                 Email:{" "}
-                <a href="mailto:cacsfinacc@gmail.com">
-                  cacsfinacc@gmail.com
+                <a href="mailto:info@cacsfinaccservices.com">
+                  info@cacsfinaccservices.com
                 </a>
                 <br />
                 Phone/WhatsApp: +91-9591633648

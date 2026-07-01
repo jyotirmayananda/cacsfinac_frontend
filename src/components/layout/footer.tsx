@@ -176,10 +176,10 @@ export function Footer() {
                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                 </div>
                 <a
-                  href="mailto:cacsfinacc@gmail.com"
+                  href="mailto:info@cacsfinaccservices.com"
                   className="no-underline hover:text-primary transition-colors"
                 >
-                  cacsfinacc@gmail.com
+                  info@cacsfinaccservices.com
                 </a>
               </div>
             </div>

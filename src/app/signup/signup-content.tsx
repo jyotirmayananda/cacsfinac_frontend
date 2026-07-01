@@ -153,7 +153,7 @@ export default function SignupPage() {
             </div>
             <div className="text-sm text-muted-foreground pt-2 space-y-1">
               <p className="font-medium">CACS FinAcc Services</p>
-              <p>+91-9591633648 · cacsfinacc@gmail.com</p>
+              <p>+91-9591633648 · info@cacsfinaccservices.com</p>
               <p>Bengaluru, Karnataka</p>
             </div>
           </div>

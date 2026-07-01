@@ -63,8 +63,8 @@ export default function DisclaimerPage() {
               <p>
                 If you believe your rights have been infringed by content on
                 this Website, send an email to{" "}
-                <a href="mailto:cacsfinacc@gmail.com">
-                  cacsfinacc@gmail.com
+                <a href="mailto:info@cacsfinaccservices.com">
+                  info@cacsfinaccservices.com
                 </a>{" "}
                 with the following:
               </p>
